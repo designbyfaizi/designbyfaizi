@@ -7,9 +7,15 @@ export default defineNuxtConfig({
         "@/assets/styles/reset.scss",
         "@/assets/styles/fonts.scss",
         "@/assets/styles/colors.scss",
+        "@/assets/styles/scrollbar.scss",
         "@/assets/styles/main.scss",
     ],
-    modules: ["@unocss/nuxt", "@nuxtjs/color-mode", "@nuxt/image-edge"],
+    modules: [
+        "@unocss/nuxt",
+        "@nuxtjs/color-mode",
+        "@nuxt/image-edge",
+        "nuxt-icon",
+    ],
     unocss,
     colorMode,
 });

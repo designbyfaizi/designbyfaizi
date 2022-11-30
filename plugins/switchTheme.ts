@@ -4,11 +4,12 @@ export default defineNuxtPlugin((nuxtApp) => {
         "system",
         "light",
         "dark",
-        "sepia",
-        "cyan",
-        "green",
-        "purple",
+        // "sepia",
+        // "cyan",
+        // "green",
+        // "purple",
     ];
+    const isDarkMode = computed(() => colorMode.value === "dark" ? true : false);
     const switchTheme = () => {
         for (let i = 0; i < colorModes.length; i++) {
             if (colorMode.preference === colorModes[i]) {
@@ -20,6 +21,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     return {
         provide: {
             colorModes,
+            isDarkMode,
             switchTheme,
         },
     };

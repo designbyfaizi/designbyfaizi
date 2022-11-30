@@ -11,7 +11,8 @@
     "@nuxt/image-edge": "^1.0.0-27827328.bc9ddc0",
     "@nuxtjs/color-mode": "^3.2.0",
     "@unocss/nuxt": "^0.46.5",
-    "nuxt": "3.0.0"
+    "nuxt": "3.0.0",
+    "nuxt-icon": "^0.1.7"
   },
   "dependencies": {
     "sass": "^1.56.1"

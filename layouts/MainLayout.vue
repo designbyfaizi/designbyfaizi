@@ -1,19 +1,9 @@
 <template>
-    <div class="max-w-screen-xl mx-auto container">
-        <header
-            class="bg-backgroundsecond h-[100px] flex items-center rounded-2xl p-[10px] my-[10px]"
-        >
-            <NuxtLink to="/" class="hover:scale-95">
-                <NuxtImg
-                    src="/img/designbyfaizi-logo.svg"
-                    width="70"
-                    height="70"
-                />
-            </NuxtLink>
-        </header>
-        <main>
+    <div class="container mx-[10px] sm:mx-auto">
+        <TopHeader />
+        <main class="select-none">
             <slot />
         </main>
-        <nav>BottomNav</nav>
+        <nav class="select-none">BottomNav</nav>
     </div>
 </template>
