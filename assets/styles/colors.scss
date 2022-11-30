@@ -1,0 +1,54 @@
+:root {
+    --main: 75, 85, 99;
+    --primary: 225, 29, 72;
+    --secondary: 190, 18, 60;
+    --background: 238, 238, 238;
+    --backgroundsecond: 255, 255, 255;
+    --shadow: 115, 115, 115;
+    --opacity: 100%;
+}
+
+.dark-mode {
+    --main: 245, 245, 245;
+    --primary: 225, 29, 72;
+    --secondary: 190, 18, 60;
+    --background: 38, 38, 38;
+    --backgroundsecond: 23, 23, 23;
+    --shadow: 0, 0, 0;
+}
+
+.sepia-mode {
+    --main: 67, 52, 34;
+    --primary: 167, 115, 51;
+    --secondary: 80, 66, 49;
+    --background: 241, 231, 208;
+    --backgroundsecond: 231, 211, 167;
+    --shadow: 115, 115, 115;
+}
+
+.cyan-mode {
+    --main: 22, 78, 99;
+    --primary: 8, 145, 178;
+    --secondary: 14, 116, 144;
+    --background: 208, 240, 241;
+    --backgroundsecond: 207, 250, 254;
+    --shadow: 115, 115, 115;
+}
+
+.green-mode {
+    --main: 6, 78, 59;
+    --primary: 5, 150, 105;
+    --secondary: 4, 120, 87;
+    --background: 213, 241, 208;
+    --backgroundsecond: 209, 250, 229;
+    --shadow: 115, 115, 115;
+}
+
+.purple-mode {
+    --main: 75, 85, 99;
+    --primary: 124, 58, 237;
+    --secondary: 109, 40, 217;
+    --background: 228, 208, 241;
+    --backgroundsecond: 237, 233, 254;
+    --shadow: 115, 115, 115;
+}

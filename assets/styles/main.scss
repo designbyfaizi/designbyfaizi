@@ -1,0 +1,9 @@
+body {
+    font-family: "Ubuntu", sans-serif;
+    color: rgb(var(--main));
+    background-color: rgb(var(--background), var(--opacity));
+    transition: background-color 0.3s;
+    a {
+        color: rgb(var(--primary));
+    }
+}
