@@ -1,17 +1,23 @@
 :root {
     --main: 75, 85, 99;
     --primary: 225, 29, 72;
-    --secondary: 190, 18, 60;
+    --primary-lighter: 251, 113, 133;
+    --primary-light: 244, 63, 94;
+    --primary-dark: 190, 18, 60;
+    --primary-darker: 134, 19, 54;
     --background: 238, 238, 238;
     --backgroundsecond: 255, 255, 255;
     --shadow: 115, 115, 115;
-    --opacity: 100%;
+    --opacity: 100;
 }
 
 .dark-mode {
     --main: 245, 245, 245;
     --primary: 225, 29, 72;
-    --secondary: 190, 18, 60;
+    --primary-lighter: 251, 113, 133;
+    --primary-light: 244, 63, 94;
+    --primary-dark: 190, 18, 60;
+    --primary-darker: 134, 19, 54;
     --background: 38, 38, 38;
     --backgroundsecond: 23, 23, 23;
     --shadow: 0, 0, 0;

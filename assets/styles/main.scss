@@ -6,4 +6,31 @@ body {
     a {
         color: rgb(var(--primary));
     }
+    h1 {
+        font-size: 64px;
+        font-weight: 600;
+    }
+    p {
+        font-size: 24px;
+        font-weight: 400;
+    }
+    @media screen and (max-width: 1024px) {
+        h1 {
+            font-size: 28px;
+        }
+        p {
+            font-size: 16px;
+        }
+    }
+}
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: rgb(var(--background));
+    background: rgb(var(--primary));
+}
+
+::selection {
+    color: rgb(var(--background));
+    background: rgb(var(--primary));
 }
