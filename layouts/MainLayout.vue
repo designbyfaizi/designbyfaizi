@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-[10px] sm:mx-auto">
+    <div class="container mx-[10px] sm:mx-auto transition-all duration-150">
         <TopHeader />
         <main class="select-none">
             <slot />
@@ -7,3 +7,7 @@
         <nav class="select-none">BottomNav</nav>
     </div>
 </template>
+
+<style lang="scss">
+
+</style>
