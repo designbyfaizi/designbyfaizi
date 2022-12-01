@@ -11,7 +11,10 @@ const unocss: UnocssNuxtOptions = {
         colors: {
             main: "rgb(var(--main))",
             primary: "rgb(var(--primary))",
-            secondary: "rgb(var(--secondary))",
+            "primaryLighter": "rgb(var(--primary-lighter))",
+            "primaryLight": "rgb(var(--primary-light))",
+            "primaryDark": "rgb(var(--primary-dark))",
+            "primaryDarker": "rgb(var(--primary-darker))",
             background: "rgb(var(--background))",
             backgroundsecond: "rgb(var(--backgroundsecond))",
             shadow: "rgb(var(--shadow))",

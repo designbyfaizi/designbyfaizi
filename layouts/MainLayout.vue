@@ -1,13 +1,11 @@
 <template>
     <div class="container mx-[10px] sm:mx-auto transition-all duration-150">
         <TopHeader />
-        <main class="select-none">
+        <main class="z-0">
             <slot />
         </main>
-        <nav class="select-none">BottomNav</nav>
+        <BottomNav />
     </div>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

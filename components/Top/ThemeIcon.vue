@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 const { $switchTheme, $isDarkMode } = useNuxtApp();
-const colorMode = useColorMode();
+// const colorMode = useColorMode();
 const sunnyIcon = "line-md:moon-filled-to-sunny-filled-loop-transition";
 const moonyIcon = "line-md:moon-filled-loop";
 

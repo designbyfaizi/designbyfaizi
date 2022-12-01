@@ -1,0 +1,28 @@
+<template>
+    <nav class="flex justify-center">
+        <div
+            :class="[
+                'navContainer',
+                'z-100',
+                'bg-backgroundsecond/50',
+                'backdrop-blur-xl',
+                'fixed',
+                'bottom-[10px]',
+                'h-[64px]',
+                'sm:h-[128px]',
+                'flex',
+                'items-center',
+                'justify-center',
+                'gap-4',
+                'rounded-2xl',
+                'p-[20px]',
+                'ring-2',
+                'ring-neutral-500/10',
+                'shadow-xl',
+                'shadow-shadow/15',
+            ]"
+        >
+           <BottomIcon/>
+        </div>
+    </nav>
+</template>
