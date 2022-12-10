@@ -11,6 +11,7 @@ export default defineNuxtConfig({
         "@/assets/styles/main.scss",
     ],
     modules: [
+        "@vueuse/nuxt",
         "@unocss/nuxt",
         "@nuxtjs/color-mode",
         "@nuxt/image-edge",

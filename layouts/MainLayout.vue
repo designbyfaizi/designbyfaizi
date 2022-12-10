@@ -4,7 +4,11 @@
         <main class="z-0">
             <slot />
         </main>
-        <BottomNav />
+        <BottomNav>
+            <BottomIcon to="/" />
+            <BottomIcon to="/about" name="material-symbols:info-rounded" />
+            <BottomIcon to="/github" name="iconoir:github" />
+        </BottomNav>
     </div>
 </template>
 

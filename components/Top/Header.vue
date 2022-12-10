@@ -7,29 +7,45 @@
       transition-all duration-150 ring-2 ring-neutral-500/10 shadow-xl shadow-shadow/15`"
         >
             <TopSiteLogo />
-            <div class="flex gap-4">
-                <TopThemeIcon />
-                <div
-                    @click="dropdown = !dropdown"
-                    class="aspect-square h-[30px] w-[30px] sm:h-[50px] sm:w-[50px] ring-2 ring-neutral-600 rounded-full grid place-items-center group hover:ring-primary/10 cursor-pointer active:scale-95 transition-all duration-75"
-                >
-                    <Icon
-                        name="line-md:account"
-                        class="aspect-square h-[26px] w-[26px] sm:h-[46px] sm:w-[46px] text-neutral-600 group-hover:text-background group-hover:bg-primary bg-background rounded-full m-0 p-0 transition-all duration-75"
-                    />
-                </div>
+            <div class="flex gap-4 items-center">
+                <TopNavIcon
+                    @click="$switchTheme"
+                    :name="$isDarkMode ? moonyIcon : sunnyIcon"
+                />
+                <TopNavIcon :name="'line-md:account'" class="" />
             </div>
-            <TopTestDropdown :dropdown="dropdown" />
+            <SadaMenu :opened="opened" @change="onChange">
+                <SadaMenuTrigger
+                    :opened="opened"
+                    @open-dropdown="onChange(true)"
+                    @close-dropdown="onChange(false)"
+                >
+                    <SadaButton>Treeger</SadaButton>
+                </SadaMenuTrigger>
+            </SadaMenu>
+
+            <!-- <TopTestDropdown :dropdown="dropdown" /> -->
         </div>
     </header>
 </template>
 
 <script setup lang="ts">
-const dropdown = useState("dropdown", () => false);
+const { $switchTheme, $isDarkMode } = useNuxtApp();
+const opened = useState((): boolean => false);
+const onChange = (updatedStatus: boolean) => {
+    // console.log({updatedStatus})
+    opened.value = updatedStatus;
+};
+
+const print = (whatever: any) => {
+    console.log(whatever);
+};
+const sunnyIcon = "line-md:moon-filled-to-sunny-filled-loop-transition";
+const moonyIcon = "line-md:moon-filled-loop";
 </script>
 
 <style lang="scss">
-.headerContainer{
+.headerContainer {
     width: calc(100% - 20px);
 }
 </style>

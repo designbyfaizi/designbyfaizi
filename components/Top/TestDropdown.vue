@@ -1,5 +1,6 @@
 <template>
     <div
+        ref="target"
         v-if="dropdown"
         class="dropdown min-w-[200px] min-h-[100px] absolute bg-main top-[85px] right-[10px] rounded-lg p-4 flex flex-col"
     >
@@ -17,4 +18,11 @@ const props = defineProps({
         required: true,
     },
 });
+
+const target=ref(null);
+
+onClickOutside(target, (event: Event) => {
+    // closeDropdown()
+})
+
 </script>

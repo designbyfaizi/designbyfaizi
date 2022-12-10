@@ -1,13 +1,17 @@
 <template>
-    <Head>
-        <Title>Design by Faizi</Title>
-        <Meta name="description" content="My amazing site!" />
-    </Head>
-    <NuxtLayout name="main-layout">
         <HomeHeroSection/>
         <HomeHeroSection/>
-    </NuxtLayout>
 </template>
 
 <script setup lang="ts">
+useHead({
+    title:'Design by Faizi',
+    meta:[
+        {name:'description', content:'My Amazing Site!'}
+    ]
+})
+
+definePageMeta({
+    layout:'main-layout'
+})
 </script>
