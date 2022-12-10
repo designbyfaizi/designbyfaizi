@@ -1,18 +1,19 @@
 <template>
-    <div class="relative" ref="target">
-        <slot>
-            <SadaMenuTrigger
-                :opened="opened"
-                @open-dropdown="onOpen"
-                @close-dropdown="onClose"
-            ></SadaMenuTrigger>
-        </slot>
-        <SadaMenuDropdown :opened="opened" @close-dropdown="onClose">
-        </SadaMenuDropdown>
+    <div class="relative sada-menu select-none" ref="target">
+        <SadaMenuTrigger
+            :opened="opened"
+            @open-dropdown="openDropdown"
+            @close-dropdown="closeDropdown"
+        >
+            <slot></slot>
+        </SadaMenuTrigger>
+        <SadaMenuDropdown :opened="opened"> </SadaMenuDropdown>
     </div>
 </template>
 
 <script lang="ts" setup>
+const emit = defineEmits(["change"]);
+const target = ref(null);
 const props = defineProps({
     opened: {
         type: Boolean,
@@ -20,18 +21,18 @@ const props = defineProps({
     },
 });
 
-const target = ref(null);
-onClickOutside(target, () => {
-    if (props.opened) {
-        emit("change", false);
-    }
-});
-
-const emit = defineEmits(["change"]);
-const onOpen = () => {
+const openDropdown = () => {
+    console.log("Here UwU");
     emit("change", true);
 };
-const onClose = () => {
+
+const closeDropdown = () => {
     emit("change", false);
 };
+
+onClickOutside(target, () => {
+    if (props.opened) {
+        closeDropdown();
+    }
+});
 </script>

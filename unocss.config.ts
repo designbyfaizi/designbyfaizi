@@ -1,4 +1,6 @@
 import { UnocssNuxtOptions } from "@unocss/nuxt";
+import transformerDirectives from '@unocss/transformer-directives'
+import transformerVariantGroup from '@unocss/transformer-variant-group'
 
 const unocss: UnocssNuxtOptions = {
     // presets
@@ -20,6 +22,10 @@ const unocss: UnocssNuxtOptions = {
             shadow: "rgb(var(--shadow))",
         },
     },
+    transformers:[
+        transformerDirectives() as any,
+        transformerVariantGroup()
+    ]
 };
 
 export default unocss;

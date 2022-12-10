@@ -1,10 +1,14 @@
 <template>
     <header class="flex justify-center relative mx-[10px] sm:mx-auto z-100">
         <div
-            :class="`headerContainer bg-backgroundsecond/50 
-      backdrop-blur-md fixed top-[10px] container h-[70px] 
-      sm:h-[100px] flex items-center justify-between rounded-2xl p-[20px] 
-      transition-all duration-150 ring-2 ring-neutral-500/10 shadow-xl shadow-shadow/15`"
+            :class="[
+                'headerContainer bg-backgroundsecond/50 shadow-xl shadow-shadow/15',
+                'fixed top-[10px] container h-[70px] sm:h-[100px]',
+                'flex items-center justify-between z-1',
+                'rounded-2xl p-[20px] transition-all duration-150',
+                'ring-2 ring-neutral-500/10',
+                'before:(backdrop-blur-md w-full h-full content-none absolute left-0 top-0 rounded-2xl -z-1)'
+            ]"
         >
             <TopSiteLogo />
             <div class="flex gap-4 items-center">
@@ -12,19 +16,12 @@
                     @click="$switchTheme"
                     :name="$isDarkMode ? moonyIcon : sunnyIcon"
                 />
-                <TopNavIcon :name="'line-md:account'" class="" />
+                <SadaMenu :opened="opened" @change="onChange">
+                    <SadaMenuTrigger>
+                        <TopNavIcon :name="'line-md:account'" class="" />
+                    </SadaMenuTrigger>
+                </SadaMenu>
             </div>
-            <SadaMenu :opened="opened" @change="onChange">
-                <SadaMenuTrigger
-                    :opened="opened"
-                    @open-dropdown="onChange(true)"
-                    @close-dropdown="onChange(false)"
-                >
-                    <SadaButton>Treeger</SadaButton>
-                </SadaMenuTrigger>
-            </SadaMenu>
-
-            <!-- <TopTestDropdown :dropdown="dropdown" /> -->
         </div>
     </header>
 </template>
@@ -47,5 +44,10 @@ const moonyIcon = "line-md:moon-filled-loop";
 <style lang="scss">
 .headerContainer {
     width: calc(100% - 20px);
+    // &:before{
+    //     content: Hello;
+    //     height: 100vh;
+    //     background: red;
+    // }
 }
 </style>

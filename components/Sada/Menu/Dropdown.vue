@@ -1,33 +1,36 @@
 <template>
-    <div
-        :class="[
-            opened ? 'flex flex-col' : 'hidden',
-            'p-2 absolute',
-            'min-w-[400px] rounded-xl bg-black',
-            'right-[8px] top-[90px]',
-        ]"
-    >
-        <p class="p-2 px-4 rounded-lg hover:bg-white/10 cursor-pointer">
-            Menu Item 1
-        </p>
-        <p class="p-2 px-4 rounded-lg hover:bg-white/10 cursor-pointer">
-            Menu Item 2
-        </p>
-        <p class="p-2 px-4 rounded-lg hover:bg-white/10 cursor-pointer">
-            Menu Item 3
-        </p>
-        <p class="p-2 px-4 rounded-lg hover:bg-white/10 cursor-pointer">
-            Menu Item 4
-        </p>
-    </div>
+    <!-- <Teleport to=".sada-menu"> -->
+        <div
+            v-show="props.opened"
+            :class="[
+                'sada-dropdown',
+                'flex flex-col',
+                'p-2 absolute',
+                'min-w-[200px] lg:min-w-[300px] rounded-xl bg-backgroundsecond/50',
+                'right-[-10px] top-[60px] sm:top-[90px]',
+                'before:(backdrop-blur-md w-full h-full content-none absolute left-0 top-0 rounded-xl -z-1)'
+            ]"
+        >
+            <SadaMenuDropdownItem name="Menu Item 1" />
+            <SadaMenuDropdownItem name="Menu Item 2" />
+            <SadaMenuDropdownItem name="Menu Item 3" />
+            <SadaMenuDropdownItem name="Menu Item 4" />
+            <SadaMenuDropdownItem name="Menu Item 5" />
+        </div>
+    <!-- </Teleport> -->
 </template>
 
 <script setup lang="ts">
 const props = defineProps({
-  opened: {
-    type: Boolean,
-    default: false,
-  },
+    opened: {
+        type: Boolean,
+        default: false,
+    },
 });
-const emit = defineEmits(["closeDropdown", "openDropdown"]);
+// const emit = defineEmits(["closeDropdown", "openDropdown"]);
 </script>
+
+<style lang="scss">
+.sada-dropdown {
+}
+</style>
