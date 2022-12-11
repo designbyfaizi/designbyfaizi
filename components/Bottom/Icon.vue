@@ -2,8 +2,8 @@
     <div
         :class="[
             'group',
-            'flex items-center justify-center rounded-[16px] bg-backgroundsecond/70',
-            'hover:bg-backgroundsecond/60 active:scale-98 hover:rounded-[15px]',
+            'flex items-center justify-center rounded-[16px] bg-backgroundsecond/60',
+            'hover:bg-backgroundsecond/70 active:scale-98 hover:rounded-[15px]',
             'transition-all duration-100 cursor-pointer shadow shadow-shadow/50 shadow-2xl',
             route?.path === to &&
                 'scale-110 hover:scale-110 !bg-primary !shadow-primary/50',
