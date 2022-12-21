@@ -1,20 +1,21 @@
 <template>
-    <div
-        v-for="(circle, index) in 10"
-        class="cirlce"
-        ref="circles"
-        key="index"
-    ></div>
+    <div class="circleContainer">
+        <div
+            v-for="(circle, index) in totalCircles"
+            class="circles"
+            ref="circles"
+            key="index"
+        ></div>
+    </div>
 </template>
 
 <script setup lang="ts">
-const circleSize = ref("24px");
-const circleScale = ref(1);
+const totalCircles = 10;
+const circleSize = useState(() => "24px");
 const circleRadius = computed(() => {
     return Number(circleSize.value.split("px")[0]) / 2;
 });
-const circles = ref([]);
-const { x, y } = useMouse();
+let coordinates = { x: 0, y: 0 };
 
 interface CircleType extends HTMLElement {
     x: number;
@@ -22,41 +23,55 @@ interface CircleType extends HTMLElement {
 }
 
 onMounted(() => {
-    const animateCircles = () => {
-        let xShift = x.value;
-        let yShift = y.value;
-        circles.value.forEach((circle: CircleType, index: number) => {
-            circle.style.left = xShift - circleRadius.value + "px";
-            circle.style.top = yShift - circleRadius.value + "px";
-            circle.style.scale = "2"
-            circle.x = xShift;
-            circle.y = yShift;
-            const nextCircle: CircleType =
-                circles.value[index + 1] || circles.value[0];
+    const circles: NodeListOf<CircleType> =
+        document.querySelectorAll(".circles");
 
-            xShift += (nextCircle.x - xShift) * 0.2;
-            yShift += (nextCircle.y - yShift) * 0.2;
-        });
-    };
-    circles.value.forEach((circle: CircleType) => {
+    circles.forEach((circle, index) => {
         circle.x = 0;
         circle.y = 0;
     });
-    watch([x, y], () => {
-        animateCircles();
+    window.addEventListener("mousemove", (e: MouseEvent) => {
+        coordinates.x = e.clientX;
+        coordinates.y = e.clientY;
     });
+    const animateCursor = () => {
+        let x = coordinates.x;
+        let y = coordinates.y;
+
+        circles.forEach((circle, index) => {
+            circle.style.left = `${x - circleRadius.value}px`;
+            circle.style.top = `${y - circleRadius.value}px`;
+
+            circle.style.scale = `${(totalCircles - index) * totalCircles}%`;
+
+            circle.x = x;
+            circle.y = y;
+
+            const nextCircle = circles[index + 1] || circles[0];
+            x += (nextCircle.x - x) * 0.3;
+            y += (nextCircle.y - y) * 0.3;
+        });
+        requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
 });
 </script>
-<style lang="scss">
-.cirlce {
-    height: v-bind(circleSize);
-    width: v-bind(circleSize);
-    border-radius: 24px;
-    background-color: rgb(var(--primary));
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 200;
-    pointer-events: none;
+<style lang="scss" scoped>
+.circleContainer {
+    position: relative;
+    background-color: blue;
+    .circles {
+        background-color: rgb(var(--primary));
+        height: v-bind(circleSize);
+        width: v-bind(circleSize);
+        border-radius: 24px;
+        position: fixed;
+        display: block;
+        transform-origin: center center;
+        top: 0;
+        left: 0;
+        z-index: 200;
+        pointer-events: none;
+    }
 }
 </style>
