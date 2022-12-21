@@ -1,5 +1,5 @@
 <template>
-    <div class="circleContainer">
+    <div class="cursor" v-show="mouseIsInside">
         <div
             v-for="(circle, index) in totalCircles"
             class="circles"
@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+const mouseIsInside = useState(() => false);
 const totalCircles = 10;
 const circleSize = useState(() => "24px");
 const circleRadius = computed(() => {
@@ -23,12 +24,16 @@ interface CircleType extends HTMLElement {
 }
 
 onMounted(() => {
+    const cursor: CircleType = document.querySelector(".cursor") as CircleType;
     const circles: NodeListOf<CircleType> =
         document.querySelectorAll(".circles");
 
     circles.forEach((circle, index) => {
         circle.x = 0;
         circle.y = 0;
+    });
+    window.addEventListener("mouseover", (e) => {
+        mouseIsInside.value = true;
     });
     window.addEventListener("mousemove", (e: MouseEvent) => {
         coordinates.x = e.clientX;
@@ -57,21 +62,22 @@ onMounted(() => {
 });
 </script>
 <style lang="scss" scoped>
-.circleContainer {
-    position: relative;
-    background-color: blue;
+.cursor {
+    pointer-events: none;
+    position: fixed;
+    display: block;
+    border-radius: 0;
+    mix-blend-mode: difference;
+    top: 0;
+    left: 0;
+    z-index: 200;
     .circles {
-        background-color: rgb(var(--primary));
+        background-color: white;
         height: v-bind(circleSize);
         width: v-bind(circleSize);
-        border-radius: 24px;
-        position: fixed;
+        border-radius: v-bind(circleSize);
+        position: absolute;
         display: block;
-        transform-origin: center center;
-        top: 0;
-        left: 0;
-        z-index: 200;
-        pointer-events: none;
     }
 }
 </style>
