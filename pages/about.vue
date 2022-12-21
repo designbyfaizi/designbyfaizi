@@ -1,5 +1,7 @@
 <template>
-    <AboutMainSection />
+    <div>
+        <AboutMainSection />
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -8,6 +10,6 @@ useHead({
     meta: [{ name: "description", content: "About - Design by Faizi" }],
 });
 definePageMeta({
-    layout:'main-layout'
-})
+    layout: "main-layout",
+});
 </script>

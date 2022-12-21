@@ -1,6 +1,8 @@
 <template>
-    <HomeHeroSection />
-    <HomeHeroSection />
+    <div>
+        <HomeHeroSection />
+        <HomeAboutSection />
+    </div>
 </template>
 
 <script setup lang="ts">

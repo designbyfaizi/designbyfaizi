@@ -2,7 +2,7 @@
     <div
         :class="[
             'group',
-            'flex items-center justify-center rounded-[16px] bg-backgroundsecond/60',
+            'flex items-center justify-center rounded-[16px] bg-neutral-700',
             'hover:bg-backgroundsecond/70 active:scale-98 hover:rounded-[15px]',
             'transition-all duration-100 cursor-pointer shadow shadow-shadow/50 shadow-2xl',
             route?.path === to &&

@@ -1,5 +1,7 @@
 <template>
-    <GithubMainSection />
+    <div>
+        <GithubMainSection />
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -9,6 +11,6 @@ useHead({
 });
 
 definePageMeta({
-    layout:'main-layout'
-})
+    layout: "main-layout",
+});
 </script>

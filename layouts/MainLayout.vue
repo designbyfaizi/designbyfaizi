@@ -9,6 +9,7 @@
             <BottomIcon to="/about" name="material-symbols:info-rounded" />
             <BottomIcon to="/github" name="iconoir:github" />
         </BottomNav>
+        <MainCircleCursor/>
     </div>
 </template>
 
