@@ -2,21 +2,24 @@
     <div
         :class="[
             'group',
-            'flex items-center justify-center rounded-[16px] bg-neutral-700',
-            'hover:bg-backgroundsecond/70 active:scale-98 hover:rounded-[15px]',
-            'transition-all duration-100 cursor-pointer shadow shadow-shadow/50 shadow-2xl',
-            route?.path === to &&
+            'flex items-center justify-center rounded-xl lg:rounded-[16px] bg-neutral-700/20',
+            'hover:bg-backgroundsecond/70 active:scale-98 lg:hover:rounded-[15px]',
+            'transition-all duration-100 cursor-pointer shadow shadow-shadow/80 shadow-2xl',
+            isActive &&
                 'scale-110 hover:scale-110 !bg-primary !shadow-primary/50',
         ]"
     >
-        <NuxtLink :to="to" class="w-[100px] h-[100px] grid place-items-center">
+        <NuxtLink
+            :to="to"
+            class="aspect-square w-[46px] h-[46px] lg:w-[100px] lg:h-[100px] grid place-items-center"
+        >
             <Icon
                 :name="name"
                 :size="size"
                 :class="[
                     'text-main group-hover:text-primary',
                     'transition-color duration-100',
-                    route?.path === to && '!text-background',
+                    isActive && '!text-background',
                 ]"
             />
         </NuxtLink>
@@ -41,4 +44,6 @@ const props = defineProps({
         default: "/",
     },
 });
+
+const isActive = computed(() => route?.path === props.to);
 </script>

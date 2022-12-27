@@ -1,26 +1,26 @@
 :root {
-    --main: 75, 85, 99;
-    --primary: 225, 29, 72;
-    --primary-lighter: 251, 113, 133;
-    --primary-light: 244, 63, 94;
-    --primary-dark: 190, 18, 60;
-    --primary-darker: 134, 19, 54;
-    --background: 238, 238, 238;
-    --backgroundsecond: 255, 255, 255;
-    --shadow: 115, 115, 115;
-    --opacity: 100;
+    --main: 75, 85, 99; //gray-600
+    --primary: 225, 29, 72; //rose-600
+    --primary-lighter: 251, 113, 133; //rose-400
+    --primary-light: 244, 63, 94; //rose-500
+    --primary-dark: 190, 18, 60; //rose-700
+    --primary-darker: 136, 19, 55; //rose-900
+    --background: 238, 238, 238; //custom white Color
+    --backgroundsecond: 255, 255, 255; //full white
+    --shadow: 115, 115, 115; //neutral-500
+    --opacity: 100; //opacity :P
 }
 
 .dark-mode {
-    --main: 245, 245, 245;
-    --primary: 225, 29, 72;
-    --primary-lighter: 251, 113, 133;
-    --primary-light: 244, 63, 94;
-    --primary-dark: 190, 18, 60;
-    --primary-darker: 134, 19, 54;
-    --background: 38, 38, 38;
-    --backgroundsecond: 23, 23, 23;
-    --shadow: 0, 0, 0;
+    --main: 245, 245, 245; //neutral-100
+    --primary: 225, 29, 72; //rose-600
+    --primary-lighter: 251, 113, 133; //rose-400
+    --primary-light: 244, 63, 94; //rose-500
+    --primary-dark: 190, 18, 60; //rose-700
+    --primary-darker: 136, 19, 55; //rose-900
+    --background: 38, 38, 38; //neutral-800
+    --backgroundsecond: 23, 23, 23; //neutral-900
+    --shadow: 0, 0, 0; //full black
 }
 
 .sepia-mode {

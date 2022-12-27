@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 const mouseIsInside = useState(() => false);
-const totalCircles = 10;
+const totalCircles = 20;
 const circleSize = useState(() => "24px");
 const circleRadius = computed(() => {
     return Number(circleSize.value.split("px")[0]) / 2;
@@ -47,14 +47,14 @@ onMounted(() => {
             circle.style.left = `${x - circleRadius.value}px`;
             circle.style.top = `${y - circleRadius.value}px`;
 
-            circle.style.scale = `${(totalCircles - index) * totalCircles}%`;
+            circle.style.scale = `${(totalCircles - index) * 5}%`;
 
             circle.x = x;
             circle.y = y;
 
             const nextCircle = circles[index + 1] || circles[0];
-            x += (nextCircle.x - x) * 0.3;
-            y += (nextCircle.y - y) * 0.3;
+            x += (nextCircle.x - x) * 0.2;
+            y += (nextCircle.y - y) * 0.2;
         });
         requestAnimationFrame(animateCursor);
     };
