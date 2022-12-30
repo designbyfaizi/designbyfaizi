@@ -1,1 +1,0 @@
-export const useLargeScreen = () => useMediaQuery('(min-width: 1024px)')
