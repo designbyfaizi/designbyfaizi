@@ -17,15 +17,21 @@
                 name="iconoir:github"
             />
         </BottomNav>
-        <!-- <MainCircleCursor v-show="largeScreen"/> -->
+        <MainCircleCursor v-show="$largeScreen" />
     </div>
 </template>
 
 <style lang="scss"></style>
 
 <script setup lang="ts">
-const { $isLargeScreen } = useNuxtApp();
+// const largeScreen = useLargeScreen();
+const { $largeScreen } = useNuxtApp();
+console.log({ $largeScreen: $largeScreen.value });
 const bottomIconSize = computed(() => {
-    return $isLargeScreen.value ? "48" : "20";
+    console.log({ $largeScreen: $largeScreen.value });
+    return $largeScreen ? "48" : "20";
+});
+watchEffect(() => {
+    console.log($largeScreen.value);
 });
 </script>

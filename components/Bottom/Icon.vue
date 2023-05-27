@@ -32,7 +32,7 @@ const route = useRoute();
 const props = defineProps({
     name: {
         type: String,
-        required: true,
+        required: false,
         default: "iconoir:home-simple-door",
     },
     size: {
