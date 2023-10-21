@@ -3,7 +3,7 @@
         class="heroSection"
     >
         <article
-            class="heroContainer w-[clamp(260px,100%,1000px)] cursor-default"
+            class="heroContainer w-[clamp(260px,100%,1000px)]"
         >
             <h1 class="flex items-center gap-2">
                 Hello

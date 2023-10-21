@@ -21,7 +21,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "sass": "^1.69.4",
-    "@nuxt/image": "^1.0.0"
+    "@nuxt/image": "^1.0.0",
+    "@unocss/reset": "^0.56.5",
+    "sass": "^1.69.4"
   }
 }

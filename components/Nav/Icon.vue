@@ -1,18 +1,14 @@
 <template>
     <div
         :class="[
-            'group',
-            'flex items-center justify-center rounded-xl lg:rounded-[16px] bg-neutral-700/20',
-            'hover:bg-backgroundsecond/70 active:scale-98 lg:hover:rounded-[15px]',
+            'group w-[64px] aspect-square rounded-[8px]',
+            'flex items-center justify-center bg-neutral-700/20',
+            'hover:bg-neutral-700/40 active:scale-98',
             'transition-all duration-100 cursor-pointer shadow shadow-shadow/80 shadow-2xl',
-            isActive &&
-                'scale-110 hover:scale-110 !bg-primary !shadow-primary/50',
+            isActive && '!bg-primary !shadow-primary/50',
         ]"
     >
-        <NuxtLink
-            :to="to"
-            class="aspect-square w-[46px] h-[46px] lg:w-[100px] lg:h-[100px] grid place-items-center"
-        >
+        <NuxtLink :to="to" class="aspect-square grid place-items-center">
             <Icon
                 :name="name"
                 :size="size"

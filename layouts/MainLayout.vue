@@ -1,24 +1,29 @@
 <template>
-    <div class="container mx-[10px] sm:mx-auto transition-all duration-150">
+    <div
+        :class="[
+            'container mx-[10px] sm:mx-auto',
+            //'transition-all duration-150',
+        ]"
+    >
         <TopHeader />
         <main class="z-0">
             <slot />
         </main>
-        <BottomNav>
-            <BottomIcon :size="bottomIconSize" to="/" />
-            <BottomIcon
+        <Nav>
+            <NavIcon :size="bottomIconSize" to="/" />
+            <NavIcon
                 :size="bottomIconSize"
                 to="/about"
                 name="material-symbols:info-rounded"
             />
-            <BottomIcon
+            <NavIcon
                 :size="bottomIconSize"
                 to="/github"
                 name="iconoir:github"
             />
-        </BottomNav>
-        <MainCircleCursor v-show="$largeScreen" />
+        </Nav>
     </div>
+    <!-- <MainCircleCursor v-show="$largeScreen" /> -->
 </template>
 
 <style lang="scss"></style>

@@ -1,5 +1,6 @@
 <template>
     <NuxtLayout>
+        <NuxtLoadingIndicator />
         <!-- Adding Key to Fix Strange Navigation Error During Fast Navigation -->
         <NuxtPage :key="$route.fullPath" />
     </NuxtLayout>

@@ -7,7 +7,7 @@
                 'flex items-center justify-between z-1',
                 'rounded-2xl p-[20px] transition-all duration-150',
                 'ring-2 ring-neutral-500/10',
-                'before:(backdrop-blur-md w-full h-full content-none absolute left-0 top-0 rounded-2xl -z-1)'
+                `before:(backdrop-blur-lg w-full h-full content-[''] absolute left-0 top-0 rounded-2xl -z-1)`
             ]"
         >
             <TopSiteLogo />
