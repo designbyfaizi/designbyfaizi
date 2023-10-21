@@ -1,6 +1,8 @@
 <template>
     <div>
         <HomeHeroSection />
+        <HomeHeroSection />
+        <HomeHeroSection />
         <HomeAboutSection />
     </div>
 </template>

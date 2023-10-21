@@ -1,26 +1,27 @@
 body {
-    font-family: "Ubuntu", sans-serif;
+    font-family: "Satoshi", sans-serif;
     @apply bg-neutral-950 text-main;
     // background-color: rgb(var(--background), var(--opacity));
     // transition: background-color 0.3s;
-    a {
-        color: rgb(var(--primary));
-    }
+}
+
+a {
+    color: rgb(var(--primary));
+}
+h1 {
+    font-size: 64px;
+    font-weight: 600;
+}
+p {
+    font-size: 24px;
+    font-weight: 400;
+}
+@media screen and (max-width: 1024px) {
     h1 {
-        font-size: 64px;
-        font-weight: 600;
+        font-size: 28px;
     }
     p {
-        font-size: 24px;
-        font-weight: 400;
-    }
-    @media screen and (max-width: 1024px) {
-        h1 {
-            font-size: 28px;
-        }
-        p {
-            font-size: 16px;
-        }
+        font-size: 16px;
     }
 }
 

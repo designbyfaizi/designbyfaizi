@@ -5,12 +5,12 @@
         <article
             class="heroContainer w-[clamp(260px,100%,1000px)]"
         >
-            <h1 class="flex items-center gap-2">
+            <h1 class="flex items-center gap-2 font-ubuntu">
                 Hello
                 <Icon name="noto:waving-hand-medium-light-skin-tone" />
             </h1>
-            <h1>My name is Faizan</h1>
-            <div class="sm:flex gap-2 items-center">
+            <h1 class="font-ubuntu">My name is Faizan</h1>
+            <div class="sm:flex gap-2 font-ubuntu items-center">
                 <h1>I'm a Web</h1>
                 <HomeHeroStyledText
                     name="Developer"
