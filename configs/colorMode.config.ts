@@ -1,4 +1,4 @@
-import { ModuleOptions } from "@nuxtjs/color-mode";
+import { type ModuleOptions } from "@nuxtjs/color-mode";
 
 const colorMode: ModuleOptions = {
   preference: "system", // default value of $colorMode.preference

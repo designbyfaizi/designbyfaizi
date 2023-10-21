@@ -1,5 +1,5 @@
 import unocss from "./unocss.config";
-import { colorMode } from "./modules/colorMode.config";
+import { colorMode } from "./configs/colorMode.config";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     app: {
@@ -18,7 +18,7 @@ export default defineNuxtConfig({
         "@vueuse/nuxt",
         "@unocss/nuxt",
         "@nuxtjs/color-mode",
-        "@nuxt/image-edge",
+        "@nuxt/image",
         "nuxt-icon",
     ],
     unocss,
