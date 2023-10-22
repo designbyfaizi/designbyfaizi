@@ -26,6 +26,7 @@ export default defineNuxtConfig({
         "nuxt-icon",
         "@nuxt/content",
         "nuxt-headlessui",
+        '@nuxthq/studio'
     ],
     unocss,
     colorMode,
