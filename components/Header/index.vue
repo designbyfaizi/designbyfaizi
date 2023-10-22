@@ -3,7 +3,7 @@
         <div
             :class="[
                 'headerContainer bg-neutral-900/70',
-                'fixed top-[10px] container h-[70px] sm:h-[100px]',
+                'fixed top-[10px] container h-[64px] sm:h-[80px]',
                 'flex items-center justify-between z-1',
                 'rounded-[16px] p-[20px] transition-all duration-150',
                 'ring-2 ring-neutral-900',
@@ -18,7 +18,7 @@
                 />
                 <SadaMenu :opened="opened" @change="onChange">
                     <SadaMenuTrigger>
-                        <TopNavIcon :name="'line-md:account'" class="" />
+                        <TopNavIcon name="ph:user-light" class="" />
                     </SadaMenuTrigger>
                 </SadaMenu>
             </div>
@@ -37,8 +37,8 @@ const onChange = (updatedStatus: boolean) => {
 const print = (whatever: any) => {
     console.log(whatever);
 };
-const sunnyIcon = "line-md:moon-filled-to-sunny-filled-loop-transition";
-const moonyIcon = "line-md:moon-filled-loop";
+const sunnyIcon = "ph:sun-fill";
+const moonyIcon = "ph:moon-stars-light";
 </script>
 
 <style lang="scss">

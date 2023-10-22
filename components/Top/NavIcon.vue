@@ -5,16 +5,15 @@
             'group transition-all duration-100',
             'aspect-square h-[36px] min-w-[36px] sm:h-[50px] sm:min-w-[50px]',
             'flex items-center justify-center gap-2 rounded-full',
-            'bg-background hover:bg-backgroundsecond cursor-pointer active:scale-95',
-            'shadow-transparent hover:shadow-shadow/20 shadow-lg'
+            'bg-neutral-800 hover:bg-neutral-700/50 cursor-pointer active:scale-95',
         ]"
     >
         <Icon
             :key="name"
             :name="name"
             :class="[
-                'h-[30px] w-[30px] sm:h-[40px] sm:w-[40px]',
-                'text-neutral-600 group-hover:text-primary',
+                'h-[30px] w-[30px] sm:h-[32px] sm:w-[32px]',
+                'text-neutral-500 group-hover:text-primary',
             ]"
         />
     </div>

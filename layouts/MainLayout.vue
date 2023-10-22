@@ -6,12 +6,13 @@
         ]"
     >
         <Header/>
-        <main class="z-0">
+        <main class="z-0 pb-[100px]">
             <slot />
         </main>
         <Nav>
             <NavIcon label="Home" to="/" />
             <NavIcon label="About" to="/about" />
+            <NavIcon label="Blogs" to="/blogs" />
             <NavIcon label="Github" to="/github" />
         </Nav>
     </div>
