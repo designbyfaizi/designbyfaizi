@@ -24,7 +24,10 @@ export default defineNuxtConfig({
         "@nuxtjs/color-mode",
         "@nuxt/image",
         "nuxt-icon",
+        "@nuxt/content",
+        "nuxt-headlessui",
     ],
     unocss,
     colorMode,
+    devtools: { enabled: true },
 });

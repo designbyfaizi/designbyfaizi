@@ -11,7 +11,11 @@
     </section>
     <section class="">
         <div class="blogs flex gap-4">
-            <NuxtLink to="#" v-for="blog in blogs" :key="blog.title">
+            <NuxtLink
+                :to="blog.url || '#'"
+                v-for="blog in blogs"
+                :key="blog.title"
+            >
                 <div
                     class="blog bg-neutral-900 flex flex-col gap-4 p-[12px] rounded-[16px] hover:(bg-neutral-800)"
                 >
@@ -36,6 +40,7 @@ const blogs = [
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo qui nostrum tenetur iure tempore magnam, rerum, vel quaerat asperiores eveniet voluptate ab blanditiis inventore fuga delectus voluptatum. Dolorem, iste ipsam.",
         author: "Faizan Ullah",
         image: "https://img.freepik.com/free-vector/gradient-grainy-gradient-background_23-2149922133.jpg",
+        url: "/blogs/blog1",
     },
     {
         title: "Second Blog",
@@ -43,6 +48,7 @@ const blogs = [
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo qui nostrum tenetur iure tempore magnam, rerum, vel quaerat asperiores eveniet voluptate ab blanditiis inventore fuga delectus voluptatum. Dolorem, iste ipsam.",
         author: "Faizan Ullah",
         image: "https://img.freepik.com/free-vector/gradient-grainy-gradient-background_23-2149922146.jpg",
+        url: "/blogs/blog2",
     },
     {
         title: "Third Blog",
@@ -50,6 +56,7 @@ const blogs = [
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo qui nostrum tenetur iure tempore magnam, rerum, vel quaerat asperiores eveniet voluptate ab blanditiis inventore fuga delectus voluptatum. Dolorem, iste ipsam.",
         author: "Faizan Ullah",
         image: "https://img.freepik.com/free-vector/gradient-grainy-texture_23-2148976749.jpg",
+        url: "/blogs/blog3",
     },
 ];
 useHead({
