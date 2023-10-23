@@ -3,7 +3,7 @@
         ref="myHoverableElement"
         to="/"
         :class="[
-            'select-none flex items-center gap-[12px] font-tanker text-primary rounded-[4px] hover:(bg-neutral-800 transition-background duration-300)',
+            'select-none flex items-center gap-[12px] font-satoshi text-primary rounded-[4px] hover:(bg-neutral-800 transition-background duration-100)',
         ]"
     >
         <Transition name="logo">
@@ -14,8 +14,9 @@
             />
         </Transition>
         <Transition name="label">
-            <h1 v-if="isHovered" class="text-[32px] uppercase py-1 px-2 font-400">
-                Design by Faizi
+            <h1 v-if="isHovered" class="text-[24px] leading-none uppercase py-1 px-2 font-400 flex flex-col">
+            <span>Design by </span>
+            <span>Faizi</span>
             </h1>
         </Transition>
     </NuxtLink>
@@ -30,13 +31,13 @@ const isHovered = useElementHover(myHoverableElement);
 .logo-enter-from,
 .logo-leave-to {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateX(-10px);
 }
 
 .logo-enter-to,
 .logo-leave-from {
     opacity: 100;
-    transform: translateY(0px);
+    transform: translateX(0px);
 }
 
 .logo-leave-from {
@@ -44,19 +45,19 @@ const isHovered = useElementHover(myHoverableElement);
 }
 
 .logo-enter-active {
-    transition: transform 0.3s;
+    transition: transform 0.1s;
 }
 
 .label-enter-from,
 .label-leave-to {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateX(-10px);
 }
 
 .label-enter-to,
 .label-leave-from {
     opacity: 100;
-    transform: translateY(0px);
+    transform: translateX(0px);
 }
 
 .label-leave-from {
@@ -64,6 +65,6 @@ const isHovered = useElementHover(myHoverableElement);
 }
 
 .label-enter-active {
-    transition: transform 0.3s;
+    transition: transform 0.1s;
 }
 </style>
