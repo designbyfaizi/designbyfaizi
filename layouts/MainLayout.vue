@@ -22,11 +22,12 @@
         </main>
         <Nav>
             <NavIcon v-for="link in navLinks" :icon="link.icon" :to="link.to" />
-            <div class="divider bg-background-light w-[1px] h-[24px]"></div>
+            <div class="divider bg-main/50 w-[1px] h-[24px]"></div>
             <NavIcon
                 v-for="link in socialLinks"
                 :icon="link.icon"
                 :to="link.to"
+                target="_blank"
             />
         </Nav>
     </div>
@@ -53,13 +54,13 @@ const socialLinks = [
     {
         name: "Github",
         to: "https://github.com/designbyfaizi",
-        icon: "ph:house",
+        icon: "mdi:github-face",
     },
-    { name: "Twitter", to: "https://x.com/designbyfaizi", icon: "ph:house" },
+    { name: "Twitter", to: "https://x.com/designbyfaizi", icon: "ri:twitter-x-line" },
     {
         name: "Instagram",
         to: "https://instagram.com/khak.csar",
-        icon: "ph:house",
+        icon: "mdi:instagram",
     },
 ];
 </script>

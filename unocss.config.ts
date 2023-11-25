@@ -1,7 +1,6 @@
 import { type UnocssNuxtOptions } from "@unocss/nuxt";
 import transformerDirectives from "@unocss/transformer-directives";
 import transformerVariantGroup from "@unocss/transformer-variant-group";
-import { theme } from "@unocss/preset-wind";
 
 const unocss: UnocssNuxtOptions = {
     // presets
@@ -18,18 +17,17 @@ const unocss: UnocssNuxtOptions = {
     ],
     theme: {
         colors: {
-            ...theme?.colors,
-            main: "var(--main)",
-            primary: "var(--primary)",
-            primaryLighter: "var(--primary-lighter)",
-            primaryLight: "var(--primary-light)",
-            primaryDark: "var(--primary-dark)",
-            primaryDarker: "var(--primary-darker)",
-            background: "var(--background)",
-            backgroundSecond: "var(--background-second)",
-            backgroundLight: "var(--background-light)",
-            backgroundLighter: "var(--background-lighter)",
-            shadow: "var(--shadow)",
+            main: "#a3a3a3",
+            primary: "#e11948",
+            primaryLighter: "#fb7185",
+            primaryLight: "#f43f5e",
+            primaryDark: "#be123c",
+            primaryDarker: "#881337",
+            background: "#171717",
+            backgroundSecond: "#262626",
+            backgroundLight: "#404040",
+            backgroundLighter: "#525252",
+            shadow: "#737373",
             test: "blue",
         },
     },

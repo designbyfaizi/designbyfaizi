@@ -1,17 +1,17 @@
 @unocss all;
 
 :root {
-    --main: theme("colors.gray.400") /* #a3a3a3 */;
-    --primary: theme("colors.rose.600") /* #e11948 */;
-    --primary-lighter: theme("colors.rose.400") /* #fb7185 */;
-    --primary-light: theme("colors.rose.500") /* #f43f5e */;
-    --primary-dark: theme("colors.rose.700") /* #be123c */;
-    --primary-darker: theme("colors.rose.900") /* #881337 */;
-    --background: theme("colors.neutral.900") /* #171717 */;
-    --background-second: theme("colors.neutral.800") /* #262626 */;
-    --background-light: theme("colors.neutral.700") /* #404040 */;
-    --background-lighter: theme("colors.neutral.600") /* #525252 */;
-    --shadow: theme("colors.neutral.500") /* #737373 */;
+    --main: theme("colors.main");
+    --primary: theme("colors.primary");
+    --primary-lighter: theme("colors.primaryLighter");
+    --primary-light: theme("colors.primaryLight");
+    --primary-dark: theme("colors.primaryDark");
+    --primary-darker: theme("colors.primaryDarker");
+    --background: theme("colors.background");
+    --background-second: theme("colors.backgroundSecond");
+    --background-light: theme("colors.backgroundLight");
+    --background-lighter: theme("colors.backgroundLighter");
+    --shadow: theme("colors.shadow");
 }
 
 /* :root {

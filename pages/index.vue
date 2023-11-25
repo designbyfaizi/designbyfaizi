@@ -48,54 +48,57 @@
                         </p>
                     </div>
                     <SadaButton
+                        :as="NuxtLink"
+                        to="/contact"
                         :leftSection="ButtonIcon"
                         radius="md"
                         class="me-auto"
-                        >Contact me</SadaButton
                     >
+                        Contact me
+                    </SadaButton>
                 </div>
             </article>
         </section>
         <div
-            class="fixed grid grid-cols-12 gap-[8px] text-white font-bold text-[12px] left-0 bottom-0 max-w-[400px] p-[8px] border-2 border-white/10 rounded-xl"
+            class="fixed grid grid-cols-12 gap-[8px] text-white font-bold text-[12px] left-[8px] bottom-[8px] max-w-[240px] p-[8px] border-2 border-white/10 rounded-xl"
         >
             <div
-                class="col-span-3 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-main"
+                class="col-span-6 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-main"
             >
                 Main (Text)
             </div>
             <div
-                class="col-span-3 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary"
+                class="col-span-6 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary"
             >
                 Primary
             </div>
             <div
-                class="col-span-3 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary-light"
+                class="col-span-6 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary-light"
             >
                 Primary Light
             </div>
             <div
-                class="col-span-3 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary-lighter"
+                class="col-span-6 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary-lighter"
             >
                 Primary Lighter
             </div>
             <div
-                class="col-span-3 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary-dark"
+                class="col-span-6 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary-dark"
             >
                 Primary Dark
             </div>
             <div
-                class="col-span-3 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary-darker"
+                class="col-span-6 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-primary-darker"
             >
                 Primary Darker
             </div>
             <div
-                class="col-span-3 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-background"
+                class="col-span-6 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-background"
             >
                 Background
             </div>
             <div
-                class="col-span-3 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-background-second"
+                class="col-span-6 min-h-[80px] border-2 border-white/10 px-8 text-center rounded-lg flex items-center justify-center bg-background-second"
             >
                 Background Second
             </div>
@@ -104,7 +107,7 @@
 </template>
 
 <script setup lang="tsx">
-import {Icon} from "#components"
+import { NuxtLink, Icon } from "#components";
 useHead({
     title: "Design by Faizi",
     meta: [{ name: "description", content: "My Amazing Site!" }],
@@ -127,5 +130,7 @@ useSeoMeta({
     twitterCard: "summary_large_image",
 });
 
-const ButtonIcon = () => <Icon name="fluent:mail-32-regular" size="20" class="text-main" />;
+const ButtonIcon = () => (
+    <Icon name="fluent:mail-32-regular" size="20" class="text-main" />
+);
 </script>

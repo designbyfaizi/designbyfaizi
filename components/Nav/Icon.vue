@@ -4,7 +4,7 @@
         :class="[
             'flex items-center justify-center gap-[8px]',
             'rounded-full w-[40px] h-[40px] aspect-square',
-            'hover:bg-background-light active:scale-98 transition-all duration-200',
+            'hover:bg-main/20 active:scale-98 transition-all duration-200',
             isActive && '!bg-primary !hover:bg-primary-light !shadow-primary/50 text-neutral-900',
         ]"
     >
