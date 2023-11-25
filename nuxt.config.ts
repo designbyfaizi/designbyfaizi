@@ -12,11 +12,11 @@ export default defineNuxtConfig({
     },
     ssr: true,
     css: [
-        "@/assets/styles/reset.scss",
-        "@/assets/styles/fonts.scss",
-        "@/assets/styles/colors.scss",
-        "@/assets/styles/scrollbar.scss",
-        "@/assets/styles/main.scss",
+        "@/assets/styles/reset.css",
+        "@/assets/styles/colors.css",
+        "@/assets/styles/fonts.css",
+        "@/assets/styles/scrollbar.css",
+        "@/assets/styles/main.css",
     ],
     modules: [
         "@vueuse/nuxt",
@@ -25,10 +25,15 @@ export default defineNuxtConfig({
         "@nuxt/image",
         "nuxt-icon",
         "@nuxt/content",
-        "nuxt-headlessui",
-        '@nuxthq/studio'
+        "@nuxthq/studio",
+        "@pinia/nuxt",
     ],
     unocss,
+    postcss: {
+        plugins: {
+            "@unocss/postcss": {},
+        },
+    },
     colorMode,
     devtools: { enabled: true },
 });

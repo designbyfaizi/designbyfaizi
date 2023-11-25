@@ -3,7 +3,7 @@
         @click="$switchTheme"
         @mouseover="hovered = true"
         @mouseleave="hovered = false"
-        class="h-[36px] min-w-[36px] sm:h-[50px] sm:min-w-[50px] px-2 active:scale-95 bg-background hover:bg-backgroundsecond rounded-full cursor-pointer group flex items-center gap-2 transition-all duration-100"
+        class="h-[36px] min-w-[36px] sm:h-[50px] sm:min-w-[50px] px-2 active:scale-95 bg-background hover:bg-background-second rounded-full cursor-pointer group flex items-center gap-2 transition-all duration-100"
         :class="'aspect-square'"
     >
         <Icon

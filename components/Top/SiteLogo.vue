@@ -31,13 +31,13 @@ const isHovered = useElementHover(myHoverableElement);
 .logo-enter-from,
 .logo-leave-to {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateY(-10px);
 }
 
 .logo-enter-to,
 .logo-leave-from {
     opacity: 100;
-    transform: translateX(0px);
+    transform: translateY(0px);
 }
 
 .logo-leave-from {

@@ -34,9 +34,6 @@ const onChange = (updatedStatus: boolean) => {
     opened.value = updatedStatus;
 };
 
-const print = (whatever: any) => {
-    console.log(whatever);
-};
 const sunnyIcon = "ph:sun-fill";
 const moonyIcon = "ph:moon-stars-light";
 </script>
@@ -44,10 +41,5 @@ const moonyIcon = "ph:moon-stars-light";
 <style lang="scss">
 .headerContainer {
     width: calc(100% - 20px);
-    // &:before{
-    //     content: Hello;
-    //     height: 100vh;
-    //     background: red;
-    // }
 }
 </style>

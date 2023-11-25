@@ -47,7 +47,7 @@ p {
     top: 0px;
     cursor: pointer;
     padding: 7px;
-    background-color: var(--backgroundsecond);
+    background-color: var(--background-second);
     border: 2px solid var(--border-color);
     margin: 0;
     border-radius: 5px;

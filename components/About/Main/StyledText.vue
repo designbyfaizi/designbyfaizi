@@ -1,7 +1,7 @@
 <template>
     <h1
         :class="[
-            'hover:bg-backgroundsecond',
+            'hover:bg-background-second',
             'px-2 w-min',
             'rounded-[12px]',
             'rotate-[1.87deg]',

@@ -2,7 +2,7 @@
     <header class="flex justify-center relative mx-[10px] sm:mx-auto z-100">
         <div
             :class="[
-                'headerContainer bg-backgroundsecond/50 shadow-xl shadow-shadow/15',
+                'headerContainer bg-background-second/50 shadow-xl shadow-shadow/15',
                 'fixed top-[10px] container h-[70px] sm:h-[100px]',
                 'flex items-center justify-between z-1',
                 'rounded-2xl p-[20px] transition-all duration-150',
