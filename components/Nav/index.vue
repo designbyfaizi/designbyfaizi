@@ -1,5 +1,5 @@
 <template>
-    <nav :class="['fixed bottom-[10px]', 'left-[50%] -translate-x-[50%]']">
+    <nav :class="['fixed bottom-[16px]', 'left-[50%] -translate-x-[50%]']">
         <div
             :class="[
                 'navContainer z-100',

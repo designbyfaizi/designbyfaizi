@@ -22,12 +22,13 @@
         </main>
         <Nav>
             <NavIcon v-for="link in navLinks" :icon="link.icon" :to="link.to" />
-            <div class="divider bg-main/50 w-[1px] h-[24px]"></div>
+            <div class="divider hidden sm:block bg-main/50 w-[1px] h-[24px]"></div>
             <NavIcon
                 v-for="link in socialLinks"
                 :icon="link.icon"
                 :to="link.to"
                 target="_blank"
+                class="!hidden !sm:flex"
             />
         </Nav>
     </div>
