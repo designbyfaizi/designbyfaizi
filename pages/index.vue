@@ -59,6 +59,38 @@
                 </div>
             </article>
         </section>
+        <section class="productsSection">
+            <article class="sada-container">
+                <div class="productsContainer flex flex-col gap-[24px]">
+                    <div
+                        class="productsHeadingContainer flex justify-between items-center"
+                    >
+                        <h3 class="text-[18px] font-500 text-white">
+                            Products
+                        </h3>
+                        <NuxtLink
+                            to="/products"
+                            class="flex items-center gap-[4px] hover:(text-white) transition-all duration-200"
+                        >
+                            <p class="text-[16px]">All</p>
+                            <Icon
+                                name="fluent:arrow-right-12-regular"
+                                class="w-[16px] h-[16px]"
+                            />
+                        </NuxtLink>
+                    </div>
+                    <div class="productsContainer flex flex-col">
+                        <Product
+                            v-for="product in products"
+                            :key="product.name"
+                            :name="product.name"
+                            :description="product.description"
+                            :image="product.image"
+                        />
+                    </div>
+                </div>
+            </article>
+        </section>
         <SiteColors />
     </div>
 </template>
@@ -90,4 +122,18 @@ useSeoMeta({
 const ButtonIcon = () => (
     <Icon name="fluent:mail-32-regular" size="20" class="text-main" />
 );
+
+const products = [
+    {
+        name: "FlatGPT",
+        image: "https://www.9mm.cl/wp-content/uploads/2023/01/openai-logo.png",
+        description: "A chatgpt clone that I made in Next JS.",
+    },
+    {
+        name: "Freelance Brain",
+        image: "https://framerusercontent.com/images/3EgtLLl9nbmINCGPrfFuC0FZ4.png?scale-down-to=512",
+        description:
+            "A second brain for freelancers. A second brain for freelancers.",
+    },
+];
 </script>
