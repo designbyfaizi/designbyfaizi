@@ -1,33 +1,30 @@
 <template>
     <NuxtLink
-        to="/"
-        class="product flex gap-[12px] p-[12px] rounded-[12px] hover:(bg-background-second) active:(scale-98) transition-all duration-200"
+        :to="product.to"
+        class="product flex gap-[12px] p-[12px] rounded-[12px] group hover:(bg-background-second) active:(scale-98) transition-all duration-200"
     >
         <NuxtImg
-            :src="props.image"
-            :alt="props.name"
+            :src="product.logo"
+            :alt="product.name"
             class="image w-[40px] h-[40px] aspect-square rounded-full"
         />
         <div class="h-min gap-[2px] overflow-hidden">
             <h1 class="name text-[16px] font-500 text-white leading-[130%]">
-                {{ props.name }}
+                {{ product.name }}
             </h1>
             <p
                 class="desc text-[14px] leading-[130%] text-ellipsis whitespace-nowrap overflow-hidden"
             >
-                {{ props.description }}
+                {{ product.description }}
             </p>
         </div>
-        <p class="text-[14px] leading-[130%] ms-auto">$69</p>
+        <p class="text-[14px] leading-[130%] ms-auto opacity-0 group-hover:opacity-100 transition-all duration-200">{{ product.price }}</p>
     </NuxtLink>
 </template>
 
 <script setup lang="ts">
 type Props = {
-    image: string;
-    name: string;
-    description: string;
+    product: Product;
 };
-
-const props = defineProps<Props>();
+defineProps<Props>();
 </script>

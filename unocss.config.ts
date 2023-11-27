@@ -8,7 +8,8 @@ const unocss: UnocssNuxtOptions = {
     // icons: true, // enabled `@unocss/preset-icons`
     // core options
     shortcuts: {
-        "sada-container": "max-w-[512px] mx-[10px] sm:mx-auto",
+        "sada-container": "max-w-[512px] w-full mx-[10px] sm:mx-auto",
+        "sada-container-lg": "max-w-[540px] w-full mx-[10px] sm:mx-auto",
     },
     rules: [
         ["font-tanker", { "font-family": "Tanker" }],

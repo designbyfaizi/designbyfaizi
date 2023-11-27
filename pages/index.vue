@@ -60,16 +60,57 @@
             </article>
         </section>
         <section class="productsSection pb-[32px]">
+            <div class="productsContainer w-full flex flex-col gap-[24px]">
+                <div
+                    class="productsHeadingContainer sada-container flex justify-between items-center"
+                >
+                    <h3 class="text-[18px] font-500 text-white">Products</h3>
+                    <NuxtLink
+                        to="/products"
+                        class="flex items-center gap-[4px] hover:(text-white) transition-all duration-200"
+                    >
+                        <p class="text-[16px]">All</p>
+                        <Icon
+                            name="fluent:arrow-right-12-regular"
+                            class="w-[16px] h-[16px]"
+                        />
+                    </NuxtLink>
+                </div>
+                <div class="productsContainer sada-container-lg flex flex-col">
+                    <Product
+                        v-for="_product in products"
+                        :key="_product.name"
+                        :product="_product"
+                    />
+                </div>
+            </div>
+        </section>
+        <section class="socialSection py-[32px]">
             <article class="sada-container">
-                <div class="productsContainer flex flex-col gap-[24px]">
+                <div class="socialContainer flex flex-col gap-[24px]">
+                    <h3 class="text-[18px] font-500 text-white">Where</h3>
+                    <div class="socialLinks flex flex-col gap-[16px]">
+                        <SocialLink
+                            v-for="_link in socialLinks"
+                            :key="_link.name"
+                            :name="_link.name"
+                            :to="_link.to"
+                        />
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="projectsSection py-[32px]">
+            <article class="sada-container">
+                <div class="projectsContainer flex flex-col gap-[24px]">
                     <div
-                        class="productsHeadingContainer flex justify-between items-center"
+                        class="projectsHeadingContainer flex justify-between items-center"
                     >
                         <h3 class="text-[18px] font-500 text-white">
-                            Products
+                            Projects
                         </h3>
                         <NuxtLink
-                            to="/products"
+                            to="/projects"
                             class="flex items-center gap-[4px] hover:(text-white) transition-all duration-200"
                         >
                             <p class="text-[16px]">All</p>
@@ -79,28 +120,11 @@
                             />
                         </NuxtLink>
                     </div>
-                    <div class="productsContainer flex flex-col">
-                        <Product
-                            v-for="product in products"
-                            :key="product.name"
-                            :name="product.name"
-                            :description="product.description"
-                            :image="product.image"
-                        />
-                    </div>
-                </div>
-            </article>
-        </section>
-        <section class="socialSection py-[32px]">
-            <article class="sada-container">
-                <div class="socialContainer flex flex-col gap-[24px]">
-                    <h3 class="text-[18px] font-500 text-white">Where</h3>
-                    <div class="socialLinks flex flex-col gap-[16px]">
-                        <SocialLink
-                            v-for="link in socialLinks"
-                            :key="link.name"
-                            :name="link.name"
-                            :to="link.to"
+                    <div class="projectLinks flex flex-col gap-[16px]">
+                        <ProjectLink
+                            v-for="_project in projects"
+                            :key="_project.name"
+                            :project="_project"
                         />
                     </div>
                 </div>
@@ -112,8 +136,9 @@
 
 <script setup lang="tsx">
 import { NuxtLink, Icon } from "#components";
-import { useNav } from "~/stores/useNav";
-const { navLinks, socialLinks } = useNav();
+const { socialLinks } = useNav();
+const { projects } = useProjects();
+const { products } = useProducts();
 useHead({
     title: "Design by Faizi",
     meta: [{ name: "description", content: "My Amazing Site!" }],
@@ -139,18 +164,4 @@ useSeoMeta({
 const ButtonIcon = () => (
     <Icon name="fluent:mail-32-regular" size="20" class="text-main" />
 );
-
-const products = [
-    {
-        name: "FlatGPT",
-        image: "https://www.9mm.cl/wp-content/uploads/2023/01/openai-logo.png",
-        description: "A chatgpt clone that I made in Next JS.",
-    },
-    {
-        name: "Freelance Brain",
-        image: "https://framerusercontent.com/images/3EgtLLl9nbmINCGPrfFuC0FZ4.png?scale-down-to=512",
-        description:
-            "A second brain for freelancers. A second brain for freelancers.",
-    },
-];
 </script>
