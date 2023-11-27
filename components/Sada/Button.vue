@@ -3,7 +3,7 @@
         :is="as"
         :class="[
             `font-500 flex items-center`,
-            'active:(scale-98) transition-all duration-100 ease-in-out',
+            'active:(scale-98) transition-all duration-200 ease-in-out',
             _variants[variant],
             _sizes[size],
             _radii[radius],
