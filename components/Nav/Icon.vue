@@ -21,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+import {Icon} from "#components";
 const route = useRoute();
 
 type Props = {

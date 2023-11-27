@@ -21,22 +21,28 @@
             <slot />
         </main>
         <Nav>
-            <Tooltip :label="link.name" v-for="link in navLinks" :key="link.name">
-                <NavIcon
-                    :icon="link.icon"
-                    :to="link.to"
-                />
+            <Tooltip
+                :label="link.name"
+                v-for="link in navLinks"
+                :key="link.name"
+            >
+                <NavIcon :icon="link.icon" :to="link.to" />
             </Tooltip>
             <div
                 class="divider hidden sm:block bg-main/50 w-[1px] h-[24px]"
             ></div>
-            <NavIcon
+            <Tooltip
+                :label="link.name"
                 v-for="link in socialLinks"
-                :icon="link.icon"
-                :to="link.to"
-                target="_blank"
-                class="!hidden !sm:flex"
-            />
+                :key="link.name"
+            >
+                <NavIcon
+                    :icon="link.icon"
+                    :to="link.to"
+                    target="_blank"
+                    class="!hidden !sm:flex"
+                />
+            </Tooltip>
         </Nav>
     </div>
     <!-- <MainCircleCursor v-show="$largeScreen" /> -->
