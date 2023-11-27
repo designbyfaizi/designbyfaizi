@@ -2,7 +2,7 @@
     <div class="relative">
         <Transition name="tooltip">
             <p
-                v-if="popupVisible"
+                v-if="_popupVisible && visible"
                 class="bg-background-second py-[6px] px-[8px] rounded-full absolute whitespace-nowrap -top-[38px] left-[50%] -translate-x-[50%] text-[12px] font-medium leading-[100%]"
             >
                 {{ label }}
@@ -17,14 +17,17 @@
 <script setup lang="ts">
 type Props = {
     label: string;
+    visible?: boolean;
 };
-defineProps<Props>();
+withDefaults(defineProps<Props>(), {
+    visible: true,
+});
 
-const popupVisible = ref(false);
+const _popupVisible = ref(false);
 
-const showPopup = () => (popupVisible.value = true);
-const hidePopup = () => (popupVisible.value = false);
-const togglePopup = () => (popupVisible.value = !popupVisible.value);
+const showPopup = () => (_popupVisible.value = true);
+const hidePopup = () => (_popupVisible.value = false);
+const togglePopup = () => (_popupVisible.value = !_popupVisible.value);
 </script>
 
 <style scoped>
