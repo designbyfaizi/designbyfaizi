@@ -17,5 +17,5 @@ import unocss from "~/unocss.config";
 const { theme } = unocss;
 // @ts-ignore
 const { colors } = theme;
-const keys = computed(() => Object.keys(colors))
+const keys = computed(() => Object.keys(colors));
 </script>

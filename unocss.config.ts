@@ -29,7 +29,6 @@ const unocss: UnocssNuxtOptions = {
             backgroundLight: "#404040",
             backgroundLighter: "#525252",
             shadow: "#737373",
-            test: "blue",
         },
     },
     transformers: [transformerDirectives() as any, transformerVariantGroup()],
