@@ -3,7 +3,10 @@
         <Transition name="tooltip">
             <p
                 v-if="_popupVisible && visible"
-                class="bg-background-second py-[6px] px-[8px] rounded-full absolute whitespace-nowrap -top-[38px] left-[50%] -translate-x-[50%] text-[12px] font-medium leading-[100%]"
+                :class="[
+                    'bg-background-second py-[6px] px-[8px] rounded-full absolute whitespace-nowrap text-[12px] font-medium leading-[100%] z-100',
+                    _positions[position],
+                ]"
             >
                 {{ label }}
             </p>
@@ -16,12 +19,21 @@
 
 <script setup lang="ts">
 type Props = {
-    label: string;
+    label: string | number;
     visible?: boolean;
+    position: "top" | "bottom" | "left" | "right";
 };
 withDefaults(defineProps<Props>(), {
     visible: true,
+    position: "top",
 });
+
+const _positions = {
+    top: "-top-[38px] left-[50%] -translate-x-[50%]",
+    bottom: "-bottom-[38px] left-[50%] -translate-x-[50%]",
+    left: "top-[50%] right-[48px] -translate-y-[50%] text-left",
+    right: "top-[50%] left-[48px] -translate-y-[50%] text-left",
+};
 
 const _popupVisible = ref(false);
 
