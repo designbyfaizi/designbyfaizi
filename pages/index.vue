@@ -32,7 +32,7 @@
                             <h2>I design</h2>
                             <h2 class="text-white">apps</h2>
                         </div>
-                        <p class="text-[22px] leading-[120%]">
+                        <p class="text-[23px] leading-[130%]">
                             I'm Faizan Ullah, a passionate creator living in
                             Rawalpindi, Pakistan. My work spans across multiple
                             disciplines from product design, to web design,
@@ -59,7 +59,7 @@
                 </div>
             </article>
         </section>
-        <section class="productsSection">
+        <section class="productsSection pb-[32px]">
             <article class="sada-container">
                 <div class="productsContainer flex flex-col gap-[24px]">
                     <div
@@ -87,6 +87,15 @@
                             :description="product.description"
                             :image="product.image"
                         />
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="socialSection py-[32px]">
+            <article class="sada-container">
+                <div class="socialContainer flex flex-col gap-[24px]">
+                    <h3 class="text-[18px] font-500 text-white">Where</h3>
+                    <div class="socialLinks flex flex-col">
                     </div>
                 </div>
             </article>

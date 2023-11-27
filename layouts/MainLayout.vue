@@ -21,8 +21,15 @@
             <slot />
         </main>
         <Nav>
-            <NavIcon v-for="link in navLinks" :icon="link.icon" :to="link.to" />
-            <div class="divider hidden sm:block bg-main/50 w-[1px] h-[24px]"></div>
+            <Tooltip :label="link.name" v-for="link in navLinks" :key="link.name">
+                <NavIcon
+                    :icon="link.icon"
+                    :to="link.to"
+                />
+            </Tooltip>
+            <div
+                class="divider hidden sm:block bg-main/50 w-[1px] h-[24px]"
+            ></div>
             <NavIcon
                 v-for="link in socialLinks"
                 :icon="link.icon"
@@ -57,7 +64,11 @@ const socialLinks = [
         to: "https://github.com/designbyfaizi",
         icon: "mdi:github-face",
     },
-    { name: "Twitter", to: "https://x.com/designbyfaizi", icon: "ri:twitter-x-line" },
+    {
+        name: "Twitter",
+        to: "https://x.com/designbyfaizi",
+        icon: "ri:twitter-x-line",
+    },
     {
         name: "Instagram",
         to: "https://instagram.com/khak.csar",
