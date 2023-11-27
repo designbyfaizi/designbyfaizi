@@ -95,7 +95,13 @@
             <article class="sada-container">
                 <div class="socialContainer flex flex-col gap-[24px]">
                     <h3 class="text-[18px] font-500 text-white">Where</h3>
-                    <div class="socialLinks flex flex-col">
+                    <div class="socialLinks flex flex-col gap-[16px]">
+                        <SocialLink
+                            v-for="link in socialLinks"
+                            :key="link.name"
+                            :name="link.name"
+                            :to="link.to"
+                        />
                     </div>
                 </div>
             </article>
@@ -106,6 +112,8 @@
 
 <script setup lang="tsx">
 import { NuxtLink, Icon } from "#components";
+import { useNav } from "~/stores/useNav";
+const { navLinks, socialLinks } = useNav();
 useHead({
     title: "Design by Faizi",
     meta: [{ name: "description", content: "My Amazing Site!" }],
