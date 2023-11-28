@@ -59,7 +59,7 @@ const props = defineProps({
 })
 
 const handleError = () => {
-    if(props?.error?.statusCode === "404"){
+    if(props?.error?.statusCode !== "404"){
         return clearError({ redirect: '/' })
     }
 }
