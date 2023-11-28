@@ -57,13 +57,3 @@ const _radii = {
     xl: "rounded-[32px]",
 };
 </script>
-
-<style lang="scss">
-.sada-button::before {
-    border: 1px solid aqua;
-    position: absolute;
-    z-index: 100;
-    width: 100%;
-    height: 100%;
-}
-</style>
