@@ -64,8 +64,6 @@ const handleError = () => {
     }
 }
 
-handleError();
-
 const ButtonIcon = () => (
     <Icon name="lets-icons:return-light" size="20" class="text-main stroke-1 stroke-main -scale-x-[1]" />
 );
