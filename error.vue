@@ -31,6 +31,9 @@
                             <h2 class="text-white">anything.</h2>
                         </div>
                         <p class="text-[23px] leading-[130%]">
+                            {{ error }}
+                        </p>
+                        <p class="text-[23px] leading-[130%]">
                             This page was either removed, or it never existed at all. Are you sure the URL is correct?
                         </p>
                     </div>
@@ -51,6 +54,11 @@
 
 <script setup lang="tsx">
 import { NuxtLink, Icon } from '#components';
+const props = defineProps({
+  error: Object
+})
+
+const handleError = () => clearError({ redirect: '/' })
 
 const ButtonIcon = () => (
     <Icon name="lets-icons:return-light" size="20" class="text-main stroke-1 stroke-main -scale-x-[1]" />
