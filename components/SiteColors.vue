@@ -17,7 +17,18 @@
 </template>
 
 <script setup lang="ts">
-import { colors } from '~/unocss.config';
-
+const colors = {
+    main: "#a3a3a3",
+    primary: "#e11948",
+    primaryLighter: "#fb7185",
+    primaryLight: "#f43f5e",
+    primaryDark: "#be123c",
+    primaryDarker: "#881337",
+    background: "#171717",
+    backgroundSecond: "#262626",
+    backgroundLight: "#404040",
+    backgroundLighter: "#525252",
+    shadow: "#737373",
+};
 const keys = computed(() => Object.keys(colors));
 </script>
