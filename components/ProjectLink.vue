@@ -15,7 +15,7 @@
                 class="animatedLine h-[1px] w-[0px] group-hover:w-full bg-white/25 transition-all duration-200"
             ></div>
         </div>
-        <p class="text-[14px] capitalize">{{ project.niche }}</p>
+        <p class="text-[14px] capitalize">{{ project.niche[0] }}</p>
         <p class="text-[14px]">{{ project.year }}</p>
     </NuxtLink>
 </template>
