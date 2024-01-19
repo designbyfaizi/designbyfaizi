@@ -151,7 +151,7 @@ useHead({
     },
     {
       name: "image",
-      content: ``,
+      content: `${site_url}${route.fullPath}`,
     },
     {
       name: "robots",
@@ -176,17 +176,17 @@ useHead({
       content: "website",
     },
     //Twitter Tags
-    { property: "twitter:title", content: site_title },
+    { name: "twitter:title", content: site_title },
     {
-      property: "twitter:description",
+      name: "twitter:description",
       content: site_description,
     },
     {
-      property: "twitter:image",
+      name: "twitter:image",
       content: `${config.public.SITE_URL}/twitter.png`,
     },
-    { property: "twitter:card", content: "summary_large_image" },
-    { property: "twitter:creator", content: "@designbyfaizi" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:creator", content: "@designbyfaizi" },
   ],
   htmlAttrs: {
     lang: 'en'
