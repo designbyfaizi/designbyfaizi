@@ -183,7 +183,7 @@ useHead({
     },
     {
       property: "twitter:image",
-      content: `${config.public.SITE_URL}/og.png`,
+      content: `${config.public.SITE_URL}/twitter.png`,
     },
     { property: "twitter:card", content: "summary_large_image" },
     { property: "twitter:creator", content: "@designbyfaizi" },
