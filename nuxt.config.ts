@@ -2,9 +2,12 @@ import unocss from "./unocss.config";
 import { colorMode } from "./configs/colorMode.config";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    runtimeConfig: {
+        public: {
+            SITE_URL: process.env.SITE_URL,
+        },
+    },
     app: {
-        // pageTransition: { name: "page", mode: "out-in" },
-        // layoutTransition: { name: "layout", mode: "out-in" },
         head: {
             charset: "utf-8",
             viewport: "width=device-width, initial-scale=1",

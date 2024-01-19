@@ -132,6 +132,7 @@
 <script setup lang="tsx">
 const location = useBrowserLocation();
 const route = useRoute();
+const config = useRuntimeConfig();
 const site_url = location.value.origin;
 const site_title = "Design By Faizi";
 const site_description = "I am Faizan Ullah. A passionate frontend engineer living in Rawalpindi, Pakistan. I specialize in product design, web design, branding and art.";
@@ -168,7 +169,7 @@ useHead({
     },
     {
       property: "og:image",
-      content: `${site_url}/og.png`,
+      content: `${config.public.SITE_URL}/og.png`,
     },
     {
       property: "og:type",
@@ -182,7 +183,7 @@ useHead({
     },
     {
       property: "twitter:image",
-      content: `${site_url}/og.png`,
+      content: `${config.public.SITE_URL}/og.png`,
     },
     { property: "twitter:card", content: "summary_large_image" },
     { property: "twitter:creator", content: "@designbyfaizi" },
