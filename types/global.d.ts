@@ -35,4 +35,6 @@ type Blog = {
     richText: string;
     url: string;
     author: string;
+    date: Date;
+    niche: string[];
 }

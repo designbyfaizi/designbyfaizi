@@ -9,7 +9,7 @@
             :label="index"
         >
             <div
-                class="h-[32px] w-[32px] flex items-center p-1 border-2 border-white/10 rounded-full"
+                class="h-[32px] w-[32px] flex items-center p-1 border-2 border-white/10 rounded-full hover:scale-120"
                 :style="{ background: _color }"
             ></div>
         </Tooltip>

@@ -4,7 +4,7 @@ export const useBlogs = defineStore("blogs", () => {
     const blogs: Blog[] = [
         {
             id: 1,
-            heading: "Blog Name UwU",
+            heading: "How AI is going to impact design?",
             image: "https://img.freepik.com/free-vector/gradient-grainy-texture_23-2148976749.jpg",
             richText: `Lorem, ipsum dolor sit amet consectetur
             adipisicing elit. Sapiente blanditiis
@@ -12,8 +12,10 @@ export const useBlogs = defineStore("blogs", () => {
             perferendis voluptatibus eligendi, laborum
             saepe modi esse nihil praesentium. Optio
             placeat qui voluptatum officiis? Possimus!`,
+            niche: ["AI"],
             url: "/blog/blog1",
             author: "Faizi",
+            date: new Date("1999-10-29"),
         },
         {
             id: 2,
@@ -25,8 +27,10 @@ export const useBlogs = defineStore("blogs", () => {
             perferendis voluptatibus eligendi, laborum
             saepe modi esse nihil praesentium. Optio
             placeat qui voluptatum officiis? Possimus!`,
+            niche: ["AI"],
             url: "/blog/blog2",
             author: "Faizi",
+            date: new Date("1999-10-29"),
         },
         {
             id: 3,
@@ -38,8 +42,10 @@ export const useBlogs = defineStore("blogs", () => {
             perferendis voluptatibus eligendi, laborum
             saepe modi esse nihil praesentium. Optio
             placeat qui voluptatum officiis? Possimus!`,
+            niche: ["AI"],
             url: "/blog/blog3",
             author: "Faizi",
+            date: new Date("1999-10-29"),
         },
     ];
     return { blogs };
