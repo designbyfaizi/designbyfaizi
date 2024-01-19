@@ -31,6 +31,9 @@
                     :leftSection="ButtonIcon"
                     radius="md"
                     class="me-auto"
+                    :as="NuxtLink"
+                    to="https://calendly.com/designbyfaizi/30min"
+                    target="_blank"
                 >
                     Book a call
                 </SadaButton>
@@ -40,7 +43,7 @@
 </template>
 
 <script setup lang="tsx">
-import {Icon} from "#components"
+import {Icon, NuxtLink} from "#components"
 
 definePageMeta({
     layout: "main-layout",
