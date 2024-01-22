@@ -153,7 +153,7 @@ useHead({
     },
     {
       name: "robots",
-      content: "index, follow",
+      content: "all",
     },
     //Open Graph Tags
     { property: "og:title", content: site_title },
@@ -179,21 +179,9 @@ useHead({
       name: "twitter:description",
       content: site_description,
     },
-    {
-      property: "twitter:image",
-      content: `${config.public.SITE_URL}/twitter.png`,
-    },
-    {
-      name: "twitter:image",
-      content: `${config.public.SITE_URL}/twitter.png`,
-    },
-    {
-      name: "twitter:image:alt",
-      content: `Design By Faizi - Hire me for frontend solutions!`,
-    },
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:creator", content: "@designbyfaizi" },
     { name: "twitter:site", content: "@designbyfaizi" },
+    { name: "twitter:creator", content: "@designbyfaizi" },
   ],
   htmlAttrs: {
     lang: 'en'
