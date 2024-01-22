@@ -185,6 +185,10 @@ useHead({
       name: "twitter:image",
       content: `${config.public.SITE_URL}/twitter.png`,
     },
+    {
+      name: "twitter:image:alt",
+      content: `Design By Faizi - Hire me for frontend solutions!`,
+    },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:creator", content: "@designbyfaizi" },
     { name: "twitter:site", content: "@designbyfaizi" },
