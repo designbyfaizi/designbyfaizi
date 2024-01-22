@@ -187,6 +187,7 @@ useHead({
     },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:creator", content: "@designbyfaizi" },
+    { name: "twitter:site", content: "@designbyfaizi" },
   ],
   htmlAttrs: {
     lang: 'en'
