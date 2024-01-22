@@ -144,12 +144,12 @@ const { blogs } = useBlogs();
 useSeoMeta({
   ogTitle: site_title,
   ogDescription: site_description,
-  ogImage: `https://raw.githubusercontent.com/designbyfaizi/designbyfaizi/main/public/og.png`,
+  ogImage: `${config.public.SITE_URL}/og.jpg`,
   ogUrl: config.public.SITE_URL,
   twitterTitle: site_title,
   twitterDescription: site_description,
   twitterCard: "summary_large_image",
-  twitterImage: `https://raw.githubusercontent.com/designbyfaizi/designbyfaizi/main/public/twitter.png`,
+  twitterImage: `${config.public.SITE_URL}/twitter.jpg`,
 });
 useHead({
   title: site_title,
@@ -160,7 +160,7 @@ useHead({
     },
     {
       name: "image",
-      content: `https://raw.githubusercontent.com/designbyfaizi/designbyfaizi/main/public/og.png`,
+      content: `${config.public.SITE_URL}/og.jpg`,
     },
     {
       name: "robots",
