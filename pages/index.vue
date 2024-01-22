@@ -130,10 +130,8 @@
 </template>
 
 <script setup lang="tsx">
-const location = useBrowserLocation();
 const route = useRoute();
 const config = useRuntimeConfig();
-const site_url = location.value.origin;
 const site_title = "Design By Faizi";
 const site_description = "I am Faizan Ullah. A passionate frontend engineer living in Rawalpindi, Pakistan. I specialize in product design, web design, branding and art.";
 
@@ -151,7 +149,7 @@ useHead({
     },
     {
       name: "image",
-      content: `${site_url}${route.fullPath}`,
+      content: `${config.public.SITE_URL}${route.fullPath}`,
     },
     {
       name: "robots",
@@ -165,7 +163,7 @@ useHead({
     },
     {
       property: "og:url",
-      content: `${site_url}${route.fullPath}`,
+      content: `${config.public.SITE_URL}${route.fullPath}`,
     },
     {
       property: "og:image",
