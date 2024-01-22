@@ -179,6 +179,9 @@ useHead({
       name: "twitter:description",
       content: site_description,
     },
+    {
+      name:"twitter:image", content:`${config.public.SITE_URL}/twitter.png`
+    },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:site", content: "@designbyfaizi" },
     { name: "twitter:creator", content: "@designbyfaizi" },
