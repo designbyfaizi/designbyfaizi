@@ -133,8 +133,7 @@
 const route = useRoute();
 const config = useRuntimeConfig();
 const site_title = "Design By Faizi";
-const site_description =
-  "I am Faizan Ullah. A passionate frontend engineer living in Rawalpindi, Pakistan. I specialize in product design, web design, branding and art.";
+const site_description = "I am Faizan Ullah. Hire me for frontend solutions.";
 
 import { NuxtLink, Icon } from "#components";
 const { socialLinks } = useNav();
