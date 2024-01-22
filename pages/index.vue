@@ -133,13 +133,24 @@
 const route = useRoute();
 const config = useRuntimeConfig();
 const site_title = "Design By Faizi";
-const site_description = "I am Faizan Ullah. A passionate frontend engineer living in Rawalpindi, Pakistan. I specialize in product design, web design, branding and art.";
+const site_description =
+  "I am Faizan Ullah. A passionate frontend engineer living in Rawalpindi, Pakistan. I specialize in product design, web design, branding and art.";
 
 import { NuxtLink, Icon } from "#components";
 const { socialLinks } = useNav();
 const { projects } = useProjects();
 const { products } = useProducts();
 const { blogs } = useBlogs();
+useSeoMeta({
+  ogTitle: site_title,
+  ogDescription: site_description,
+  ogImage: `${config.public.SITE_URL}/og.png`,
+  ogUrl: config.public.SITE_URL,
+  twitterTitle: site_title,
+  twitterDescription: site_description,
+  twitterCard: "summary_large_image",
+  twitterImage: `${config.public.SITE_URL}/twitter.png`,
+});
 useHead({
   title: site_title,
   meta: [
@@ -149,52 +160,22 @@ useHead({
     },
     {
       name: "image",
-      content: `${config.public.SITE_URL}${route.fullPath}`,
+      content: `${config.public.SITE_URL}${route.fullPath}/og.png`,
     },
     {
       name: "robots",
       content: "all",
     },
-    //Open Graph Tags
-    { property: "og:title", content: site_title },
-    {
-      property: "og:description",
-      content: site_description,
-    },
-    {
-      property: "og:url",
-      content: `${config.public.SITE_URL}${route.fullPath}`,
-    },
-    {
-      property: "og:image",
-      content: `${config.public.SITE_URL}/og.png`,
-    },
-    {
-      property: "og:type",
-      content: "website",
-    },
-    //Twitter Tags
-    { name: "twitter:title", content: site_title },
-    {
-      name: "twitter:description",
-      content: site_description,
-    },
-    {
-      name:"twitter:image", content:`${config.public.SITE_URL}/twitter.png`
-    },
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:site", content: "@designbyfaizi" },
-    { name: "twitter:creator", content: "@designbyfaizi" },
   ],
   htmlAttrs: {
-    lang: 'en'
+    lang: "en",
   },
   link: [
     {
-      rel: 'icon',
-      type: 'image/png',
-      href: '/favicon.png'
-    }
+      rel: "icon",
+      type: "image/png",
+      href: "/favicon.png",
+    },
   ],
   bodyAttrs: {
     class: "test",
