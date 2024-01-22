@@ -160,7 +160,7 @@ useHead({
     },
     {
       name: "image",
-      content: `${config.public.SITE_URL}${route.fullPath}/og.png`,
+      content: `${config.public.SITE_URL}/og.png`,
     },
     {
       name: "robots",
