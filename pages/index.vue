@@ -180,7 +180,11 @@ useHead({
       content: site_description,
     },
     {
-      name: "twitter:image:src",
+      property: "twitter:image",
+      content: `${config.public.SITE_URL}/twitter.png`,
+    },
+    {
+      name: "twitter:image",
       content: `${config.public.SITE_URL}/twitter.png`,
     },
     {
