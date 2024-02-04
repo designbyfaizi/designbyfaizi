@@ -132,6 +132,7 @@
 <script setup lang="tsx">
 const route = useRoute();
 const config = useRuntimeConfig();
+const siteUrl = config.public.SITE_URL ?? 'http://localhost:3000'
 const site_title = "Design By Faizi";
 const site_description =
   "I am Faizan Ullah. A passionate frontend engineer from Pakistan. I specialize in product design, web, and branding. Hire me for frontend solutions.";
@@ -144,12 +145,12 @@ const { blogs } = useBlogs();
 useSeoMeta({
   ogTitle: site_title,
   ogDescription: site_description,
-  ogImage: `${config.public.SITE_URL}/og.jpg`,
-  ogUrl: config.public.SITE_URL,
+  ogImage: `${siteUrl}/og.jpg`,
+  ogUrl: siteUrl,
   twitterTitle: site_title,
   twitterDescription: site_description,
   twitterCard: "summary_large_image",
-  twitterImage: `${config.public.SITE_URL}/twitter.jpg`,
+  twitterImage: `${siteUrl}/twitter.jpg`,
 });
 useHead({
   title: site_title,
@@ -160,7 +161,7 @@ useHead({
     },
     {
       name: "image",
-      content: `${config.public.SITE_URL}/og.jpg`,
+      content: `${siteUrl}/og.jpg`,
     },
     {
       name: "robots",
