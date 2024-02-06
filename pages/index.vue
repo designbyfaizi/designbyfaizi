@@ -125,7 +125,7 @@
         </div>
       </article>
     </section>
-    <SiteColors />
+    <!-- <SiteColors /> -->
   </div>
 </template>
 
