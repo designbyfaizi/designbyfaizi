@@ -15,12 +15,12 @@
 /* Handle */
 
  ::-webkit-scrollbar-thumb {
-    background: rgb(var(--background-second), 0.5);
+    background: theme('colors.backgroundSecond');
 }
 
 
 /* Handle on hover */
 
  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(var(--background-second), 1);
+    background: theme('colors.backgroundLight');
 }
