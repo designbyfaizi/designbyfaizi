@@ -49,5 +49,5 @@ definePageMeta({
     layout: "main-layout",
 });
 
-const ButtonIcon = () => <Icon name="solar:calendar-mark-linear" size="20" class="text-main" />;
+const ButtonIcon = () => <Icon name="solar:calendar-mark-linear" size="20" class="text-text" />;
 </script>

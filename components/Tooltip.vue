@@ -21,7 +21,7 @@
 type Props = {
     label: string | number;
     visible?: boolean;
-    position: "top" | "bottom" | "left" | "right";
+    position?: "top" | "bottom" | "left" | "right";
 };
 withDefaults(defineProps<Props>(), {
     visible: true,

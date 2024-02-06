@@ -53,6 +53,6 @@
 import { NuxtLink, Icon } from '#components';
 
 const ButtonIcon = () => (
-    <Icon name="lets-icons:return-light" size="20" class="text-main stroke-1 stroke-main -scale-x-[1]" />
+    <Icon name="lets-icons:return-light" size="20" class="text-text stroke-1 stroke-text -scale-x-[1]" />
 );
 </script>

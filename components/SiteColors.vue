@@ -18,10 +18,10 @@
 
 <script setup lang="ts">
 const colors = {
-    main: "#a3a3a3",
-    primary: "#e11948",
+    text: "#a3a3a3",
     primaryLighter: "#fb7185",
     primaryLight: "#f43f5e",
+    primary: "#e11948",
     primaryDark: "#be123c",
     primaryDarker: "#881337",
     background: "#171717",

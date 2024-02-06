@@ -1,10 +1,10 @@
 @unocss all;
 
 :root {
-    --main: theme("colors.main");
-    --primary: theme("colors.primary");
+    --text: theme("colors.text");
     --primary-lighter: theme("colors.primaryLighter");
     --primary-light: theme("colors.primaryLight");
+    --primary: theme("colors.primary");
     --primary-dark: theme("colors.primaryDark");
     --primary-darker: theme("colors.primaryDarker");
     --background: theme("colors.background");
@@ -15,7 +15,7 @@
 }
 
 /* :root {
-    --main: #4b5563;
+    --text: #4b5563;
     --primary: #e11948;
     --primary-lighter: #fb7185;
     --primary-light: #f43f5e;
@@ -28,7 +28,7 @@
 }
 
 .dark-mode {
-    --main: #f5f5f5;
+    --text: #f5f5f5;
     --primary: #e11948;
     --primary-lighter: #fb7185;
     --primary-light: #f43f5e;
@@ -40,7 +40,7 @@
 }
 
 .sepia-mode {
-    --main: #433422;
+    --text: #433422;
     --primary: #a77333;
     --secondary: #504231;
     --background: #f1e7d0;
@@ -49,7 +49,7 @@
 }
 
 .cyan-mode {
-    --main: #164e63;
+    --text: #164e63;
     --primary: #0891b2;
     --secondary: #0e7490;
     --background: #d0f0f1;
@@ -58,7 +58,7 @@
 }
 
 .green-mode {
-    --main: #064e3b;
+    --text: #064e3b;
     --primary: #059669;
     --secondary: #047857;
     --background: #d5f1d0;
@@ -67,7 +67,7 @@
 }
 
 .purple-mode {
-    --main: #4b5563;
+    --text: #4b5563;
     --primary: #7c3aed;
     --secondary: #6d28d9;
     --background: #e4d0f1;

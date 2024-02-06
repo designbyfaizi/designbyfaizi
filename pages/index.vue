@@ -189,6 +189,6 @@ definePageMeta({
 });
 
 const ButtonIcon = () => (
-  <Icon name="fluent:mail-32-regular" size="20" class="text-main" />
+  <Icon name="fluent:mail-32-regular" size="20" class="text-text" />
 );
 </script>

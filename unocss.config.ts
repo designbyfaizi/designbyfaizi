@@ -3,7 +3,7 @@ import transformerDirectives from "@unocss/transformer-directives";
 import transformerVariantGroup from "@unocss/transformer-variant-group";
 
 const colors = {
-    main: "#a3a3a3",
+    text: "#a3a3a3",
     primary: "#e11948",
     primaryLighter: "#fb7185",
     primaryLight: "#f43f5e",

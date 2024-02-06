@@ -1,6 +1,10 @@
+*{
+    cursor: none !important;
+}
+
 body {
     font-family: "Satoshi", sans-serif;
-    @apply bg-background text-main;
+    @apply bg-background text-text;
     /* background-color: rgb(var(--background), var(--opacity));
     transition: background-color 0.3s; */
 }

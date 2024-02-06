@@ -2,6 +2,7 @@
     <div
         ref="el"
         :class="[
+        'min-h-[100dvh]'
             //'sada-container',
             //'transition-all duration-150',
         ]"
@@ -29,7 +30,7 @@
                 <NavIcon :icon="link.icon" :to="link.to" />
             </Tooltip>
             <div
-                class="divider hidden sm:block bg-main/50 w-[1px] h-[24px]"
+                class="divider hidden sm:block bg-text/50 w-[1px] h-[24px]"
             ></div>
             <Tooltip
                 :label="link.name"
@@ -45,7 +46,7 @@
             </Tooltip>
         </Nav>
     </div>
-    <!-- <MainCircleCursor v-show="$largeScreen" /> -->
+    <MainCircleCursor v-show="$largeScreen" />
 </template>
 
 <style lang="scss"></style>

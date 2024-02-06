@@ -7,7 +7,7 @@
                 <article class="sada-container">
                     <div class="blogsHeadingContainer flex gap-[16px]">
                         <h1 class="text-[16px] leading-[130%] font-500">
-                            Blog
+                            Blogs
                         </h1>
                     </div>
                 </article>

@@ -4,7 +4,7 @@
         :class="[
             'flex items-center justify-center gap-[8px]',
             'rounded-full w-[40px] h-[40px] aspect-square',
-            'hover:bg-main/20 active:scale-98 transition-all duration-200',
+            'hover:bg-text/20 active:scale-98 transition-all duration-200',
             isActive && '!bg-primary !hover:bg-primary-light !shadow-primary/50 text-neutral-900',
         ]"
     >
@@ -12,7 +12,7 @@
             :name="icon"
             :size="size"
             :class="[
-                'text-main w-[24px] aspect-square',
+                'text-text w-[24px] aspect-square',
                 isActive && '!text-background',
             ]"
         />
