@@ -71,12 +71,12 @@ onMounted(() => {
   left: 0;
   z-index: 200;
   .circles {
-    background-color: white;
     height: v-bind(circleSize);
     width: v-bind(circleSize);
     border-radius: v-bind(circleSize);
     position: absolute;
     display: block;
+  @apply bg-neutral-500
   }
 }
 </style>

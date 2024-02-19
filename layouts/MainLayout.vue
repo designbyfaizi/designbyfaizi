@@ -46,7 +46,7 @@
             </Tooltip>
         </Nav>
     </div>
-    <MainCircleCursor v-show="$largeScreen" />
+    <!-- <MainCircleCursor v-show="$largeScreen" /> -->
 </template>
 
 <style lang="scss"></style>

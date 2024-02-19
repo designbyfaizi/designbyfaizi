@@ -2,7 +2,7 @@
   <NuxtLayout>
     <NuxtLoadingIndicator />
     <div
-      class="h-[40px] bg-primary text-white font-ubuntu flex gap-2 items-center justify-center p-2"
+      class="h-[40px] bg-rose-700 text-white font-ubuntu flex gap-2 items-center justify-center p-2"
     >
       <h1>{{ "⚠️ This website is under construction" }}</h1>
       <h1>
