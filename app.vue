@@ -11,8 +11,9 @@
         <a
           class="p-2 rounded-lg hover:bg-white/20"
           href="mailto:faizanullah1999@gmail.com"
-          >faizanullah1999@gmail.com</a
         >
+          faizanullah1999@gmail.com
+        </a>
       </h1>
     </div>
     <!-- Adding Key to Fix Strange Navigation Error During Fast Navigation -->
