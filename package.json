@@ -12,10 +12,10 @@
         "@nuxt/devtools": "latest",
         "@nuxthq/studio": "^1.0.6",
         "@nuxtjs/color-mode": "^3.3.0",
-        "@unocss/nuxt": "^0.56.5",
-        "@unocss/postcss": "^0.57.7",
-        "@unocss/transformer-directives": "^0.56.5",
-        "@unocss/transformer-variant-group": "^0.56.5",
+        "@unocss/nuxt": "^0.58.8",
+        "@unocss/postcss": "^0.58.8",
+        "@unocss/transformer-directives": "^0.58.8",
+        "@unocss/transformer-variant-group": "^0.58.8",
         "@vueuse/core": "^10.5.0",
         "@vueuse/nuxt": "^10.5.0",
         "nuxt": "^3.9.1",
@@ -26,7 +26,7 @@
     "dependencies": {
         "@nuxt/image": "^1.0.0",
         "@pinia/nuxt": "^0.5.1",
-        "@unocss/reset": "^0.56.5",
+        "@unocss/reset": "^0.58.8",
         "pinia": "^2.1.7",
         "sass": "^1.69.4"
     },
