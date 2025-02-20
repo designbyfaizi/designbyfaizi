@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-dvh flex items-center justify-center">
+  <div class="">
   <h1>Cooking</h1>
     <!-- <HomeHeroSection />
         <HomeAboutSection /> -->

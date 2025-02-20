@@ -2,7 +2,8 @@
     <div
         ref="el"
         :class="[
-        'min-h-[100dvh]'
+        'min-h-[100dvh]',
+        'flex items-center justify-center'
             //'sada-container',
             //'transition-all duration-150',
         ]"
