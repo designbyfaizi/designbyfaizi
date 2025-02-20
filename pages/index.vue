@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="w-full h-dvh flex items-center justify-center">
+  <h1>Cooking</h1>
     <!-- <HomeHeroSection />
         <HomeAboutSection /> -->
-    <header class="profileSection pt-[24px]">
+    <!-- <header class="profileSection pt-[24px]">
       <article class="sada-container">
         <div class="profileContainer flex gap-[16px]">
           <NuxtImg
@@ -124,7 +125,7 @@
           </div>
         </div>
       </article>
-    </section>
+    </section> -->
     <!-- <SiteColors /> -->
   </div>
 </template>

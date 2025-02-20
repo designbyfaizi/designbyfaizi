@@ -21,7 +21,7 @@
         <main class="z-0 pb-[100px]">
             <slot />
         </main>
-        <Nav>
+        <!-- <Nav>
             <Tooltip
                 :label="link.name"
                 v-for="link in navLinks"
@@ -44,7 +44,7 @@
                     class="!hidden !sm:flex"
                 />
             </Tooltip>
-        </Nav>
+        </Nav> -->
     </div>
     <!-- <MainCircleCursor v-show="$largeScreen" /> -->
 </template>

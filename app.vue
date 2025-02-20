@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout>
     <NuxtLoadingIndicator />
-    <div
+    <!-- <div
       class="min-h-[40px] bg-rose-700 text-white font-ubuntu flex items-center justify-center p-2"
     >
       <h1>
@@ -15,7 +15,7 @@
           faizanullah1999@gmail.com
         </a>
       </h1>
-    </div>
+    </div> -->
     <!-- Adding Key to Fix Strange Navigation Error During Fast Navigation -->
     <NuxtPage :key="$route.fullPath" />
   </NuxtLayout>
