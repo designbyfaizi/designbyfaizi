@@ -20,14 +20,14 @@ export default defineNuxtConfig({
     "@/assets/styles/main.css"
   ],
   routeRules: {
-    "/skills": { swr: true },
-    "/skills/**": { swr: true },
-    "/knowledge-hub": { swr: true },
-    "/knowledge-hub/**": { swr: true },
+    // "/skills": { swr: true },
+    // "/skills/**": { swr: true },
+    // "/knowledge-hub": { swr: true },
+    // "/knowledge-hub/**": { swr: true },
   },
   devtools: { enabled: true },
   nitro: {
     compatibilityDate: '2024-11-01',
-    preset: "vercel"
+    preset: "cloudflare-pages"
   }
 })
