@@ -13,7 +13,7 @@ export default defineEventHandler(async (event): Promise<Response> => {
     const slug = getRouterParam(event, "slug");
     if (!slug) {
         throw createError({
-            statusCode: 400,
+            statusCode: 404,
             statusMessage: "Invalid Slug"
         })
     }

@@ -1,3 +1,5 @@
+type ThemeName = "light" | "dark" | "auto"
+
 type NotionPage = {
     object: "page";
     id: string;

@@ -3,7 +3,7 @@
     <section
       v-for="section in 1"
       :key="section"
-      class="min-h-[400px] h-[70dvh] bg-neutral-200 dark:bg-neutral-800 rounded-lg p-4 flex flex-col items-center justify-center gap-4"
+      class="min-h-[400px] h-[70dvh] bg-card rounded-md p-4 flex flex-col items-center justify-center gap-4"
     >
       <p class="max-w-screen-sm text-2xl text-center">
         Inspired by Eagles, Created for Visionaries

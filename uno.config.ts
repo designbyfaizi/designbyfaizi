@@ -1,4 +1,4 @@
-import { defineConfig, presetWind3, presetWebFonts, presetTypography } from 'unocss';
+import { defineConfig, presetWind3, presetWebFonts, presetTypography, transformerVariantGroup } from 'unocss';
 export default defineConfig({
   // ...UnoCSS options
   presets: [
@@ -50,7 +50,7 @@ export default defineConfig({
   },
   shortcuts: [
     {
-      "aqler-container": "container mx-auto px-3 md:px-4",
+      "aqler-container": "max-w-screen-xl w-full mx-auto px-3 md:px-4",
       "aqler-button": [
         "bg-primary text-primary-foreground px-4 py-2 rounded-sm",
         "hover:bg-primary/90 ring ring-transparent hover:ring-primary/20 active:scale-98",
@@ -62,5 +62,8 @@ export default defineConfig({
         "transition-all duration-100"
       ]
     }
+  ],
+  transformers: [
+    transformerVariantGroup()
   ]
 })

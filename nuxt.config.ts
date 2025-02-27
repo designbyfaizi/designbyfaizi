@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     notionSecret: process.env.NOTION_SECRET!,
     notionSkillsId: process.env.NOTION_SKILLS_ID!,
+    notionKnowledgeHubId: process.env.NOTION_KNOWLEDGE_HUB_ID!,
   },
   future: {
     compatibilityVersion: 4
@@ -21,6 +22,8 @@ export default defineNuxtConfig({
   routeRules: {
     "/skills": { swr: true },
     "/skills/**": { swr: true },
+    "/knowledge-hub": { swr: true },
+    "/knowledge-hub/**": { swr: true },
   },
   devtools: { enabled: true },
   nitro: {

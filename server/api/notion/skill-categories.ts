@@ -10,11 +10,11 @@ type SkillCategory = {
 export const config = { runtime: "nodejs" }; // Forces Node.js instead of edge
 
 export default defineEventHandler(async (): Promise<SkillCategory[]> => {
-    const {getSkillCategories} = useNotion()
-    try{
+    const { getSkillCategories } = useNotion()
+    try {
 
         const _categories = await getSkillCategories();
-        
+
         if (!_categories || _categories.length <= 0) {
             throw createError({
                 statusCode: 400,
@@ -33,10 +33,10 @@ export default defineEventHandler(async (): Promise<SkillCategory[]> => {
                 slug
             }
         })
-        
+
         return categories;
     }
-    catch(error){
+    catch (error) {
         throw createError({ statusCode: 500, statusMessage: "Failed to fetch skill categories" })
     }
 })

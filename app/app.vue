@@ -8,3 +8,16 @@
     <NoiseTexture />
   </div>
 </template>
+
+<script setup>
+  if (process.client) {
+    const savedMode = localStorage.getItem("vueuse-color-scheme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    if (savedMode === "dark" || (!savedMode && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }
+</script>
