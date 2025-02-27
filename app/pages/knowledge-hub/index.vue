@@ -19,10 +19,14 @@
           >
             <div class="flex flex-col">
               <NuxtImg
+                provider="cloudflare"
                 :src="blog.featured_image"
                 :alt="blog.name"
                 class="w-full object-cover aspect-video rounded-sm bg-background ring ring-2 ring-foreground/10"
-                width="768"
+                width="600px"
+                format="webp"
+                loading="lazy"
+                placeholder="blur"
               />
               <div class="p-2 md:p-3 flex flex-col gap-2">
                 <p

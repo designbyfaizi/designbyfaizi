@@ -29,5 +29,10 @@ export default defineNuxtConfig({
   nitro: {
     compatibilityDate: '2024-11-01',
     preset: "cloudflare-pages"
+  },
+  image: {
+    cloudflare: {
+      baseURL: 'https://designbyfaizi.pages.dev'
+    }
   }
 })
