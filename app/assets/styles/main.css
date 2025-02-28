@@ -62,3 +62,7 @@ html {
   background-color: hsl(var(--background));
   transition: all 0.2s ease-in-out;
 }
+
+b{
+  font-weight: 900;
+}

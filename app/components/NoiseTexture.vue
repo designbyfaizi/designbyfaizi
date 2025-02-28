@@ -21,7 +21,6 @@
     background-image: url("/noise-texture.png");
     opacity: 0.06;
     border-radius: 0px;
-    pointer-events: none;
   }
 }
 </style>

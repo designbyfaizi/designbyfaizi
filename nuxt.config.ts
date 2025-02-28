@@ -14,7 +14,8 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/icon',
     '@nuxt/image',
-    'reka-ui/nuxt'
+    'reka-ui/nuxt',
+    'motion-v/nuxt'
   ],
   css: [
     "@/assets/styles/main.css"
@@ -31,8 +32,8 @@ export default defineNuxtConfig({
     preset: "cloudflare-pages"
   },
   image: {
-    cloudflare: {
-      baseURL: 'https://designbyfaizi.pages.dev'
-    }
+    domains: [
+      "designbyfaizi.pages.dev",
+    ]
   }
 })

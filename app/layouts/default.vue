@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 space-y-4 aqler-container mt-4">
+  <div class="aqler-container mt-4 flex flex-col gap-4 flex-1">
     <slot />
   </div>
 </template>

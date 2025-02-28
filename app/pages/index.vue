@@ -1,43 +1,152 @@
 <template>
-  <main class="">
+  <main class="flex-1 flex flex-col">
     <section
-      v-for="section in 1"
-      :key="section"
-      class="min-h-[400px] h-[70dvh] bg-card rounded-md p-4 flex flex-col items-center justify-center gap-4"
+      class="flex flex-col items-center justify-center h-full min-h-[720px] -mt-[70px]"
     >
-      <p class="max-w-screen-sm text-2xl text-center">
-        Cooking
-      </p>
-      <ToastProvider>
-        <button @click="handleClick" :class="['aqler-button']">Contact Us</button>
-        <ToastRoot
-          v-model:open="open"
-          class="bg-card/80 backdrop-blur-lg rounded-lg shadow-sm border border-border p-[15px] grid [grid-template-areas:_'title_action'_'description_action'] grid-cols-[auto_max-content] gap-x-[15px] items-center data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--reka-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut"
+      <div class="flex items-center justify-center gap-16 flex-1">
+        <Motion
+          as="div"
+          class="logo-container size-[180px] rounded-full aspect-square bg-primary flex items-center justify-center"
+          :initial="{
+            opacity: 0,
+            scale: 0,
+            filter: 'blur(16px)',
+          }"
+          :animate="{
+            opacity: 1,
+            scale: 1,
+            filter: 'blur(0px)',
+          }"
+          :transition="{
+            duration: 0.4,
+            scale: {
+              type: 'spring',
+              visualDuration: 0.4,
+              bounce: 0.5,
+            },
+          }"
         >
-          <ToastTitle
-            class="[grid-area:_title] mb-[5px] font-medium text-slate12 text-sm"
+          <SiteIconSvg class="w-[140px] h-[140px] text-background" />
+        </Motion>
+        <Motion
+          as="div"
+          :variants="container"
+          initial="hidden"
+          animate="visible"
+          :transition="{
+            type: 'spring',
+            delayChildren: 0.5,
+            staggerChildren: 0.2,
+          }"
+          class="flex flex-col gap-2 max-w-[500px] w-full"
+        >
+          <Motion
+            :variants="items"
+            as="h1"
+            class="uppercase font-bold text-5xl tracking-tight text-primary leading-[0.7em]"
           >
-            Email Copied
-          </ToastTitle>
-          <ToastDescription as-child>
-            <time
-              class="[grid-area:_description] m-0 text-slate11 text-xs leading-[1.3]"
-              :dateTime="eventDateRef.toISOString()"
-            >
-              faizanullah1999@gmail.com
-            </time>
-          </ToastDescription>
-        </ToastRoot>
-        <ToastViewport
-          class="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none"
+            Hey, I'm Faizi
+          </Motion>
+          <Motion :variants="items" as="p" class="text-[32px] leading-[1em] font-medium">
+            I turn coffee and code into cool things on the internet.
+          </Motion>
+          <div class="flex items-center gap-2 mt-4">
+            <ToastProvider>
+              <Motion
+                :variants="items"
+                as="button"
+                @click="handleClick"
+                class="aqler-button-light flex items-center justify-between gap-4"
+              >
+                <span>
+                  {{ email }}
+                </span>
+                <Icon name="solar:copy-linear" class="size-[20px] text-foreground/60" />
+              </Motion>
+              <ToastRoot
+                v-model:open="open"
+                class="bg-card/80 backdrop-blur-lg rounded-lg shadow-sm border border-border p-[15px] grid [grid-template-areas:_'title_action'_'description_action'] grid-cols-[auto_max-content] gap-x-[15px] items-center data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--reka-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut"
+              >
+                <ToastTitle
+                  class="[grid-area:_title] mb-[5px] font-medium text-slate12 text-sm"
+                >
+                  Email Copied
+                </ToastTitle>
+                <ToastDescription as-child>
+                  <p
+                    class="[grid-area:_description] m-0 text-slate11 text-xs leading-[1.3]"
+                  >
+                    faizanullah1999@gmail.com
+                  </p>
+                </ToastDescription>
+              </ToastRoot>
+              <ToastViewport
+                class="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none"
+              />
+            </ToastProvider>
+            <NuxtLink to="/contact">
+              <Motion :variants="items" as="button" class="aqler-button font-semibold">
+                Contact Me
+              </Motion>
+            </NuxtLink>
+          </div>
+        </Motion>
+      </div>
+    </section>
+    <section ref="scope" class="pt-4 flex flex-col">
+      <Motion
+        as="div"
+        :initial="{
+          opacity: 0,
+          scale: 0,
+          filter: 'blur(16px)',
+        }"
+        :animate="{
+          opacity: 1,
+          scale: 1,
+          filter: 'blur(0px)',
+        }"
+        :transition="{
+          delay: 2,
+          duration: 0.4,
+          scale: {
+            type: 'spring',
+            visualDuration: 0.4,
+            bounce: 0.5,
+          },
+        }"
+        class="icon-container flex justify-center"
+      >
+        <Icon
+          name="solar:square-arrow-down-line-duotone"
+          class="size-[40px] text-foreground/40 animate-bounce"
         />
-      </ToastProvider>
+      </Motion>
+      <Motion
+        as="div"
+        initial="hidden"
+        :animate="isInView ? 'visible' : 'hidden'"
+        :transition="{
+          type: 'spring',
+          staggerChildren: 0.2,
+        }"
+        class="scroll-section py-[32px] text-[28px] leading-tight font-medium flex flex-col gap-4 items-center"
+      >
+        <Motion as="p" :variants="items" class="max-w-[600px] w-full pt-[50px]">
+          I am a frontend <b>developer</b> and UI/UX <b>designer</b>,<br />
+          crafting <b>sleek</b> and <b>scalable</b> web experiences.
+        </Motion>
+        <Motion as="p" :variants="items" class="max-w-[600px] w-full">
+          With expertise in modern frameworks and design tools,
+          I build <b>fast</b>, <b>intuitive</b>, and<br/> <b>visually polished</b> interfaces.
+        </Motion>
+      </Motion>
     </section>
   </main>
 </template>
 
 <script lang="ts" setup>
-const email = "faizanullah1999@gmail.com"
+const email = "faizanullah1999@gmail.com";
 const { text, copy, isSupported } = useClipboard({ source: email });
 const open = ref(false);
 const eventDateRef = ref(new Date());
@@ -49,8 +158,36 @@ function oneWeekAway() {
   return new Date(inOneWeek);
 }
 
+const container = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
+const items = {
+  hidden: {
+    y: 20,
+    opacity: 0,
+    filter: "blur(4px)",
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    filter: "blur(0px)",
+  },
+};
+
+const scope = ref(null);
+const isInView = useInView(scope, {
+  amount: 0.8,
+  once: false,
+});
+
 function handleClick() {
-  copy(email)
+  copy(email);
   open.value = false;
   window.clearTimeout(timerRef.value);
   timerRef.value = window.setTimeout(() => {
