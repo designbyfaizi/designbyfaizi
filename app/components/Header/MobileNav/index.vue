@@ -23,16 +23,30 @@
             <Icon name="mdi:close" class="size-[24px]" />
           </DialogClose>
         </div>
-        <NuxtLink
-          v-for="navLink in navLinks"
-          :key="navLink.to"
-          :to="navLink.to"
-          class="font-semibold hover:underline w-full bg-accent/20 border border-foreground/5 hover:bg-accent p-3 rounded-sm"
-          active-class="border-l-2 border-l-foreground"
+        <Motion
+          as="ul"
+          :variants="container"
+          initial="hidden"
+          animate="visible"
+          :transition="{
+            type: 'spring',
+            staggerChildren: 0.1,
+          }"
+          class="flex flex-col gap-2 flex-1 text-muted-foreground/50"
         >
-          {{ navLink.name }}
-        </NuxtLink>
-        <ColorModePicker class="mt-auto" />
+          <NuxtLink
+            v-for="navLink in navLinks"
+            :key="navLink.to"
+            :to="navLink.to"
+            class="text-3xl font-semibold w-full hover:text-muted-foreground"
+            active-class="text-foreground"
+          >
+            <Motion as="span" :variants="items">
+              {{ navLink.name }}
+            </Motion>
+          </NuxtLink>
+          <ColorModePicker class="mt-auto" />
+        </Motion>
       </DialogContent>
     </DialogPortal>
   </DialogRoot>
@@ -42,9 +56,31 @@
 const isOpen = ref(false);
 const route = useRoute();
 
+const container = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
+const items = {
+  hidden: {
+    padding: "10px",
+    opacity: 0,
+    filter: "blur(4px)",
+  },
+  visible: {
+    padding: "0px",
+    opacity: 1,
+    filter: "blur(0px)",
+  },
+};
+
 watch(route, () => {
-    isOpen.value = false;
-})
+  isOpen.value = false;
+});
 </script>
 
 <style></style>
