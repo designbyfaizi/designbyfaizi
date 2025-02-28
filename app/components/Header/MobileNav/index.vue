@@ -13,18 +13,7 @@
       >
         <!-- <DialogTitle>Links</DialogTitle>
         <DialogDescription> View Links </DialogDescription> -->
-        <div class="header h-[64px] flex items-center gap-4">
-          <SiteLogo />
-          <DialogClose
-            as="button"
-            class="aqler-button-light aspect-square size-[40px] p-0 flex items-center justify-center"
-            aria-label="Close"
-          >
-            <Icon name="mdi:close" class="size-[24px]" />
-          </DialogClose>
-        </div>
         <Motion
-          as="ul"
           :variants="container"
           initial="hidden"
           animate="visible"
@@ -32,20 +21,53 @@
             type: 'spring',
             staggerChildren: 0.1,
           }"
-          class="flex flex-col gap-2 flex-1 text-muted-foreground/50"
+          class="header h-[64px] flex items-center gap-4"
+        >
+          <NuxtLink to="/">
+            <Motion
+              as="span"
+              :variants="headerItems"
+              class="size-[50px] flex items-center justify-center bg-card rounded-sm border-border aqler-button-light !p-0"
+            >
+              <SiteIconSvg class="size-[32px]" />
+            </Motion>
+          </NuxtLink>
+          <DialogClose as="button" aria-label="Close">
+            <Motion
+              as="span"
+              :variants="navItems"
+              class="aqler-button-light aspect-square size-[40px] p-0 flex items-center justify-center"
+            >
+              <Icon name="mdi:close" class="size-[24px]" />
+            </Motion>
+          </DialogClose>
+        </Motion>
+        <Motion
+          as="ul"
+          :variants="container"
+          initial="hidden"
+          animate="visible"
+          :transition="{
+            type: 'spring',
+            delayChildren: 0.5,
+            staggerChildren: 0.1,
+          }"
+          class="flex flex-col gap-2 flex-1 text-muted-foreground"
         >
           <NuxtLink
             v-for="navLink in navLinks"
             :key="navLink.to"
             :to="navLink.to"
-            class="text-3xl font-semibold w-full hover:text-muted-foreground"
+            class="text-3xl font-semibold w-full hover:text-foreground/80"
             active-class="text-foreground"
           >
-            <Motion as="span" :variants="items">
+            <Motion as="span" :variants="navItems">
               {{ navLink.name }}
             </Motion>
           </NuxtLink>
-          <ColorModePicker class="mt-auto" />
+          <Motion as="div" class="mt-auto" :variants="navItems">
+            <ColorModePicker />
+          </Motion>
         </Motion>
       </DialogContent>
     </DialogPortal>
@@ -65,7 +87,17 @@ const container = {
   },
 };
 
-const items = {
+const headerItems = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(4px)",
+  },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+  },
+};
+const navItems = {
   hidden: {
     padding: "10px",
     opacity: 0,
