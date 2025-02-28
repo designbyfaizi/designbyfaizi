@@ -167,7 +167,7 @@ useSeoMeta({
   twitterTitle: title,
   twitterDescription: description,
   twitterImage: `blob:https://dash.cloudflare.com/e6ea36da-46e6-463b-9012-660fad88bbd3`,
-  twitterCard: "summary",
+  twitterCard: "summary_large_image",
 });
 useHead({
   htmlAttrs: {
