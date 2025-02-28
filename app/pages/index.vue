@@ -162,11 +162,11 @@ useSeoMeta({
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: `blob:https://dash.cloudflare.com/e6ea36da-46e6-463b-9012-660fad88bbd3`,
+  ogImage: `https://r2.designbyfaizi.com/og_index.jpg`,
   ogUrl: config.public.site_url,
   twitterTitle: title,
   twitterDescription: description,
-  twitterImage: `blob:https://dash.cloudflare.com/e6ea36da-46e6-463b-9012-660fad88bbd3`,
+  twitterImage: `https://r2.designbyfaizi.com/og_index.jpg`,
   twitterCard: "summary_large_image",
 });
 useHead({
