@@ -153,6 +153,34 @@
 </template>
 
 <script lang="ts" setup>
+const config = useRuntimeConfig();
+const title = "Design By Faizi";
+const description =
+  "I am a frontend developer and UI/UX designer, crafting sleek and scalable web experiences.";
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogImage: `${config.public.site_url}/og.jpeg`,
+  ogUrl: config.public.site_url,
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: `${config.public.site_url}/og.jpeg`,
+  twitterCard: "summary",
+});
+useHead({
+  htmlAttrs: {
+    lang: "en",
+  },
+  link: [
+    {
+      rel: "icon",
+      type: "image/png",
+      href: "/favicon.png",
+    },
+  ],
+});
 const email = "faizanullah1999@gmail.com";
 const { text, copy, isSupported } = useClipboard({ source: email });
 const open = ref(false);

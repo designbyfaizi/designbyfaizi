@@ -11,7 +11,6 @@
 
 <script setup>
 const { store } = useColorMode();
-
 useHead({
   script: [
     {
