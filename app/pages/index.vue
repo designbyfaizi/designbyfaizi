@@ -162,11 +162,11 @@ useSeoMeta({
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: `${config.public.site_url}/og.jpeg`,
+  ogImage: `blob:https://dash.cloudflare.com/e6ea36da-46e6-463b-9012-660fad88bbd3`,
   ogUrl: config.public.site_url,
   twitterTitle: title,
   twitterDescription: description,
-  twitterImage: `${config.public.site_url}/og.jpeg`,
+  twitterImage: `blob:https://dash.cloudflare.com/e6ea36da-46e6-463b-9012-660fad88bbd3`,
   twitterCard: "summary",
 });
 useHead({
