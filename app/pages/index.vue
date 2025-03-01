@@ -54,7 +54,7 @@
             as="p"
             class="text-[24px] md:text-[32px] leading-[1em] font-medium"
           >
-            I turn coffee and code into cool things on the internet.
+            I make websites that don’t suck.
           </Motion>
           <div class="flex flex-col md:flex-row items-center gap-2 mt-4">
             <ToastProvider>

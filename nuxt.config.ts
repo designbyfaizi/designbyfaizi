@@ -29,10 +29,10 @@ export default defineNuxtConfig({
     "@/assets/styles/main.css"
   ],
   routeRules: {
-    "/skills": { swr: true },
-    "/skills/**": { swr: true },
-    "/knowledge-hub": { swr: true },
-    "/knowledge-hub/**": { swr: true },
+    "/skills": { isr: true },
+    "/skills/**": { isr: true },
+    "/knowledge-hub": { isr: true },
+    "/knowledge-hub/**": { isr: true },
   },
   devtools: { enabled: true },
   nitro: {
