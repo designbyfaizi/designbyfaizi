@@ -54,20 +54,19 @@
             as="p"
             class="text-[24px] md:text-[32px] leading-[1em] font-medium"
           >
-            I make websites that don’t suck.
+            I make products that work.
           </Motion>
           <div class="flex flex-col md:flex-row items-center gap-2 mt-4">
             <ToastProvider>
-              <Motion
-                :variants="items"
-                as="button"
-                @click="handleClick"
-                class="aqler-button-light flex items-center justify-between gap-4"
-              >
-                <span>
-                  {{ email }}
+              <Motion :variants="items" as="button" @click="handleClick" class="">
+                <span
+                  class="aqler-button-light flex items-center justify-between gap-4"
+                >
+                  <p>
+                    {{ email }}
+                  </p>
+                  <Icon :name="copied ? 'solar:copy-bold-duotone' : 'solar:copy-linear'" class="size-[20px] text-foreground/60" />
                 </span>
-                <Icon name="solar:copy-linear" class="size-[20px] text-foreground/60" />
               </Motion>
               <ToastRoot
                 v-model:open="open"
@@ -90,9 +89,9 @@
                 class="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none"
               />
             </ToastProvider>
-            <NuxtLink to="/contact">
-              <Motion :variants="items" as="button" class="aqler-button font-semibold">
-                Contact Me
+            <NuxtLink to="/contact" class="aqler-press">
+              <Motion :variants="items" as="button">
+                <span class="aqler-button font-semibold"> Contact Me </span>
               </Motion>
             </NuxtLink>
           </div>
@@ -182,7 +181,7 @@ useHead({
   ],
 });
 const email = "faizanullah1999@gmail.com";
-const { text, copy, isSupported } = useClipboard({ source: email });
+const { text, copy, isSupported, copied } = useClipboard({ source: email });
 const open = ref(false);
 const eventDateRef = ref(new Date());
 const timerRef = ref(0);

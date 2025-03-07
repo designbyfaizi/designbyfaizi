@@ -6,25 +6,25 @@
         'bg-neutral-100/80 dark:bg-neutral-900/80 backdrop-blur-lg border-b border-b-neutral-200 dark:border-b-neutral-800',
       ]"
     >
-      <nav class="flex items-center gap-4 flex-1">
-        <SiteLogo />
+      <nav class="flex items-center gap-2 flex-1">
+        <SiteLogo class="me-2" />
         <HeaderMobileNav />
         <NuxtLink
           v-for="(navLink, index) in navLinks"
           :key="navLink.name"
           :to="navLink.to"
           :class="[
-            'text-muted-foreground hover:text-foreground hover:underline hidden md:inline',
+            'text-muted-foreground hover:text-foreground px-3 py-1 rounded-full hidden md:inline aqler-press',
           ]"
-          active-class="!text-foreground underline"
+          active-class="!text-foreground bg-card ring-1 ring-foreground/10"
         >
           {{ navLink.name }}
         </NuxtLink>
       </nav>
       <ClientOnly>
-      <ColorModeDropdown class="hidden md:flex" />
+        <ColorModeDropdown class="hidden md:flex" />
       </ClientOnly>
-      <NuxtLink to="/contact" :class="['aqler-button']">Contact</NuxtLink>
+      <NuxtLink to="/contact" :class="['aqler-button font-semibold']">Contact</NuxtLink>
     </div>
   </header>
   <div class="header-underlay h-[64px] md:h-[70px]"></div>

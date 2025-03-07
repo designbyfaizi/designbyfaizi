@@ -7,7 +7,7 @@
       :class="[
         theme.class,
         store === theme.name ? 'aqler-button' : 'aqler-button-light',
-        'ring-none capitalize flex items-center gap-2',
+        'ring-none capitalize flex items-center gap-2 aqler-press',
       ]"
     >
       <Icon :name="theme.icon" class="size-[24px]" />

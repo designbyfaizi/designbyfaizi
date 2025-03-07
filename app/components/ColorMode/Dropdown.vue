@@ -5,7 +5,7 @@
       as="button"
       @click="toggleHoverCard"
       :class="[
-        'aqler-button-light size-[40px] !px-0 items-center justify-center',
+        'aqler-button-light size-[40px] !px-0 items-center justify-center aqler-press',
         $attrs.class,
       ]"
     >
@@ -13,17 +13,16 @@
     </PopoverTrigger>
     <PopoverPortal>
       <PopoverContent
-        side="bottom"
-        align="end"
-        class="w-[320px] rounded-lg bg-card/80 backdrop-blur-lg p-2 border shadow-sm z-10 border-foreground/20 font-sans"
+        side="left"
+        class="w-[320px] rounded-full bg-card/80 backdrop-blur-lg p-2 border shadow-sm z-10 border-foreground/20 font-sans"
         :side-offset="5"
       >
         <ColorModePicker />
-        <HoverCardArrow
+        <!-- <HoverCardArrow
           class="fill-card stroke-card-foreground/20 -mt-[0.2px]"
           :width="12"
           :height="6"
-        />
+        /> -->
       </PopoverContent>
     </PopoverPortal>
   </PopoverRoot>

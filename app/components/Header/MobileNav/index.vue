@@ -23,11 +23,11 @@
           }"
           class="header h-[64px] flex items-center gap-4"
         >
-          <NuxtLink to="/">
+          <NuxtLink to="/" class="p-2 aqler-press">
             <Motion
               as="span"
               :variants="headerItems"
-              class="size-[50px] flex items-center justify-center bg-card rounded-sm border-border aqler-button-light !p-0"
+              class=""
             >
               <SiteIconSvg class="size-[32px]" />
             </Motion>

@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink to="/" class="aqler-button-light font-bold text-xl px-2">
+  <NuxtLink to="/" class="px-2 aqler-press">
     <NuxtImg
       src="/img/designbyfaizi-logo.svg"
       alt="Design By Faizi"

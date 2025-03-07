@@ -52,15 +52,15 @@ export default defineConfig({
     {
       "aqler-container": "max-w-screen-xl w-full mx-auto px-8",
       "aqler-button": [
-        "bg-primary text-primary-foreground px-4 py-2 rounded-sm",
-        "hover:bg-primary/90 ring ring-transparent hover:ring-primary/20 active:scale-98",
-        "transition-all duration-100"
+        "bg-primary text-primary-foreground px-4 py-2 rounded-full",
+        "hover:bg-primary/90 ring-2 ring-transparent hover:ring-primary/20",
       ],
       "aqler-button-light": [
-        "bg-muted border border-secondary-foreground/10 text-secondary-foreground px-4 py-2 rounded-sm",
-        "hover:bg-secondary/90 ring ring-transparent hover:ring-secondary-foreground/20 active:scale-98",
-        "transition-all duration-100"
-      ]
+        "bg-card border border-secondary-foreground/10 text-secondary-foreground px-4 py-2 rounded-full",
+        "hover:bg-secondary/90 ring-2 ring-transparent hover:ring-secondary-foreground/20",
+        ""
+      ],
+      "aqler-press": "active:scale-98 transition-all duration-100"
     }
   ],
   transformers: [

@@ -1,4 +1,24 @@
-type ThemeName = "light" | "dark" | "auto"
+type ThemeName = "light" | "dark" | "auto";
+
+type PayloadResponse<T> = {
+    docs: T[];
+    hasNextPage: boolean;
+    nasPrevpage: boolean;
+    limit: number;
+    nextPage: any | null;
+    page: number;
+    pagingCounter: number;
+    prevPage: any | null;
+    totalDocs: number;
+    totalPages: number
+}
+
+type SkillCategory = {
+    id: number;
+    name: string;
+    enabled?: boolean;
+    skills: any[];
+}
 
 type NotionPage = {
     object: "page";
