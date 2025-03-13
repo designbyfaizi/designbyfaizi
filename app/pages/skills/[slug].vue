@@ -17,12 +17,12 @@
           <span> Back </span>
         </NuxtLink>
         <div class="font-bold text-4xl uppercase">
-          <h1 class="">{{ data?.categoryTitle }}</h1>
+          <h1 class="">{{ data?.name }}</h1>
         </div>
       </GeneralHeroSection>
       <ul class="flex flex-col divide-y divide-border">
         <li v-for="skill in data?.skills" class="py-2">
-          {{ skill.name }}
+          {{ skill?.name }}
         </li>
       </ul>
     </div>
@@ -32,9 +32,8 @@
 <script lang="ts" setup>
 const { params } = useRoute();
 console.log(params.slug);
-const { data, status, error } = await useFetch(`/api/notion/skills/${params.slug}`, {
-  lazy: true,
-});
+const { data, status, error } = await useFetch(`/api/payload/skill-categories/${params.slug}`);
+const title = `${data?.value?.name} | Design By Faizi`
 </script>
 
 <style></style>

@@ -13,10 +13,10 @@
       <ul v-else class="grid grid-cols-2 gap-4">
         <li v-for="category in categories?.docs" :key="category.id" class="col-span-2 w-full">
           <NuxtLink
-            :to="`/skills`"
+            :to="`/skills/${category?.slug}`"
             class="block w-full p-4 bg-card hover:underline rounded-md hover:bg-card/80 text-left text-xl font-semibold"
           >
-            {{ category.name }}
+            {{ category?.name }}
           </NuxtLink>
         </li>
       </ul>
@@ -28,6 +28,7 @@
 const { data: categories, status, error } = await useFetch("/api/payload/skill-categories", {
   lazy: true,
 });
+const title = "Skills | Design By Faizi"
 
 </script>
 

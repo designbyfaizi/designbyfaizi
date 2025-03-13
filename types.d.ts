@@ -13,11 +13,35 @@ type PayloadResponse<T> = {
     totalPages: number
 }
 
-type SkillCategory = {
-    id: number;
+interface SkillCategory {
+    id: string;
     name: string;
-    enabled?: boolean;
-    skills: any[];
+    slug: string;
+    enabled?: boolean | null;
+    skills?: Skill[] | null;
+    updatedAt: string;
+    createdAt: string;
+}
+
+interface Skill {
+    id: string;
+    name: string;
+    slug: string;
+    enabled?: boolean | null;
+    icon?: string | null;
+    updatedAt: string;
+    createdAt: string;
+  }
+
+interface Client {
+    id: string;
+    name: string;
+    url?: string | null;
+    description?: string | null;
+    enabled?: boolean | null;
+    logo?: string | null;
+    updatedAt: string;
+    createdAt: string;
 }
 
 type NotionPage = {

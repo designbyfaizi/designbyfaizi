@@ -4,12 +4,7 @@ export default defineEventHandler(async (): Promise<PayloadResponse<SkillCategor
 
     try {
         const skill_categories: PayloadResponse<SkillCategory> = await $fetch(api_url);
-        if (!skill_categories?.docs || skill_categories?.docs?.length <= 0) {
-            throw createError({
-                statusCode: 400,
-                statusMessage: "Could not fetch skills"
-            })
-        }
+        console.log({ skill_categories })
         return skill_categories
     }
     catch (error: any) {

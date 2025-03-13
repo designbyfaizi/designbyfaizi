@@ -2,7 +2,7 @@
   <header :class="['fixed top-0 w-full left-1/2 -translate-x-1/2 z-10']">
     <div
       :class="[
-        'flex items-center justify-between gap-4 py-3 px-3 md:px-4 h-[64px] md:h-[70px]',
+        'flex items-center justify-between gap-4 py-3 px-3 md:px-8 h-[64px] md:h-[70px]',
         'bg-neutral-100/80 dark:bg-neutral-900/80 backdrop-blur-lg border-b border-b-neutral-200 dark:border-b-neutral-800',
       ]"
     >

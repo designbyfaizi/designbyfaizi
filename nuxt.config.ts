@@ -8,8 +8,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       site_url: process.env.SITE_URL!,
+      email: 'faizanullah1999@gmail.com'
     },
     api_url: process.env.API_URL!,
+    api_key: process.env.API_KEY!,
     notionSecret: process.env.NOTION_SECRET!,
     notionSkillsId: process.env.NOTION_SKILLS_ID!,
     notionKnowledgeHubId: process.env.NOTION_KNOWLEDGE_HUB_ID!,
@@ -43,6 +45,7 @@ export default defineNuxtConfig({
   image: {
     domains: [
       "designbyfaizi.pages.dev",
+      "designbyfaizi.com"
     ]
   }
 })
