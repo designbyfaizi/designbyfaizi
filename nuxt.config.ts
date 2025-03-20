@@ -26,7 +26,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'reka-ui/nuxt',
     'motion-v/nuxt',
-    'nuxt-og-image'
+    'nuxt-og-image',
+    '@nuxt/fonts'
   ],
   css: [
     "@/assets/styles/main.css"
@@ -47,5 +48,15 @@ export default defineNuxtConfig({
       "designbyfaizi.pages.dev",
       "designbyfaizi.com"
     ]
-  }
+  },
+  components: [
+    {
+      path: "@/components",
+      pathPrefix: true
+    },
+    {
+      path: '@/components/ui',
+      pathPrefix: false
+    }
+  ]
 })

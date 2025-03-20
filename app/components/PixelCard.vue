@@ -63,7 +63,7 @@ onMounted(() => {
   z-index: 1;
 }
 
-.card:hover:before {
+.card:while-hover:before {
   background-position: 100% 100%;
   transform: scale(1.04, 1.04);
 }
@@ -79,7 +79,7 @@ onMounted(() => {
   z-index: 2;
 }
 
-.card:hover > .card-content {
+.card:while-hover > .card-content {
   background-position: -10% 0;
 }
 
@@ -100,7 +100,7 @@ onMounted(() => {
   transition: none;
 }
 
-.card:hover > .card-content > .card-subtitle > .card-subtitle-word {
+.card:while-hover > .card-content > .card-subtitle > .card-subtitle-word {
   opacity: 1;
   transform: translateY(0%) !important;
   transition: opcity, 0ms, transform 200ms cubic-bezier(0.9, 0.06, 0.15, 0.9);

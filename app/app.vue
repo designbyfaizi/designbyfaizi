@@ -20,3 +20,9 @@ useHead({
   ],
 });
 </script>
+
+<style>
+body {
+  font-family: Gabarito, sans-serif;
+}
+</style>

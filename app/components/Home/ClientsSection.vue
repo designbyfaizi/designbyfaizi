@@ -16,7 +16,7 @@
         v-for="client in data?.docs"
         :key="client.id"
         class="bg-card/40 hover:bg-card"
-        :hover="{
+        :while-hover="{
           translate: '0 -4px',
           backgroundColor: 'hsl(var(--card))'
         }"
@@ -45,7 +45,7 @@
         </NuxtLink>
       </Motion>
       <Motion
-        :hover="{
+        :while-hover="{
           scale: 1.01,
         }"
         :transition="{

@@ -101,6 +101,7 @@
 </template>
 
 <script lang="ts" setup>
+import { Motion } from "motion-v";
 const config = useRuntimeConfig();
 const {
   public: { email },
