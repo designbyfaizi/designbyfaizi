@@ -27,7 +27,6 @@ export default defineNuxtConfig({
     'reka-ui/nuxt',
     'motion-v/nuxt',
     'nuxt-og-image',
-    '@nuxt/fonts'
   ],
   css: [
     "@/assets/styles/main.css"

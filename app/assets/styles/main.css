@@ -60,6 +60,7 @@
 body {
   color: hsl(var(--foreground));
   background-color: hsl(var(--background));
+  font-family: Gabarito, sans-serif;
 }
 
 b{

@@ -1,9 +1,10 @@
 <template>
-  <header :class="['fixed top-0 w-full left-1/2 -translate-x-1/2 z-10']">
+  <header :class="['fixed top-0 left-0 right-0 w-full z-10']">
     <div
       :class="[
-        'flex items-center justify-between gap-4 py-3 px-3 md:px-8 h-[64px] md:h-[70px]',
+        'flex items-center justify-between gap-4 px-3 md:px-8 transition-all duration-200',
         'bg-neutral-100/80 dark:bg-neutral-900/80 backdrop-blur-lg border-b border-b-neutral-200 dark:border-b-neutral-800',
+        isScrolled ? 'py-2' : 'py-4'
       ]"
     >
       <nav class="flex items-center gap-2 flex-1">
@@ -29,3 +30,11 @@
   </header>
   <div class="header-underlay h-[64px] md:h-[70px]"></div>
 </template>
+
+<script setup>
+const { y } = useWindowScroll();
+
+const isScrolled = computed(() => {
+  return y.value > 46;
+});
+</script>

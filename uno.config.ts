@@ -5,18 +5,18 @@ export default defineConfig({
     presetWind3({
       dark: 'class'
     }),
-    // presetWebFonts({
-    //   provider: 'google',
-    //   fonts: {
-    //     sans: [
-    //       {
-    //         name: 'Gabarito',
-    //         weights: ['400', '500', '600', '700', '800', '900']
-    //       }
-    //     ],
-    //     mono: ['Fira Code', 'Fira Mono:400,700']
-    //   }
-    // }),
+    presetWebFonts({
+      provider: 'google',
+      fonts: {
+        sans: [
+          {
+            name: 'Gabarito',
+            weights: ['400', '500', '600', '700', '800', '900']
+          }
+        ],
+        mono: ['Fira Code', 'Fira Mono:400,700']
+      }
+    }),
     presetTypography()
   ],
   theme: {
