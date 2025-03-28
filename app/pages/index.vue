@@ -3,12 +3,7 @@
     <HomeHeroSection />
     <HomeDescriptionSection />
     <HomeClientsSection />
-    <section class="aqler-container mt-[100px]">
-    <div class="grid grid-cols-12 gap-4">
-    <PixelCard v-for="card in 3" class="col-span-4" />
-    
-    </div>
-    </section>
+    <HomeSkillsSection />
   </main>
 </template>
 
@@ -41,6 +36,4 @@ useHead({
     },
   ],
 });
-
-
 </script>

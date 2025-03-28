@@ -7,29 +7,24 @@
         digital experiences.
       </p>
     </GeneralHeroSection>
-    <section class="skills-section text-center flex flex-col">
+    <section class="skills-section flex flex-col">
       <div v-if="status === 'pending' && !categories" class="mx-auto"><Loader /></div>
-      <div v-else-if="error && !categories">{{ "Uh-oh! Some Error occured.💀 Check server logs!" }}</div>
-      <ul v-else class="grid grid-cols-2 gap-4">
-        <li v-for="category in categories?.docs" :key="category.id" class="col-span-2 w-full">
-          <NuxtLink
-            :to="`/skills/${category?.slug}`"
-            class="block w-full p-4 bg-card hover:underline rounded-md hover:bg-card/80 text-left text-xl font-semibold"
-          >
-            {{ category?.name }}
-          </NuxtLink>
-        </li>
-      </ul>
+      <div v-else-if="error && !categories">
+        {{ "Uh-oh! Some Error occured.💀 Check server logs!" }}
+      </div>
+      <SkillCategories v-else :categories="categories?.docs" />
     </section>
   </main>
 </template>
 
 <script lang="ts" setup>
-const { data: categories, status, error } = await useFetch("/api/payload/skill-categories", {
-  lazy: true,
-});
-const title = "Skills | Design By Faizi"
-
+const { data: categories, status, error } = await useFetch(
+  "/api/payload/skill-categories",
+  {
+    lazy: true,
+  }
+);
+const title = "Skills | Design By Faizi";
 </script>
 
 <style></style>

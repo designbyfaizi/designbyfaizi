@@ -1,16 +1,25 @@
 <template>
-  <div
+  <component
+    :is="as"
     class="card min-h-[200px] min-w-[200px] border-foreground/10 border-2 border-dashed rounded-lg before:rounded-lg"
   >
     <div class="card-content p-4">
-      <h3 class="card-title text-2xl leading-[40px] mb-10">I know exactly what I'm doing</h3>
-      <h4 ref="_subtitle" class="card-subtitle flex gap-x-1 flex-wrap"></h4>
+      <h3 class="card-title text-2xl leading-[40px] mb-10">{{ title }}</h3>
+      <h4 ref="_subtitle" class="card-subtitle flex gap-x-1 flex-wrap font-normal"></h4>
     </div>
-  </div>
+  </component>
 </template>
 
 <script lang="ts" setup>
-const subtitleText = "But in a much more real sense, I have no idea what I'm doing.";
+type Props = {
+  title: string;
+  subtitle?: string;
+  as?: any;
+};
+const props = withDefaults(defineProps<Props>(), {
+  subtitle: "In a much more real sense, I have no idea what I'm doing.",
+  as: "div",
+});
 const _subtitle = ref<HTMLElement | null>(null);
 
 onMounted(() => {
@@ -28,7 +37,7 @@ onMounted(() => {
 
   const createSubtitle = (text: string) => text.split(" ").map(addWord);
 
-  createSubtitle(subtitleText);
+  createSubtitle(props.subtitle);
 });
 </script>
 
@@ -63,7 +72,7 @@ onMounted(() => {
   z-index: 1;
 }
 
-.card:while-hover:before {
+.card:hover:before {
   background-position: 100% 100%;
   transform: scale(1.04, 1.04);
 }
@@ -79,7 +88,7 @@ onMounted(() => {
   z-index: 2;
 }
 
-.card:while-hover > .card-content {
+.card:hover > .card-content {
   background-position: -10% 0;
 }
 
@@ -100,7 +109,7 @@ onMounted(() => {
   transition: none;
 }
 
-.card:while-hover > .card-content > .card-subtitle > .card-subtitle-word {
+.card:hover > .card-content > .card-subtitle > .card-subtitle-word {
   opacity: 1;
   transform: translateY(0%) !important;
   transition: opcity, 0ms, transform 200ms cubic-bezier(0.9, 0.06, 0.15, 0.9);

@@ -1,5 +1,5 @@
 <template>
-  <section class="pt-[100px] aqler-container space-y-4" ref="scope">
+  <section class="pt-[100px] space-y-4" ref="scope">
     <h1 class="text-4xl font-bold text-center">My Clients</h1>
     <Motion
       as="div"
@@ -9,13 +9,13 @@
         type: 'spring',
         staggerChildren: 0.2,
       }"
-      class="grid w-full grid-cols-12 gap-4 *:rounded-lg *:overflow-hidden *:col-span-4"
+      class="grid w-full grid-cols-12 gap-4 *:rounded-lg *:overflow-hidden *:col-span-12 *:md:col-span-6 *:xl:col-span-4"
     >
       <Motion
         :variants="items"
         v-for="client in data?.docs"
         :key="client.id"
-        class="bg-card/40 hover:bg-card"
+        class="bg-stone-900 hover:bg-stone-800 text-stone-100"
         :while-hover="{
           translate: '0 -4px',
           backgroundColor: 'hsl(var(--card))'
@@ -39,7 +39,7 @@
             class="max-h-[72px]"
           />
           <h2 class="mt-10 text-2xl font-bold">{{ client.name }}</h2>
-          <p class="text-base text-foreground/60">
+          <p class="text-base opacity-60">
             {{ client.description }}
           </p>
         </NuxtLink>
@@ -62,7 +62,7 @@
             class="w-[72px] h-[72px] scale-120 text-foreground/40"
           />
           <h3 class="mt-10 text-2xl font-bold">You?</h3>
-          <p class="text-foreground/60">It could be a start of something big</p>
+          <p class="text-foreground/60 text-balance">Say hello now! It could be a start of something big</p>
         </NuxtLink>
       </Motion>
     </Motion>

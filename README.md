@@ -1,75 +1,10 @@
-# Nuxt Minimal Starter
+### Hello there 👋
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+#### A Frontend Developer by day ☼ and an artist by night ☾
 
-## Setup
+Data Science student at [Philipps University Marburg](https://www.uni-marburg.de);<br>
 
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- ⚙️ I use daily: `.vue`, `.js`, `.html`, `.css`, `.svg`, `.rust`, `.ai`
+- 🌍 I'm mostly active within the **Vue Community**
+- 💅 Designed: [designbyfaizi.com](https://designbyfaizi.com), [Mano Animation Studios](https://manoanimationstudios.com), etc…
+- 💬 `ping` me about **design**, **branding**, **nuxt**, **development**, **design thinking**

@@ -5,8 +5,7 @@
     <div
       class="flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-8 md:gap-16 flex-1"
     >
-      <Motion
-        as="div"
+      <motion.div
         class="logo-container size-[100px] md:size-[180px] rounded-full aspect-square bg-primary flex items-center justify-center"
         :initial="{
           opacity: 0,
@@ -28,9 +27,8 @@
         }"
       >
         <SiteIconSvg class="size-[80px] md:size-[140px] text-background" />
-      </Motion>
-      <Motion
-        as="div"
+      </motion.div>
+      <motion.div
         :variants="container"
         initial="hidden"
         animate="visible"
@@ -41,24 +39,22 @@
         }"
         class="flex flex-col gap-2 max-w-[320px] md:max-w-[500px] w-full"
       >
-        <Motion
+        <motion.h1
           :variants="items"
-          as="h1"
           class="uppercase font-bold text-4xl md:text-5xl tracking-tight text-primary leading-[0.7em]"
         >
           Hi, I'm Faizi
-        </Motion>
-        <Motion
+        </motion.h1>
+        <motion.p
           :variants="items"
-          as="p"
           class="text-[24px] md:text-[32px] leading-[1em] font-medium text-balance"
         >
           I'm a software engineer based in Marburg.
-        </Motion>
+        </motion.p>
         <div class="flex flex-col md:flex-row items-center gap-2 mt-4">
           <ToastProvider>
-            <Motion :variants="items" as="button" @click="handleClick" class="">
-              <span class="aqler-button-light flex items-center justify-between gap-4">
+            <Motion as-child :variants="items" class="">
+              <Button @click="handleClick" variant="soft" class="gap-4">
                 <p>
                   {{ email }}
                 </p>
@@ -66,7 +62,7 @@
                   :name="copied ? 'solar:copy-bold-duotone' : 'solar:copy-linear'"
                   class="size-[20px] text-foreground/60"
                 />
-              </span>
+              </Button>
             </Motion>
             <ToastRoot
               v-model:open="open"
@@ -90,18 +86,18 @@
             />
           </ToastProvider>
           <NuxtLink to="/contact" class="aqler-press">
-            <Motion :variants="items" as="button">
-              <span class="aqler-button font-semibold"> Contact Me </span>
+            <Motion :variants="items" as-child>
+              <Button>Contact Me</Button>
             </Motion>
           </NuxtLink>
         </div>
-      </Motion>
+      </motion.div>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { Motion } from "motion-v";
+import { Motion, motion } from "motion-v";
 const config = useRuntimeConfig();
 const {
   public: { email },

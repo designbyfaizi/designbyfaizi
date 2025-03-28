@@ -3,12 +3,12 @@
     <div
       :class="[
         'flex items-center justify-between gap-4 px-3 md:px-8 transition-all duration-200',
-        'bg-neutral-100/80 dark:bg-neutral-900/80 backdrop-blur-lg border-b border-b-neutral-200 dark:border-b-neutral-800',
-        isScrolled ? 'py-2' : 'py-4'
+        'bg-stone-100/80 dark:bg-stone-900/80 backdrop-blur-lg border-b border-b-stone-200 dark:border-b-stone-800',
+        isScrolled ? 'py-2' : 'py-4',
       ]"
     >
       <nav class="flex items-center gap-2 flex-1">
-        <SiteLogo class="me-2" />
+        <SiteLogo />
         <HeaderMobileNav />
         <NuxtLink
           v-for="(navLink, index) in navLinks"
@@ -25,7 +25,9 @@
       <ClientOnly>
         <ColorModeDropdown class="hidden md:flex" />
       </ClientOnly>
-      <NuxtLink to="/contact" :class="['aqler-button font-semibold']">Contact</NuxtLink>
+      <NuxtLink to="/contact">
+        <Button> Say Hello! </Button>
+      </NuxtLink>
     </div>
   </header>
   <div class="header-underlay h-[64px] md:h-[70px]"></div>

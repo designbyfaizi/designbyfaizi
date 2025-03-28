@@ -4,18 +4,15 @@
     <div v-else-if="error && !data">{{ error.message }}</div>
     <div v-else class="flex flex-col gap-4 w-full">
       <GeneralHeroSection
-        class="relative !flex-row !justify-start !min-h-auto !h-auto !py-6"
+        class="relative lg:!flex-row !justify-start !min-h-auto !h-auto !py-6"
       >
-        <NuxtLink
-          to="/skills"
-          class="bg-foreground/80 text-background hover:bg-foreground p-1 px-3 rounded-sm flex items-center gap-2"
-        >
+        <Button :as="(nuxtLink as string)" to="/skills" variant="soft" size="sm">
           <Icon
             name="material-symbols:arrow-back-ios-new-rounded"
             class="size-[16px] -ms-1"
           />
           <span> Back </span>
-        </NuxtLink>
+        </Button>
         <div class="font-bold text-4xl uppercase">
           <h1 class="">{{ data?.name }}</h1>
         </div>
@@ -30,10 +27,21 @@
 </template>
 
 <script lang="ts" setup>
+const router = useRouter();
+
 const { params } = useRoute();
 console.log(params.slug);
-const { data, status, error } = await useFetch(`/api/payload/skill-categories/${params.slug}`);
-const title = `${data?.value?.name} | Design By Faizi`
+const { data, status, error } = await useFetch(
+  `/api/payload/skill-categories/${params.slug}`
+);
+
+const title = `${data?.value?.name} | Design By Faizi`;
+const nuxtLink = resolveComponent("NuxtLink");
+
+const goBack = () => {
+  if(!history) return 
+  router.push("/skills");
+};
 </script>
 
 <style></style>

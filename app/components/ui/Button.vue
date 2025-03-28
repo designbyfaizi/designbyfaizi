@@ -11,7 +11,7 @@
 import { cva } from "class-variance-authority";
 
 const buttonVariants = cva(
-  "aqler-press inline-flex items-center justify-center leading-none text-base pb-[0.1em] font-semibold ring-offset-background focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "aqler-press inline-flex items-center justify-center leading-none text-base font-semibold ring-offset-background focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -28,11 +28,11 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-10 text-base px-4",
-        sm: "h-9 text-sm px-3",
+        sm: "h-10 text-sm px-3",
         lg: "h-11 text-base px-8",
         xl: "h-12 text-lg  px-10",
         xxl: "h-13 text-xl px-12",
-        icon: "h-10 w-10 aspect-square",
+        icon: "aspect-square",
       },
       radius: {
         default: "rounded-md",

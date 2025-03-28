@@ -1,15 +1,12 @@
 <template>
   <PopoverRoot :open-delay="100" v-model:open="isOpen">
-    <PopoverTrigger
-      aria-label="Change theme"
-      as="button"
-      @click="toggleHoverCard"
-      :class="[
-        'aqler-button-light size-[40px] !px-0 items-center justify-center aqler-press',
-        $attrs.class,
-      ]"
-    >
-      <Icon :name="currentTheme.icon" class="min-w-[24px] min-h-[24px] size-[24px] aspect-square" />
+    <PopoverTrigger aria-label="Change theme" as-child @click="toggleHoverCard">
+      <Button size="icon" class="size-[40px]" variant="soft" :class="[$attrs.class]">
+        <Icon
+          :name="currentTheme.icon"
+          class="min-w-[24px] min-h-[24px] aspect-square"
+        />
+      </Button>
     </PopoverTrigger>
     <PopoverPortal>
       <PopoverContent
@@ -18,11 +15,11 @@
         :side-offset="5"
       >
         <ColorModePicker />
-        <!-- <HoverCardArrow
+        <HoverCardArrow
           class="fill-card stroke-card-foreground/20 -mt-[0.2px]"
-          :width="12"
-          :height="6"
-        /> -->
+          :width="10"
+          :height="8"
+        />
       </PopoverContent>
     </PopoverPortal>
   </PopoverRoot>

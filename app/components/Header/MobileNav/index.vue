@@ -9,7 +9,7 @@
     <DialogPortal>
       <DialogOverlay class="bg-background/80 backdrop-blur-lg fixed inset-0 z-30" />
       <DialogContent
-        class="font-sans fixed top-1/2 left-1/2 h-dvh w-[100vw] translate-x-[-50%] translate-y-[-50%] px-3 pb-3 focus:outline-none z-[100] flex flex-col gap-2"
+        class="font-sans fixed top-1/2 left-1/2 h-dvh w-[100vw] translate-x-[-50%] translate-y-[-50%] px-5 pb-3 focus:outline-none z-[100] flex flex-col gap-2"
       >
         <!-- <DialogTitle>Links</DialogTitle>
         <DialogDescription> View Links </DialogDescription> -->
@@ -21,9 +21,9 @@
             type: 'spring',
             staggerChildren: 0.1,
           }"
-          class="header h-[64px] flex items-center gap-4"
+          :class="['header flex items-center gap-4', isScrolled ? 'py-2' : 'py-4']"
         >
-          <NuxtLink to="/" class="p-2 aqler-press">
+          <NuxtLink to="/" class="aqler-press">
             <Motion
               as="span"
               :variants="headerItems"
@@ -77,6 +77,12 @@
 <script lang="ts" setup>
 const isOpen = ref(false);
 const route = useRoute();
+
+const { y } = useWindowScroll();
+
+const isScrolled = computed(() => {
+  return y.value > 46;
+});
 
 const container = {
   hidden: {
