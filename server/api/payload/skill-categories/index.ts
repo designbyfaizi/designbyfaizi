@@ -1,6 +1,6 @@
 export default defineEventHandler(async (): Promise<PayloadResponse<SkillCategory>> => {
     const config = useRuntimeConfig();
-    const api_url = `${config.api_url}/skill-categories?depth=0&sort=name`;
+    const api_url = `${config.api_url}/skill-categories?depth=1&sort=-name`;
 
     try {
         const skill_categories: PayloadResponse<SkillCategory> = await $fetch(api_url);

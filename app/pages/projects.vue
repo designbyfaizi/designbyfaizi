@@ -1,7 +1,6 @@
 <template>
-  <main class="">
-    <GeneralHeroSection>
-      <h1 class="max-w-screen-sm text-2xl">Projects</h1>
+  <main class="content-grid">
+    <GeneralHeroSection title="Projects">
     </GeneralHeroSection>
   </main>
 </template>

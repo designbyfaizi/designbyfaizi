@@ -1,5 +1,5 @@
 <template>
-  <main class="flex-1 flex flex-col">
+  <main class="content-grid flex-1 flex flex-col">
     <HomeHeroSection />
     <HomeDescriptionSection />
     <HomeClientsSection />

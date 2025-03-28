@@ -1,51 +1,29 @@
 <template>
   <component
     :is="as"
-    class="card min-h-[200px] min-w-[200px] border-foreground/10 border-2 border-dashed rounded-lg before:rounded-lg"
+    class="card min-h-[100px] min-w-[200px] border-foreground/10 border-2 border-dashed rounded-lg before:rounded-lg hover:text-neutral-100 transition-colors duration-200"
   >
-    <div class="card-content p-4">
-      <h3 class="card-title text-2xl leading-[40px] mb-10">{{ title }}</h3>
-      <h4 ref="_subtitle" class="card-subtitle flex gap-x-1 flex-wrap font-normal"></h4>
+    <div class="card-content">
+      <slot></slot>
     </div>
   </component>
 </template>
 
 <script lang="ts" setup>
 type Props = {
-  title: string;
-  subtitle?: string;
   as?: any;
 };
 const props = withDefaults(defineProps<Props>(), {
-  subtitle: "In a much more real sense, I have no idea what I'm doing.",
   as: "div",
 });
 const _subtitle = ref<HTMLElement | null>(null);
-
-onMounted(() => {
-  const createWord = (text: string, index: number) => {
-    const word = document.createElement("span");
-    word.innerHTML = `${text} `;
-    word.classList.add("card-subtitle-word");
-    word.style.transitionDelay = `${index * 40}ms`;
-    return word;
-  };
-
-  const addWord = (text: string, index: number) => {
-    return _subtitle.value?.appendChild(createWord(text, index));
-  };
-
-  const createSubtitle = (text: string) => text.split(" ").map(addWord);
-
-  createSubtitle(props.subtitle);
-});
 </script>
 
 <style>
 .card {
-  --g1: rgb(98, 0, 234);
-  --g2: rgb(236, 64, 122);
-  --g3: rgb(253, 216, 53);
+  --g1: hsl(var(--primary));
+  --g2: hsl(var(--primary));
+  --g3: hsl(var(--primary));
 }
 .card {
   cursor: pointer;
@@ -78,7 +56,7 @@ onMounted(() => {
 }
 
 .card-content {
-  background: radial-gradient(rgb(255, 255, 255, 0.2) 8%, transparent 8%);
+  background: radial-gradient(hsla(var(--primary), 0.2) 8%, transparent 8%);
   background-position: 0% 0%;
   background-size: 3vmin 3vmin;
   width: 100%;

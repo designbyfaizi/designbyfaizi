@@ -9,60 +9,71 @@
         type: 'spring',
         staggerChildren: 0.2,
       }"
-      class="grid w-full grid-cols-12 gap-4 *:rounded-lg *:overflow-hidden *:col-span-12 *:md:col-span-6 *:xl:col-span-4"
+      class="grid w-full grid-cols-12 gap-4 *:rounded-lg *:overflow-hidden *:col-span-12 *:md:col-span-6"
     >
       <Motion
+        as-child
         :variants="items"
         v-for="client in data?.docs"
         :key="client.id"
-        class="bg-stone-900 hover:bg-stone-800 text-stone-100"
-        :while-hover="{
-          translate: '0 -4px',
-          backgroundColor: 'hsl(var(--card))'
-        }"
         :transition="{
           type: 'spring',
           stiffness: 260,
           damping: 10,
-          duration: 0.1
+          duration: 0.1,
         }"
       >
         <NuxtLink
           :to="client.url"
           target="_blank"
-          :class="['client flex flex-col items-start p-8 h-full']"
+          :class="[
+            'client flex flex-col items-start h-full bg-card hover:ring-2 hover:ring-foreground/20 transition-all duration-200',
+          ]"
         >
-          <img
-            v-if="client.logo"
-            :src="client.logo"
-            :alt="client.name"
-            class="max-h-[72px]"
-          />
-          <h2 class="mt-10 text-2xl font-bold">{{ client.name }}</h2>
-          <p class="text-base opacity-60">
-            {{ client.description }}
-          </p>
+          <div class="img-container p-4 py-8 bg-stone-900 w-full">
+            <img
+              v-if="client.logo"
+              :src="client.logo"
+              :alt="client.name"
+              class="max-h-[64px]"
+            />
+          </div>
+          <div class="content p-4">
+            <h2 class="text-2xl font-bold">{{ client.name }}</h2>
+            <p class="text-base opacity-60 text-balance">
+              {{ client.description }}
+            </p>
+          </div>
         </NuxtLink>
       </Motion>
       <Motion
-        :while-hover="{
-          scale: 1.01,
-        }"
+        as-child
         :transition="{
           type: 'spring',
           stiffness: 260,
           damping: 20,
         }"
         :variants="items"
-        class="border-2 border-dashed border-foreground/20 bg-card/20 hover:bg-card"
       >
-        <NuxtLink to="/contact" :class="['flex flex-col p-8 h-full']">
-          <Icon
-            name="material-symbols:help-rounded"
-            class="w-[72px] h-[72px] scale-120 text-foreground/40"
-          />
-          <h3 class="mt-10 text-2xl font-bold">You?</h3>
-          <p class="text-foreground/60 text-balance">Say hello now! It could be a start of something big</p>
+        <NuxtLink
+          to="/contact"
+          :class="[
+            'flex flex-col h-full bg-card/80 hover:ring-2 hover:ring-foreground/20 transition-all duration-200',
+          ]"
+        >
+          <div class="img-container p-4 py-8 bg-primary w-full">
+            <Icon
+              name="fluent-emoji:smiling-face-with-sunglasses"
+              class="w-[64px] h-[64px] text-background"
+            />
+          </div>
+          <div class="content p-4">
+            <h3 class="text-2xl font-bold text-primary">You?</h3>
+            <p class="text-foreground/60 text-balance">
+              It could be a start of something big
+            </p>
+            <Button class="mt-4">Say Hello</Button>
+          </div>
         </NuxtLink>
       </Motion>
     </Motion>
@@ -70,7 +81,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { easeOut, reverseEasing } from 'motion-v';
+import type { easeOut, reverseEasing } from "motion-v";
 
 const { data } = await useFetch("/api/payload/clients");
 const scope = ref(null);

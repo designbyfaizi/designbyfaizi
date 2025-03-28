@@ -1,7 +1,6 @@
 <template>
-  <main class="space-y-4">
-    <GeneralHeroSection>
-      <h1 class="max-w-screen-sm text-2xl text-center">Skills</h1>
+  <main class="space-y-4 content-grid">
+    <GeneralHeroSection title="Skills">
       <p class="">
         A curated list of technologies, tools, and frameworks I use to build seamless
         digital experiences.

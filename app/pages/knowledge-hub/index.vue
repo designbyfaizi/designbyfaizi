@@ -1,7 +1,6 @@
 <template>
-  <main class="space-y-4">
-    <GeneralHeroSection>
-      <h1 class="max-w-screen-sm text-2xl">Knowledge Hub</h1>
+  <main class="space-y-4 content-grid">
+    <GeneralHeroSection title="Knowledge Hub">
       <p>Overflowing with knowledge—no stack required 😉</p>
     </GeneralHeroSection>
     <section class="skills-section text-center flex flex-col">
@@ -11,7 +10,7 @@
         <li
           v-for="blog in blogs"
           :key="blog.slug"
-          class="col-span-6 sm:col-span-3 md:col-span-2 w-full"
+          class="col-span-6 sm:col-span-3 w-full"
         >
           <NuxtLink
             :to="`/knowledge-hub/${blog.slug}`"
@@ -39,9 +38,9 @@
           </NuxtLink>
         </li>
         <li
-          class="border border-dashed bg-foreground/5 border-foreground/20 col-span-6 sm:col-span-3 md:col-span-2 rounded-md flex flex-col items-center justify-center text-center"
+          class="border border-dashed bg-foreground/5 border-foreground/20 col-span-6 sm:col-span-3 p-4 rounded-md flex flex-col items-center justify-center text-center"
         >
-          There is always room for more 😃
+          More coming 😃
         </li>
       </ul>
     </section>

@@ -1,7 +1,6 @@
 <template>
-  <main class="">
-    <GeneralHeroSection>
-      <h1 class="max-w-screen-sm text-2xl">Contact</h1>
+  <main class="mt-10">
+    <GeneralHeroSection title="Contact">
     </GeneralHeroSection>
   </main>
 </template>

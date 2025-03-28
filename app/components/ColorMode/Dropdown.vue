@@ -1,7 +1,7 @@
 <template>
   <PopoverRoot :open-delay="100" v-model:open="isOpen">
     <PopoverTrigger aria-label="Change theme" as-child @click="toggleHoverCard">
-      <Button size="icon" class="size-[40px]" variant="soft" :class="[$attrs.class]">
+      <Button size="icon" class="size-[40px]" variant="ghost" :class="[$attrs.class]">
         <Icon
           :name="currentTheme.icon"
           class="min-w-[24px] min-h-[24px] aspect-square"
