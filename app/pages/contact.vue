@@ -1,5 +1,5 @@
 <template>
-  <main class="mt-10">
+  <main class="content-grid">
     <GeneralHeroSection title="Contact">
     </GeneralHeroSection>
   </main>
