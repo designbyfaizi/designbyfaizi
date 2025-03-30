@@ -2,8 +2,7 @@
   <main class="space-y-4 content-grid">
     <GeneralHeroSection title="Skills">
       <p class="">
-        A curated list of technologies, tools, and frameworks I use to build seamless
-        digital experiences.
+        {{ description }}
       </p>
     </GeneralHeroSection>
     <section class="skills-section flex flex-col">
@@ -23,7 +22,14 @@ const { data, status, error } = await useAsyncData("skills", () =>
 
 console.log({ data: data.value });
 
-const title = "Skills | Design By Faizi";
+const title = "Skills - Design By Faizi";
+const description =
+  "A curated list of technologies, tools, and frameworks I use to build seamless digital experiences.";
+
+useSeoMeta({
+  title,
+  description,
+});
 </script>
 
 <style></style>

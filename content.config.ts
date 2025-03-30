@@ -23,5 +23,17 @@ export default defineContentConfig({
                 }))
             })
         }),
+        clients: defineCollection({
+            type: "page",
+            source: "clients/*.md",
+            schema: z.object({
+                clients: z.array(z.object({
+                    name: z.string(),
+                    description: z.string(),
+                    url: z.string(),
+                    logo: z.string(),
+                }))
+            })
+        })
     }
 })
