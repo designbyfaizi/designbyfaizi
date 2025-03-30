@@ -16,8 +16,12 @@ export default defineContentConfig({
             schema: z.object({
                 name: z.string(),
                 slug: z.string(),
-                icon: z.string(),
+                skills: z.array(z.object({
+                    name: z.string(),
+                    slug: z.string(),
+                    icon: z.string()
+                }))
             })
-        })
+        }),
     }
 })
