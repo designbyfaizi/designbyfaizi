@@ -23,6 +23,12 @@ const { data: categories, status, error } = await useFetch(
     lazy: true,
   }
 );
+const { data } = await useAsyncData("skills", () =>
+  queryCollection("skills").order("name", "DESC").all()
+);
+
+console.log({ data: data.value });
+
 const title = "Skills | Design By Faizi";
 </script>
 
