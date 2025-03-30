@@ -16,6 +16,7 @@
     "@notionhq/client": "^2.2.16",
     "@nuxt/icon": "1.10.3",
     "@nuxt/image": "1.9.0",
+    "@nuxthq/studio": "2.2.1",
     "@unocss/reset": "^66.0.0",
     "@vueuse/nuxt": "12.7.0",
     "class-variance-authority": "^0.7.1",

@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     'reka-ui/nuxt',
     'motion-v/nuxt',
     'nuxt-og-image',
+    '@nuxthq/studio'
   ],
   css: [
     "@/assets/styles/main.css"
