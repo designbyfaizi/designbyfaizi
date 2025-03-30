@@ -1,13 +1,18 @@
 <template>
-  <div class="flex flex-col">
-    <div v-if="status === 'pending'">Loading...</div>
-    <div v-if="error">{{ error }}</div>
-    <div v-else>{{ data }}</div>
-  </div>
+  <ContentRenderer v-if="home" :value="home" />
+  <div v-else>Page not found</div>
 </template>
 
 <script lang="ts" setup>
-const { data, status, error } = await useFetch("/api/test");
+// const { data, status, error } = await useFetch("/api/test");
+const { data: home } = await useAsyncData(() =>
+  queryCollection("content").path("/").first()
+);
+
+useSeoMeta({
+  title: home.value?.title,
+  description: home.value?.description,
+});
 </script>
 
 <style></style>

@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   },
   content: {
     preview: {
-      api: process.env.STUDIO_API ?? 'https://api.nuxt.studio'
+      dev: true
     }
   },
   runtimeConfig: {
@@ -44,7 +44,7 @@ export default defineNuxtConfig({
     "/knowledge-hub": { isr: true },
     "/knowledge-hub/**": { isr: true },
   },
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.ENV === 'DEV' },
   nitro: {
     compatibilityDate: '2024-11-01',
     preset: "cloudflare-pages"
@@ -64,5 +64,10 @@ export default defineNuxtConfig({
       path: '@/components/ui',
       pathPrefix: false
     }
-  ]
+  ],
+  vite: {
+    server: {
+      allowedHosts: true
+    }
+  }
 })
