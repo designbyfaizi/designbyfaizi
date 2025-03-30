@@ -43,13 +43,13 @@
           :variants="items"
           class="uppercase font-bold text-4xl md:text-5xl tracking-tight text-primary leading-[0.7em]"
         >
-          Hi, I'm Faizi
+          {{ hero_heading }}
         </motion.h1>
         <motion.p
           :variants="items"
           class="text-[24px] md:text-[32px] leading-[1em] font-medium text-balance"
         >
-          I'm a software engineer based in Marburg.
+          {{ hero_description }}
         </motion.p>
         <div class="flex flex-col md:flex-row items-center gap-2 mt-4">
           <ToastProvider>
@@ -77,7 +77,7 @@
                 <p
                   class="[grid-area:_description] m-0 text-slate11 text-xs leading-[1.3]"
                 >
-                  faizanullah1999@gmail.com
+                  {{ email }}
                 </p>
               </ToastDescription>
             </ToastRoot>
@@ -85,9 +85,9 @@
               class="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none"
             />
           </ToastProvider>
-          <NuxtLink to="/contact" class="aqler-press">
+          <NuxtLink :to="button_link" class="aqler-press">
             <Motion :variants="items" as-child>
-              <Button>Contact Me</Button>
+              <Button>{{ button_text }}</Button>
             </Motion>
           </NuxtLink>
         </div>
@@ -97,8 +97,30 @@
 </template>
 
 <script lang="ts" setup>
-import { Motion, motion } from "motion-v";
 const config = useRuntimeConfig();
+const props = defineProps({
+  hero_heading: {
+    type: String,
+    default: "Hero Heading",
+  },
+  hero_description: {
+    type: String,
+    default: "Hero Description",
+  },
+  email: {
+    type: String,
+    default: "faizanullah1999@gmail.com",
+  },
+  button_text: {
+    type: String,
+    default: "Button Text",
+  },
+  button_link: {
+    type: String,
+    default: "/",
+  },
+});
+import { Motion, motion } from "motion-v";
 const {
   public: { email },
 } = config;

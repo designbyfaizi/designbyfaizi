@@ -9,18 +9,19 @@
 
 <script lang="ts" setup>
 const config = useRuntimeConfig();
-const title = "Design By Faizi";
-const description =
-  "I am a frontend developer and UI/UX designer, crafting sleek and scalable web experiences.";
+const { data } = await useAsyncData(() =>
+  queryCollection("content").path("/").first()
+);
+
 useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
+  title: data.value?.title,
+  description: data.value?.description,
+  ogTitle: data.value?.title,
+  ogDescription: data.value?.description,
   ogImage: `https://r2.designbyfaizi.com/og_index.jpg`,
   ogUrl: config.public.site_url,
-  twitterTitle: title,
-  twitterDescription: description,
+  twitterTitle: data.value?.title,
+  twitterDescription: data.value?.description,
   twitterImage: `https://r2.designbyfaizi.com/og_index.jpg`,
   twitterCard: "summary_large_image",
 });

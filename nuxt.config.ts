@@ -5,11 +5,6 @@ export default defineNuxtConfig({
     url: process.env.SITE_URL!,
     name: "Design By Faizi"
   },
-  content: {
-    preview: {
-      dev: true
-    }
-  },
   runtimeConfig: {
     public: {
       site_url: process.env.SITE_URL!,
