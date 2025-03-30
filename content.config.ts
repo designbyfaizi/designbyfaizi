@@ -31,7 +31,10 @@ export default defineContentConfig({
                     name: z.string(),
                     description: z.string(),
                     url: z.string(),
-                    logo: z.string(),
+                    logo: z.object({
+                        src: z.string(),
+                        alt: z.string()
+                    })
                 }))
             })
         })
