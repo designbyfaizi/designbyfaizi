@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     url: process.env.SITE_URL!,
     name: "Design By Faizi"
   },
+  ssr: false,
   runtimeConfig: {
     public: {
       site_url: process.env.SITE_URL!,
@@ -26,7 +27,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'reka-ui/nuxt',
     'motion-v/nuxt',
-    'nuxt-og-image',
     '@nuxt/content',
   ],
   css: [
