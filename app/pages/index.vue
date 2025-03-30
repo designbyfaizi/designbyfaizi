@@ -1,7 +1,11 @@
 <template>
   <main class="content-grid flex-1 flex flex-col">
-    <HomeHeroSection />
-    <HomeDescriptionSection />
+    <HomeHeroSection /><HomeHeroSection
+      :hero_heading="(data?.meta.hero_heading as string)"
+      :hero_description="(data?.meta.hero_description as string)"
+      :button_text="(data?.meta.button_text as string)"
+      button_link="/contact"
+    /><HomeDescriptionSection />
     <HomeClientsSection />
     <HomeSkillsSection />
   </main>
@@ -9,9 +13,7 @@
 
 <script lang="ts" setup>
 const config = useRuntimeConfig();
-const { data } = await useAsyncData(() =>
-  queryCollection("content").path("/").first()
-);
+const { data } = await useAsyncData(() => queryCollection("content").path("/").first());
 
 useSeoMeta({
   title: data.value?.title,
