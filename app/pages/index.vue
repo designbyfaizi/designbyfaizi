@@ -1,11 +1,12 @@
 <template>
   <main class="content-grid flex-1 flex flex-col">
-    <HomeHeroSection /><HomeHeroSection
+    <HomeHeroSection
       :hero_heading="(data?.meta.hero_heading as string)"
       :hero_description="(data?.meta.hero_description as string)"
       :button_text="(data?.meta.button_text as string)"
       button_link="/contact"
-    /><HomeDescriptionSection />
+    />
+    <HomeDescriptionSection />
     <HomeClientsSection />
     <HomeSkillsSection />
   </main>
