@@ -1,17 +1,17 @@
 <template>
-  <ContentRenderer v-if="home" :value="home" />
+  <ContentRenderer v-if="data" :value="data" />
   <div v-else>Page not found</div>
 </template>
 
 <script lang="ts" setup>
 // const { data, status, error } = await useFetch("/api/test");
-const { data: home } = await useAsyncData(() =>
-  queryCollection("content").path("/").first()
+const { data } = await useAsyncData(() =>
+  queryCollection("content").path("/test").first()
 );
 
 useSeoMeta({
-  title: home.value?.title,
-  description: home.value?.description,
+  title: data.value?.title,
+  description: data.value?.description,
 });
 </script>
 
