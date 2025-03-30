@@ -33,7 +33,6 @@ export default defineNuxtConfig({
     'motion-v/nuxt',
     'nuxt-og-image',
     '@nuxt/content',
-    '@nuxthq/studio'
   ],
   css: [
     "@/assets/styles/main.css"
