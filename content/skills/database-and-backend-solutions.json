@@ -1,0 +1,41 @@
+{
+    "name": "Database & Backend Solutions",
+    "slug": "database-and-backend-solutions",
+    "skills": [
+        {
+            "name": "MongoDB",
+            "icon": "devicon:mongodb",
+            "slug": "mongodb"
+        },
+        {
+            "name": "Firebase",
+            "icon": "devicon:firebase",
+            "slug": "firebase"
+        },
+        {
+            "name": "Supabase",
+            "icon": "devicon:supabase",
+            "slug": "supabase"
+        },
+        {
+            "name": "MySQL",
+            "icon": "devicon:mysql",
+            "slug": "mysql"
+        },
+        {
+            "name": "PostgreSQL",
+            "icon": "devicon:postgresql",
+            "slug": "postgresql"
+        },
+        {
+            "name": "SQLite",
+            "icon": "devicon:sqlite",
+            "slug": "sqlite"
+        },
+        {
+            "name": "Turso",
+            "icon": "simple-icons:turso",
+            "slug": "turso"
+        }
+    ]
+}

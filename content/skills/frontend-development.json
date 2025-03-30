@@ -1,0 +1,46 @@
+{
+    "name": "Frontend Development",
+    "slug": "frontend-development",
+    "skills": [
+        {
+            "name": "HTML/CSS",
+            "icon": "devicon:html5",
+            "slug": "html-css"
+        },
+        {
+            "name": "JavaScript",
+            "icon": "devicon:javascript",
+            "slug": "javascript"
+        },
+        {
+            "name": "TypeScript",
+            "icon": "devicon:typescript",
+            "slug": "typescript"
+        },
+        {
+            "name": "React.js",
+            "icon": "devicon:react",
+            "slug": "reactjs"
+        },
+        {
+            "name": "Vue.js",
+            "icon": "logos:vue",
+            "slug": "vuejs"
+        },
+        {
+            "name": "Nuxt",
+            "icon": "logos:nuxt-icon",
+            "slug": "nuxt"
+        },
+        {
+            "name": "Next.js",
+            "icon": "devicon:nextjs",
+            "slug": "nextjs"
+        },
+        {
+            "name": "Vite",
+            "icon": "devicon:vitejs",
+            "slug": "vite"
+        }
+    ]
+}

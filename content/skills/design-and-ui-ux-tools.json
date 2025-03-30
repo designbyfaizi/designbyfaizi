@@ -1,0 +1,41 @@
+{
+    "name": "Design & UI/UX Tools",
+    "slug": "design-and-ui-ux-tools",
+    "skills": [
+        {
+            "name": "Figma",
+            "icon": "devicon:figma",
+            "slug": "figma"
+        },
+        {
+            "name": "Adobe Illustrator",
+            "icon": "devicon:illustrator",
+            "slug": "adobe-illustrator"
+        },
+        {
+            "name": "Adobe Photoshop",
+            "icon": "devicon:photoshop",
+            "slug": "adobe-photoshop"
+        },
+        {
+            "name": "Adobe XD",
+            "icon": "logos:adobe-xd",
+            "slug": "adobe-xd"
+        },
+        {
+            "name": "Inkscape",
+            "icon": "devicon:inkscape",
+            "slug": "inkscape"
+        },
+        {
+            "name": "Affinity Designer",
+            "icon": "vscode-icons:file-type-affinitydesigner",
+            "slug": "affinity-designer"
+        },
+        {
+            "name": "Affinity Photo",
+            "icon": "vscode-icons:file-type-affinityphoto",
+            "slug": "affinity-photo"
+        }
+    ]
+}

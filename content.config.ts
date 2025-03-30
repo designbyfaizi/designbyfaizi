@@ -18,8 +18,8 @@ export default defineContentConfig({
                 slug: z.string(),
                 skills: z.array(z.object({
                     name: z.string(),
-                    slug: z.string(),
-                    icon: z.string()
+                    icon: z.string(),
+                    slug: z.string()
                 }))
             })
         }),

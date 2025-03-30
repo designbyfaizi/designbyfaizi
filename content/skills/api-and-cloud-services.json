@@ -1,0 +1,16 @@
+{
+    "name": "API & Cloud Services",
+    "slug": "api-and-cloud-services",
+    "skills": [
+        {
+            "name": "Google Cloud API",
+            "icon": "logos:google-cloud",
+            "slug": "google-cloud-api"
+        },
+        {
+            "name": "Google Maps API",
+            "icon": "logos:google-maps",
+            "slug": "google-maps-api"
+        }
+    ]
+}

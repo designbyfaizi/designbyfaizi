@@ -7,23 +7,17 @@
       </p>
     </GeneralHeroSection>
     <section class="skills-section flex flex-col">
-      <div v-if="status === 'pending' && !categories" class="mx-auto"><Loader /></div>
-      <div v-else-if="error && !categories">
+      <div v-if="status === 'pending' && !data" class="mx-auto"><Loader /></div>
+      <div v-else-if="error && !data">
         {{ "Uh-oh! Some Error occured.💀 Check server logs!" }}
       </div>
-      <SkillCategories v-else :categories="categories?.docs" />
+      <SkillCategories v-else :categories="data" />
     </section>
   </main>
 </template>
 
 <script lang="ts" setup>
-const { data: categories, status, error } = await useFetch(
-  "/api/payload/skill-categories",
-  {
-    lazy: true,
-  }
-);
-const { data } = await useAsyncData("skills", () =>
+const { data, status, error } = await useAsyncData("skills", () =>
   queryCollection("skills").order("name", "DESC").all()
 );
 

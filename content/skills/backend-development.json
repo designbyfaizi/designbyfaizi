@@ -1,0 +1,21 @@
+{
+    "name": "Backend Development",
+    "slug": "backend-development",
+    "skills": [
+        {
+            "name": "Node.js",
+            "icon": "logos:nodejs-icon",
+            "slug": "nodejs"
+        },
+        {
+            "name": "Express.js",
+            "icon": "simple-icons:express",
+            "slug": "express"
+        },
+        {
+            "name": "Nest.js",
+            "icon": "devicon:nestjs",
+            "slug": "nestjs"
+        }
+    ]
+}

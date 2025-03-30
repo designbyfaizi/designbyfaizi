@@ -1,0 +1,46 @@
+{
+    "name": "CMS",
+    "slug": "cms",
+    "skills": [
+        {
+            "name": "Wordpress",
+            "icon": "skill-icons:wordpress",
+            "slug": "wordpress"
+        },
+        {
+            "name": "Framer",
+            "icon": "simple-icons:framer",
+            "slug": "framer"
+        },
+        {
+            "name": "Webflow",
+            "icon": "simple-icons:webflow",
+            "slug": "webflow"
+        },
+        {
+            "name": "Directus",
+            "icon": "simple-icons:directus",
+            "slug": "directus"
+        },
+        {
+            "name": "Payload",
+            "icon": "simple-icons:payloadcms",
+            "slug": "payload"
+        },
+        {
+            "name": "Sanity",
+            "icon": "devicon:sanity",
+            "slug": "sanity"
+        },
+        {
+            "name": "Strapi",
+            "icon": "logos:strapi-icon",
+            "slug": "strapi"
+        },
+        {
+            "name": "Notion CMS",
+            "icon": "devicon:notion",
+            "slug": "notion-cms"
+        }
+    ]
+}

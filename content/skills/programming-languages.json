@@ -1,0 +1,21 @@
+{
+    "name": "Programming Languages",
+    "slug": "programming-languages",
+    "skills":[
+        {
+            "name":"Rust",
+            "icon":"material-icon-theme:rust",
+            "slug":"rust"
+        },
+        {
+            "name": "JavaScript",
+            "icon": "devicon:javascript",
+            "slug": "javascript"
+          },
+          {
+            "name": "TypeScript",
+            "icon": "devicon:typescript",
+            "slug": "typescript"
+          }
+    ]
+}
