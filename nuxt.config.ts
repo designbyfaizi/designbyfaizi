@@ -5,10 +5,15 @@ export default defineNuxtConfig({
     url: process.env.SITE_URL!,
     name: "Design By Faizi"
   },
+  content: {
+    preview: {
+      api: process.env.STUDIO_API ?? 'https://api.nuxt.studio'
+    }
+  },
   runtimeConfig: {
     public: {
       site_url: process.env.SITE_URL!,
-      email: 'faizanullah1999@gmail.com'
+      email: 'faizanullah1999@gmail.com',
     },
     api_url: process.env.API_URL!,
     api_key: process.env.API_KEY!,
@@ -27,6 +32,7 @@ export default defineNuxtConfig({
     'reka-ui/nuxt',
     'motion-v/nuxt',
     'nuxt-og-image',
+    '@nuxt/content',
     '@nuxthq/studio'
   ],
   css: [
