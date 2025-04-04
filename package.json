@@ -10,10 +10,6 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@notion-render/bookmark-plugin": "^0.0.2",
-    "@notion-render/client": "^0.0.2",
-    "@notion-render/hljs-plugin": "^0.0.2",
-    "@notionhq/client": "^2.2.16",
     "@nuxt/content": "^3.4.0",
     "@nuxt/icon": "1.10.3",
     "@nuxt/image": "1.9.0",

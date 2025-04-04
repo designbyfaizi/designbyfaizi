@@ -1,25 +1,25 @@
 <template>
   <main class="space-y-4 content-grid">
-    <GeneralHeroSection title="Knowledge Hub">
-      <p>Overflowing with knowledge—no stack required 😉</p>
+    <GeneralHeroSection title="Blogs">
+      <p>{{ description }}</p>
     </GeneralHeroSection>
     <section class="skills-section text-center flex flex-col">
-      <div v-if="status === 'pending' && !blogs" class="mx-auto"><Loader /></div>
-      <div v-else-if="error && !blogs">{{ error.message }}</div>
+      <div v-if="status === 'pending' && !blog" class="mx-auto"><Loader /></div>
+      <div v-else-if="error && !blog">{{ error.message }}</div>
       <ul v-else class="grid grid-cols-6 gap-4 items-stretch">
         <li
-          v-for="blog in blogs"
-          :key="blog.slug"
+          v-for="_blog in blog"
+          :key="_blog.slug"
           class="col-span-6 sm:col-span-3 w-full"
         >
           <NuxtLink
-            :to="`/knowledge-hub/${blog.slug}`"
+            :to="_blog.path"
             class="block w-full p-2 bg-card group rounded-md hover:bg-card/80 text-left h-full border border-transparent hover:border-foreground/10"
           >
             <div class="flex flex-col">
               <NuxtImg
-                :src="blog.featured_image"
-                :alt="blog.name"
+                :src="_blog.featured_image"
+                :alt="_blog.title"
                 class="w-full object-cover aspect-video rounded-sm bg-background ring ring-2 ring-foreground/10"
                 width="600px"
                 loading="lazy"
@@ -28,10 +28,10 @@
                 <p
                   class="px-3 py-1 bg-foreground/5 w-fit rounded-sm text-foreground/60 text-sm"
                 >
-                  {{ blog.publish_date }}
+                  {{ new Date(_blog.created_at)?.toISOString().split("T")[0] }}
                 </p>
                 <h3 class="font-normal text-lg group-hover:underline">
-                  {{ blog.name }}
+                  {{ _blog.title }}
                 </h3>
               </div>
             </div>
@@ -48,7 +48,24 @@
 </template>
 
 <script lang="ts" setup>
-const { data: blogs, status, error } = await useFetch("/api/notion/blogs", {
-  lazy: true,
+const { data: blog, error, status } = await useAsyncData("blog", () => {
+  return queryCollection("blog").all();
+});
+
+const config = useRuntimeConfig();
+const title = "Blogs - Design by Faizi";
+const description = "Have a look at my writings.";
+
+useSeoMeta({
+  title: title,
+  description: description,
+  ogTitle: title,
+  ogDescription: description,
+  ogImage: `https://r2.designbyfaizi.com/og_index.jpg`,
+  ogUrl: config.public.site_url,
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: `https://r2.designbyfaizi.com/og_index.jpg`,
+  twitterCard: "summary_large_image",
 });
 </script>

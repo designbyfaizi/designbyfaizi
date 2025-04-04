@@ -13,9 +13,6 @@ export default defineNuxtConfig({
     },
     api_url: process.env.API_URL!,
     api_key: process.env.API_KEY!,
-    notionSecret: process.env.NOTION_SECRET!,
-    notionSkillsId: process.env.NOTION_SKILLS_ID!,
-    notionKnowledgeHubId: process.env.NOTION_KNOWLEDGE_HUB_ID!,
   },
   future: {
     compatibilityVersion: 4
@@ -35,8 +32,8 @@ export default defineNuxtConfig({
   routeRules: {
     "/skills": { isr: true },
     "/skills/**": { isr: true },
-    "/knowledge-hub": { isr: true },
-    "/knowledge-hub/**": { isr: true },
+    "/blog": { isr: true },
+    "/blog/**": { isr: true },
   },
   devtools: { enabled: process.env.ENV === 'DEV' },
   nitro: {

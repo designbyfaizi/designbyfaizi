@@ -20,15 +20,22 @@ const { data, status, error } = await useAsyncData("skills", () =>
   queryCollection("skills").order("name", "DESC").all()
 );
 
-console.log({ data: data.value });
-
+const config = useRuntimeConfig();
 const title = "Skills - Design By Faizi";
 const description =
   "A curated list of technologies, tools, and frameworks I use to build seamless digital experiences.";
 
-useSeoMeta({
-  title,
-  description,
+  useSeoMeta({
+  title: title,
+  description: description,
+  ogTitle: title,
+  ogDescription: description,
+  ogImage: `https://r2.designbyfaizi.com/og_index.jpg`,
+  ogUrl: config.public.site_url,
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: `https://r2.designbyfaizi.com/og_index.jpg`,
+  twitterCard: "summary_large_image",
 });
 </script>
 

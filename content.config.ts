@@ -6,10 +6,6 @@ export default defineContentConfig({
             type: "page",
             source: "**/*.md"
         }),
-        blog: defineCollection({
-            type: "page",
-            source: "blog/*.md"
-        }),
         skills: defineCollection({
             type: "data",
             source: "skills/**.json",
@@ -37,23 +33,29 @@ export default defineContentConfig({
                 })
             })
         }),
-        blogs: defineCollection({
+        blog: defineCollection({
             type: "page",
-            source: "blogs/*.md",
+            source: "blog/*.md",
             schema: z.object({
                 title: z.string().min(5).max(150),
                 slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
-                content: z.string().min(20),
-                author: z.object({
-                    id: z.string().uuid(),
-                    name: z.string().min(2),
-                    email: z.string().email().optional(),
-                    avatarUrl: z.string().url().optional()
-                }),
+                featured_image: z.string().url().default("https://i.redd.it/e4y2xx4h0k791.jpg"),
+                author: z.string(), // Reference key to author id
                 tags: z.array(z.string().min(1)).optional(),
                 published: z.boolean().default(false),
-                createdAt: z.date(),
-                updatedAt: z.date().optional()
+                created_at: z.date(),
+                updated_at: z.date().optional()
+            })
+        }),
+        authors: defineCollection({
+            type: "data",
+            source: "authors/*.json",
+            schema: z.object({
+                name: z.string().min(2),
+                slug: z.string(),
+                bio: z.string().optional(),
+                email: z.string().email().optional(),
+                avatar_url: z.string().url().optional(),
             })
         })
     }

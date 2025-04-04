@@ -16,7 +16,7 @@ export const navLinks = [
         to: "/skills",
     },
     {
-        name: "Knowledge Hub",
-        to: "/knowledge-hub",
+        name: "Blogs",
+        to: "/blog",
     },
 ];
