@@ -1,7 +1,7 @@
 ---
 title: Why I love UnoCSS
 slug: why-i-love-unocss
-featured_image: /UnoCSS - Instant On-demand Atomic CSS Engine - Reddit Mobile Banner.png
+featured_image: /why-i-love-unocss-banner.png.png
 author: faizi
 tags:
   - intro
@@ -10,8 +10,6 @@ published: true
 created_at: 2025-04-04T00:00:00.000Z
 updated_at: 2025-04-04T00:00:00.000Z
 ---
-
-![UnoCSS - Instant On-demand Atomic CSS Engine - Reddit Mobile Banner.png](/UnoCSS%20-%20Instant%20On-demand%20Atomic%20CSS%20Engine%20-%20Reddit%20Mobile%20Banner.png)
 
 # Why I love UnoCSS
 
