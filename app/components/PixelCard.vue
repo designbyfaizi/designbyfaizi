@@ -56,7 +56,7 @@ const _subtitle = ref<HTMLElement | null>(null);
 }
 
 .card-content {
-  background: radial-gradient(hsla(var(--primary), 0.2) 8%, transparent 8%);
+  background: radial-gradient(hsla(var(--primary-foreground) 90%) 8%, transparent 8%);
   background-position: 0% 0%;
   background-size: 3vmin 3vmin;
   width: 100%;

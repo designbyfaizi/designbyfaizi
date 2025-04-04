@@ -1,0 +1,10 @@
+{
+    "name": "RWZ Flughafentransfer",
+    "slug": "rwz-flughafentransfer",
+    "description": "RWZ Flughafentransfer is a german airport taxi booking system.",
+    "url":"https://rwz-flughafentransfer.de",
+    "logo": {
+        "src": "https://www.rwz-flughafentransfer.de/LightLogo.svg",
+        "alt": "RWZ Flughafentransfer"
+    }
+}

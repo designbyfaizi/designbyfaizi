@@ -14,7 +14,7 @@
       <Motion
         as-child
         :variants="items"
-        v-for="client in data?.docs"
+        v-for="client in data"
         :key="client.id"
         :transition="{
           type: 'spring',
@@ -33,8 +33,8 @@
           <div class="img-container p-4 py-8 bg-stone-900 w-full">
             <img
               v-if="client.logo"
-              :src="client.logo"
-              :alt="client.name"
+              :src="client.logo.src"
+              :alt="client.logo.alt"
               class="max-h-[64px]"
             />
           </div>
@@ -83,7 +83,11 @@
 <script lang="ts" setup>
 import type { easeOut, reverseEasing } from "motion-v";
 
-const { data } = await useFetch("/api/payload/clients");
+const { data, status, error } = await useAsyncData("clients", () =>
+  queryCollection("clients").order("name", "DESC").all()
+);
+
+console.log({ data: data.value });
 const scope = ref(null);
 const isInView = useInView(scope, {
   once: true,
