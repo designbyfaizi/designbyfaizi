@@ -84,7 +84,7 @@
 import type { easeOut, reverseEasing } from "motion-v";
 
 const { data, status, error } = await useAsyncData("clients", () =>
-  queryCollection("clients").order("name", "DESC").all()
+  queryCollection("client").order("name", "DESC").all()
 );
 
 console.log({ data: data.value });

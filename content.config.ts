@@ -6,7 +6,7 @@ export default defineContentConfig({
             type: "page",
             source: "**/*.md"
         }),
-        skills: defineCollection({
+        skill: defineCollection({
             type: "data",
             source: "skills/**.json",
             schema: z.object({
@@ -19,7 +19,7 @@ export default defineContentConfig({
                 }))
             })
         }),
-        clients: defineCollection({
+        client: defineCollection({
             type: "data",
             source: "clients/*.json",
             schema: z.object({
@@ -47,7 +47,7 @@ export default defineContentConfig({
                 updated_at: z.date().optional()
             })
         }),
-        authors: defineCollection({
+        author: defineCollection({
             type: "data",
             source: "authors/*.json",
             schema: z.object({

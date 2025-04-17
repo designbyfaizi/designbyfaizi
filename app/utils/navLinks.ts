@@ -19,4 +19,8 @@ export const navLinks = [
         name: "Blogs",
         to: "/blog",
     },
+    {
+        name: "Art",
+        to: "/art",
+    },
 ];
