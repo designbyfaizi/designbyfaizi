@@ -8,9 +8,7 @@
     <NoiseTexture />
   </div>
 </template>
-
 <script setup>
-const { store } = useColorMode();
 useHead({
   script: [
     {
@@ -21,5 +19,4 @@ useHead({
 });
 </script>
 
-<style>
-</style>
+<style></style>

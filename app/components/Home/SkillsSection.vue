@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 const { data, status, error } = await useAsyncData("skills", () =>
-  queryCollection("skills").order("name", "DESC").all()
+  queryCollection("skill").order("name", "DESC").all()
 );
 </script>
 

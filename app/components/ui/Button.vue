@@ -2,16 +2,19 @@
   <component
     :is="as"
     :class="cn(buttonVariants({ variant, size, radius }), $attrs.class ?? '')"
+    :whileHover="{ scale: 1.02 }"
+    :whilePress="{ scale: 0.98 }"
   >
     <slot />
   </component>
 </template>
 
 <script setup lang="ts">
+import { motion } from "motion-v";
 import { cva } from "class-variance-authority";
 
 const buttonVariants = cva(
-  "aqler-press inline-flex items-center justify-center leading-none text-base font-semibold ring-offset-background focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center leading-none text-base font-semibold ring-offset-background focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -23,7 +26,8 @@ const buttonVariants = cva(
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground hover:ring-1 hover:ring-foreground/20",
+        ghost:
+          "hover:bg-accent hover:text-accent-foreground hover:ring-1 hover:ring-foreground/20",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
@@ -52,13 +56,13 @@ const buttonVariants = cva(
 );
 
 type Props = {
-  as?: string;
+  as?: any;
   variant?: NonNullable<Parameters<typeof buttonVariants>[0]>["variant"];
   size?: NonNullable<Parameters<typeof buttonVariants>[0]>["size"];
   radius?: NonNullable<Parameters<typeof buttonVariants>[0]>["radius"];
 };
 
 withDefaults(defineProps<Props>(), {
-  as: "button",
+  as: motion.button,
 });
 </script>

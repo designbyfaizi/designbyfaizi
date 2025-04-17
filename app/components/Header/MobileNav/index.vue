@@ -9,7 +9,7 @@
     <DialogPortal>
       <DialogOverlay class="bg-background/80 backdrop-blur-lg fixed inset-0 z-30" />
       <DialogContent
-        class="font-sans fixed top-1/2 left-1/2 h-dvh w-[100vw] translate-x-[-50%] translate-y-[-50%] px-5 pb-3 focus:outline-none z-[100] flex flex-col gap-2"
+        class="font-sans fixed top-1/2 left-1/2 h-dvh w-[100vw] translate-x-[-50%] translate-y-[-50%] px-6 md:px-8 pb-3 focus:outline-none z-[100] flex flex-col gap-2"
       >
         <!-- <DialogTitle>Links</DialogTitle>
         <DialogDescription> View Links </DialogDescription> -->
@@ -21,14 +21,13 @@
             type: 'spring',
             staggerChildren: 0.1,
           }"
-          :class="['header flex items-center gap-4', isScrolled ? 'py-2' : 'py-4']"
+          :class="[
+            'header flex items-center justify-between gap-4',
+            isScrolled ? 'py-2' : 'py-4',
+          ]"
         >
-          <NuxtLink to="/" class="aqler-press">
-            <Motion
-              as="span"
-              :variants="headerItems"
-              class=""
-            >
+          <NuxtLink to="/" class="aqler-press px-2">
+            <Motion as="span" :variants="headerItems" class="">
               <SiteIconSvg class="size-[32px]" />
             </Motion>
           </NuxtLink>
@@ -49,22 +48,22 @@
           animate="visible"
           :transition="{
             type: 'spring',
-            delayChildren: 0.5,
-            staggerChildren: 0.1,
+            delayChildren: 0.2,
+            staggerChildren: 0.05,
           }"
-          class="flex flex-col gap-2 flex-1 text-muted-foreground"
+          class="flex flex-col gap-2 flex-1 text-foreground/90"
         >
-          <NuxtLink
-            v-for="navLink in navLinks"
-            :key="navLink.to"
-            :to="navLink.to"
-            class="text-3xl font-semibold w-full hover:text-foreground/80"
-            active-class="text-foreground"
-          >
-            <Motion as="span" :variants="navItems">
-              {{ navLink.name }}
-            </Motion>
-          </NuxtLink>
+          <motion.li v-for="navLink in navLinks" :key="navLink.to" :variants="navItems">
+            <NuxtLink
+              :to="navLink.to"
+              class="text-4xl font-semibold w-full hover:text-primary/80"
+              active-class="text-primary"
+            >
+              <span>
+                {{ navLink.name }}
+              </span>
+            </NuxtLink>
+          </motion.li>
           <Motion as="div" class="mt-auto" :variants="navItems">
             <ColorModePicker />
           </Motion>
@@ -75,6 +74,7 @@
 </template>
 
 <script lang="ts" setup>
+import { Motion, motion } from "motion-v";
 const isOpen = ref(false);
 const route = useRoute();
 
@@ -105,12 +105,12 @@ const headerItems = {
 };
 const navItems = {
   hidden: {
-    padding: "10px",
+    paddingLeft: "10px",
     opacity: 0,
     filter: "blur(4px)",
   },
   visible: {
-    padding: "0px",
+    paddingLeft: "0px",
     opacity: 1,
     filter: "blur(0px)",
   },

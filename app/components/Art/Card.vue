@@ -1,6 +1,6 @@
 <template>
   <button class="rounded-2xl overflow-hidden group relative border border-foreground/20">
-    <img
+    <motion.img
       :src="art.image_url"
       :alt="art.name"
       class="group-hover:scale-105 opacity-90 group-hover:opacity-100 transition-all duration-200 aspect-square object-cover relative z-10"
@@ -19,8 +19,11 @@
 </template>
 
 <script lang="ts" setup>
+import { motion } from "motion-v";
+
 type Props = {
   art: {
+    id: string;
     name: string;
     description: string;
     image_url: string;
