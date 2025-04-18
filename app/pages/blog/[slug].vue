@@ -102,7 +102,7 @@ const { data: blog, error, status } = await useAsyncData(
 const { data: author, refresh: refreshAuthor } = await useAsyncData(
   // @ts-ignore
   () => {
-    return queryCollection("authors").where("slug", "=", blog.value?.author).first();
+    return queryCollection("author").where("slug", "=", blog.value?.author).first();
   },
   {
     lazy: true,
