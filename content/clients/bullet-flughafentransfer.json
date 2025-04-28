@@ -1,0 +1,10 @@
+{
+    "name": "Bullet Flughafentransfer",
+    "slug": "bullet-flughafentransfer",
+    "description": "Bullet Flughafentransfer is a german airport taxi booking system.",
+    "url":"https://bullet-flughafentransfer.de",
+    "logo": {
+        "src": "https://www.bullet-flughafentransfer.de/LightLogo.svg",
+        "alt": "Bullet Flughafentransfer Logo"
+    }
+}

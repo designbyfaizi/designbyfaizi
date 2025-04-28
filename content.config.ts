@@ -57,6 +57,15 @@ export default defineContentConfig({
                 email: z.string().email().optional(),
                 avatar_url: z.string().url().optional(),
             })
+        }),
+        art: defineCollection({
+            type: "data",
+            source: "art/*.json",
+            schema: z.object({
+                name: z.string().min(2),
+                description: z.string(),
+                
+            })
         })
     }
 })

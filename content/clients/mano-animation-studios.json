@@ -1,10 +1,10 @@
 {
     "name": "Mano Animation Studios",
     "slug":"mano-animation-studios",
-    "description": "RWZ Flughafentransfer is a german airport taxi booking system.",
+    "description": "Mano Animation Studios is a hand-drawn animation studio based in Pakistan.",
     "url": "https://manoanimationstudios.com",
     "logo": {
         "src": "https://manoanimationstudios.com/wp-content/uploads/2022/04/mano-cat-white.svg",
-        "alt": "Mano Animation Studios"
+        "alt": "Mano Animation Studios Logo"
     }
 }
