@@ -6,7 +6,7 @@
       class="flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-8 md:gap-16 flex-1"
     >
       <motion.div
-        class="logo-container size-[100px] md:size-[180px] rounded-full aspect-square bg-primary flex items-center justify-center"
+        class="logo-container relative size-[100px] md:size-[180px] rounded-full aspect-square bg-card flex items-center justify-center border-dashed border-1 border-foreground/10"
         :initial="{
           opacity: 0,
           scale: 0,
@@ -26,7 +26,42 @@
           },
         }"
       >
-        <SiteIconSvg class="size-[80px] md:size-[140px] text-background" />
+        <div class="w-full h-full overflow-hidden rounded-full">
+          <NuxtImg
+            src="/img/faizan_updated_pic_transparent_bg.png"
+            alt="Faizan's Profile Picture"
+            class="w-full h-full scale-120 !aspect-square object-cover"
+            :height="400"
+          />
+        </div>
+        <div
+          class="absolute small-icons flex gap-2 items-center justify-center left-1/2 -translate-x-1/2 -bottom-4 bg-card/50 backdrop-blur-md w-fit p-2 rounded-full"
+        >
+          <TooltipProvider v-for="country in countries" :key="country.name">
+            <TooltipRoot>
+              <TooltipTrigger>
+                <Icon
+                  :name="country.icon"
+                  class="size-8 outline outline-transparent hover:outline-card-foreground rounded-full outline-1 transition-all duration-200 -outline-offset-1"
+                />
+              </TooltipTrigger>
+              <TooltipPortal>
+                <TooltipContent
+                  side="bottom"
+                  class="data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-grass11 select-none rounded-md bg-card/50 border border-card backdrop-blur-md px-[15px] py-[10px] text-sm leading-none shadow-sm will-change-[transform,opacity]"
+                  :side-offset="5"
+                >
+                  <span>{{ country.description }}</span>
+                  <TooltipArrow
+                    class="fill-card"
+                    :width="12"
+                    :height="6"
+                  />
+                </TooltipContent>
+              </TooltipPortal>
+            </TooltipRoot>
+          </TooltipProvider>
+        </div>
       </motion.div>
       <motion.div
         :variants="container"
@@ -166,6 +201,19 @@ function handleClick() {
     open.value = true;
   }, 100);
 }
+
+const countries = [
+  {
+    name: "Germany",
+    icon: "emojione:flag-for-germany",
+    description: "Hallo, ich lebe in Deutschland 👋",
+  },
+  {
+    name: "Pakistan",
+    icon: "emojione:flag-for-pakistan",
+    description: "My motherland 💚",
+  },
+];
 </script>
 
 <style></style>

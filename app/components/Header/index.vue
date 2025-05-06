@@ -27,7 +27,7 @@
         <ColorModeDropdown class="hidden md:flex" />
       </ClientOnly>
       <NuxtLink to="/contact">
-        <Button> Say Hello! </Button>
+        <Button size="sm"> Say Hello! </Button>
       </NuxtLink>
       <HeaderMobileNav />
     </div>
