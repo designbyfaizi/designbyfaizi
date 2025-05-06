@@ -39,7 +39,7 @@
         >
           <TooltipProvider v-for="country in countries" :key="country.name">
             <TooltipRoot>
-              <TooltipTrigger>
+              <TooltipTrigger as-child class="">
                 <Icon
                   :name="country.icon"
                   class="size-8 outline outline-transparent hover:outline-card-foreground rounded-full outline-1 transition-all duration-200 -outline-offset-1"
