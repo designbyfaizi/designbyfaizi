@@ -1,5 +1,5 @@
 <template>
-  <div class="relative !font-sans min-h-dvh flex flex-col">
+  <div id="app" class="relative min-h-dvh flex flex-col">
     <Header />
     <NuxtLayout>
       <NuxtPage />
@@ -19,4 +19,15 @@ useHead({
 });
 </script>
 
-<style></style>
+<style>
+#app {
+  --font-family: 'Gabarito';
+  font-family: var(--font-family) !important;
+  font-weight: 400;
+  
+  .font-sans {
+    font-family: var(--font-family);
+  }
+}
+
+</style>

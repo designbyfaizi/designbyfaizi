@@ -2,8 +2,8 @@
   <component
     :is="as"
     :class="cn(buttonVariants({ variant, size, radius }), $attrs.class ?? '')"
-    :whileHover="{ scale: 1.02 }"
-    :whilePress="{ scale: 0.98 }"
+    :whileHover="{ scale: animate ? 1.02 : 1 }"
+    :whilePress="{ scale: animate ? 0.98 : 1 }"
   >
     <slot />
   </component>
@@ -14,7 +14,7 @@ import { motion } from "motion-v";
 import { cva } from "class-variance-authority";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center leading-none text-base font-semibold ring-offset-background focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center leading-none text-base font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -60,9 +60,11 @@ type Props = {
   variant?: NonNullable<Parameters<typeof buttonVariants>[0]>["variant"];
   size?: NonNullable<Parameters<typeof buttonVariants>[0]>["size"];
   radius?: NonNullable<Parameters<typeof buttonVariants>[0]>["radius"];
+  animate?: boolean;
 };
 
 withDefaults(defineProps<Props>(), {
   as: motion.button,
+  animate: true,
 });
 </script>

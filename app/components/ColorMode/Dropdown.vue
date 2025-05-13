@@ -11,7 +11,7 @@
     <PopoverPortal>
       <PopoverContent
         side="left"
-        class="w-[320px] rounded-full bg-card/80 backdrop-blur-lg p-2 border shadow-sm z-10 border-foreground/20 font-sans"
+        class="font-sans w-[320px] rounded-full bg-card/80 backdrop-blur-lg p-2 border shadow-sm z-10 border-foreground/20"
         :side-offset="5"
       >
         <ColorModePicker />

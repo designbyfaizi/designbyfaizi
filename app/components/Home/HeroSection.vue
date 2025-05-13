@@ -1,12 +1,41 @@
 <template>
-  <section
-    class="flex flex-col justify-center h-full min-h-[640px] md:min-h-[720px] -mt-[70px]"
-  >
+  <section class="flex flex-col justify-center rounded-xl py-20">
     <div
-      class="flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-8 md:gap-16 flex-1"
+      class="flex flex-col items-center justify-center max-w-lg mx-auto text-center gap-8 flex-1"
     >
-      <motion.div
-        class="logo-container relative size-[100px] md:size-[180px] rounded-full aspect-square bg-card flex items-center justify-center border-dashed border-1 border-foreground/10"
+      <!-- Image -->
+      <NuxtImg
+        src="/img/faizan_updated_pic_transparent_bg.png"
+        alt="Faizan's Profile Picture"
+        class="w-[100px] h-[100px] rounded-full bg-stone-200 !aspect-square object-cover"
+        :height="400"
+      />
+      <!-- Heading -->
+      <h1 class="text-5xl font-800 leading-[1.2em] opacity-80" v-html="hero_heading"></h1>
+      <!-- Paragraph -->
+      <p class="text-muted-foreground">{{ hero_description }}</p>
+      <!-- Buttons -->
+      <div class="flex gap-4 items-center">
+        <NuxtLink :to="`mailto:${email}`">
+          <Button variant="soft" class="gap-4" :animate="false">
+            <p>
+              {{ email }}
+            </p>
+          </Button>
+        </NuxtLink>
+        <NuxtLink :to="button_link">
+          <Button>{{ button_text }}</Button>
+        </NuxtLink>
+      </div>
+      <!-- Availability Text -->
+      <div class="flex gap-2 items-center text-green-500">
+        <div class="dot size-[10px] rounded-full bg-green-500 relative">
+        <div class="absolute inset-0 bg-green-500 animate-ping rounded-full"></div>
+        </div>
+        <p class="font-500">{{ availability_text }}</p>
+      </div>
+      <!-- <motion.div
+        class="image-container relative size-[100px] md:size-[180px] rounded-full aspect-square bg-card flex items-center justify-center border-dashed border-1 border-foreground/10"
         :initial="{
           opacity: 0,
           scale: 0,
@@ -126,7 +155,7 @@
             </Motion>
           </NuxtLink>
         </div>
-      </motion.div>
+      </motion.div> -->
     </div>
   </section>
 </template>
@@ -153,6 +182,10 @@ const props = defineProps({
   button_link: {
     type: String,
     default: "/",
+  },
+  availability_text: {
+    style: String,
+    default: "Available",
   },
 });
 import { Motion, motion } from "motion-v";

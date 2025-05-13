@@ -21,9 +21,9 @@ const _subtitle = ref<HTMLElement | null>(null);
 
 <style>
 .card {
-  --g1: hsl(var(--primary));
-  --g2: hsl(var(--primary));
-  --g3: hsl(var(--primary));
+  --g1: oklch(var(--primary));
+  --g2: oklch(var(--primary));
+  --g3: oklch(var(--primary));
 }
 .card {
   cursor: pointer;

@@ -25,7 +25,14 @@ export default defineNuxtConfig({
     'reka-ui/nuxt',
     'motion-v/nuxt',
     '@nuxt/content',
+    '@nuxt/fonts'
   ],
+  fonts: {
+    defaults: {
+      weights: [400],
+    },
+    provider: "google"
+  },
   css: [
     "@/assets/styles/main.css"
   ],

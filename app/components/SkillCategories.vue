@@ -29,12 +29,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { SkillsCollectionItem } from '@nuxt/content';
+import type { SkillCollectionItem } from '@nuxt/content';
 
 const nuxtLink = resolveComponent("NuxtLink");
 
 type Props = {
-  categories?: SkillsCollectionItem[];
+  categories?: SkillCollectionItem[];
 };
 defineProps<Props>();
 </script>

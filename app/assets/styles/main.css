@@ -1,112 +1,119 @@
 @import url("@unocss/reset/tailwind.css");
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 95%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 346.8 77.2% 49.8%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 346.8 77.2% 49.8%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-  }
+:root {
+  --radius: 0.5rem;
+  --background: 100% 0 0;
+  --foreground: 14.1% 0.005 285.823;
+  --card: 100% 0 0;
+  --card-foreground: 14.1% 0.005 285.823;
+  --popover: 100% 0 0;
+  --popover-foreground: 14.1% 0.005 285.823;
+  --primary: 64.5% 0.246 16.439;
+  --primary-foreground: 96.9% 0.015 12.422;
+  --secondary: 96.7% 0.001 286.375;
+  --secondary-foreground: 21% 0.006 285.885;
+  --muted: 96.7% 0.001 286.375;
+  --muted-foreground: 55.2% 0.016 285.938;
+  --accent: 96.7% 0.001 286.375;
+  --accent-foreground: 21% 0.006 285.885;
+  --destructive: 57.7% 0.245 27.325;
+  --border: 92% 0.004 286.32;
+  --input: 92% 0.004 286.32;
+  --ring: 64.5% 0.246 16.439;
+  --chart-1: 64.6% 0.222 41.116;
+  --chart-2: 60% 0.118 184.704;
+  --chart-3: 39.8% 0.07 227.392;
+  --chart-4: 82.8% 0.189 84.429;
+  --chart-5: 76.9% 0.188 70.08;
+  --sidebar: 98.5% 0 0;
+  --sidebar-foreground: 14.1% 0.005 285.823;
+  --sidebar-primary: 64.5% 0.246 16.439;
+  --sidebar-primary-foreground: 96.9% 0.015 12.422;
+  --sidebar-accent: 96.7% 0.001 286.375;
+  --sidebar-accent-foreground: 21% 0.006 285.885;
+  --sidebar-border: 92% 0.004 286.32;
+  --sidebar-ring: 64.5% 0.246 16.439;
+}
 
-  .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 0 0% 95%;
-    --card: 24 9.8% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 346.8 77.2% 49.8%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 346.8 77.2% 49.8%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
+.dark {
+  --background: 14.1% 0.005 285.823;
+  --foreground: 98.5% 0 0;
+  --card: 21% 0.006 285.885;
+  --card-foreground: 98.5% 0 0;
+  --popover: 21% 0.006 285.885;
+  --popover-foreground: 98.5% 0 0;
+  --primary: 64.5% 0.246 16.439;
+  --primary-foreground: 96.9% 0.015 12.422;
+  --secondary: 27.4% 0.006 286.033;
+  --secondary-foreground: 98.5% 0 0;
+  --muted: 27.4% 0.006 286.033;
+  --muted-foreground: 70.5% 0.015 286.067;
+  --accent: 27.4% 0.006 286.033;
+  --accent-foreground: 98.5% 0 0;
+  --destructive: 70.4% 0.191 22.216;
+  --border: 100% 0 0 / 10%;
+  --input: 100% 0 0 / 15%;
+  --ring: 64.5% 0.246 16.439;
+  --chart-1: 48.8% 0.243 264.376;
+  --chart-2: 69.6% 0.17 162.48;
+  --chart-3: 76.9% 0.188 70.08;
+  --chart-4: 62.7% 0.265 303.9;
+  --chart-5: 64.5% 0.246 16.439;
+  --sidebar: 21% 0.006 285.885;
+  --sidebar-foreground: 98.5% 0 0;
+  --sidebar-primary: 64.5% 0.246 16.439;
+  --sidebar-primary-foreground: 96.9% 0.015 12.422;
+  --sidebar-accent: 27.4% 0.006 286.033;
+  --sidebar-accent-foreground: 98.5% 0 0;
+  --sidebar-border: 100% 0 0 / 10%;
+  --sidebar-ring: 64.5% 0.246 16.439;
 }
 
 body {
-  color: hsl(var(--foreground));
-  background-color: hsl(var(--background));
-  font-family: Gabarito, sans-serif;
-
-  .content-grid {
-    --padding-inline: 2rem;
-    --content-max-width: 1024px;
-    --breakout-max-width: 1080px;
-
-    --breakout-size: calc(
-      (var(--breakout-max-width) - var(--content-max-width)) / 2
-    );
-
-    display: grid;
-    grid-template-columns:
-      [full-width-start] minmax(var(--padding-inline), 1fr)
-      [breakout-start] minmax(0, var(--breakout-size))
-      [content-start] min(
-        100% - (var(--padding-inline) * 2),
-        var(--content-max-width)
-      )
-      [content-end]
-      minmax(0, var(--breakout-size)) [breakout-end]
-      minmax(var(--padding-inline), 1fr) [full-width-end];
-
-    overflow-x: hidden;
-    max-width: 100vw;
-  }
-
-  .content-grid > :not(.breakout, .full-width),
-  .full-width > :not(.breakout, .full-width) {
-    grid-column: content;
-  }
-
-  .content-grid > .breakout {
-    grid-column: breakout;
-  }
-  .content-grid > .full-width {
-    grid-column: full-width;
-
-    display: grid;
-    grid-template-columns: inherit;
-  }
-
-  .content-grid > .full-width.breakout > * {
-    grid-column: breakout;
-  }
+  color: oklch(var(--foreground));
+  background-color: oklch(var(--background));
 }
 
-b {
-  font-weight: 800;
+body .content-grid {
+  --padding-inline: 2rem;
+  --content-max-width: 1024px;
+  --breakout-max-width: 1080px;
+
+  --breakout-size: calc(
+    (var(--breakout-max-width) - var(--content-max-width)) / 2
+  );
+
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--padding-inline), 1fr)
+    [breakout-start] minmax(0, var(--breakout-size))
+    [content-start] min(
+      100% - (var(--padding-inline) * 2),
+      var(--content-max-width)
+    )
+    [content-end]
+    minmax(0, var(--breakout-size)) [breakout-end]
+    minmax(var(--padding-inline), 1fr) [full-width-end];
+
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+.content-grid > .full-width {
+  grid-column: full-width;
+
+  display: grid;
+  grid-template-columns: inherit;
+}
+
+.content-grid > .full-width.breakout > * {
+  grid-column: breakout;
 }

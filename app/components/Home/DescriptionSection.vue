@@ -1,6 +1,7 @@
 <template>
   <section ref="scope" class="pt-4 flex flex-col">
-    <Motion
+  
+    <!-- <Motion
       as="div"
       :initial="{
         opacity: 0,
@@ -47,7 +48,7 @@
         With expertise in modern frameworks and design tools, I build <b>fast</b>,
         <b>intuitive</b>, and <b>visually polished</b> interfaces.
       </Motion>
-    </Motion>
+    </Motion> -->
   </section>
 </template>
 

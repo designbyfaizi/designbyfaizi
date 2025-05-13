@@ -4,11 +4,13 @@
       :hero_heading="(data?.meta.hero_heading as string)"
       :hero_description="(data?.meta.hero_description as string)"
       :button_text="(data?.meta.button_text as string)"
+      :availability_text="(data?.meta.availability_text as string)"
       button_link="/contact"
     />
-    <HomeDescriptionSection />
     <HomeClientsSection />
     <HomeSkillsSection />
+    <!-- <HomeDescriptionSection />
+    <HomeSkillsSection /> -->
   </main>
 </template>
 

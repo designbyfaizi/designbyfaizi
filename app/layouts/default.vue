@@ -7,7 +7,7 @@
 <script lang="ts" setup></script>
 
 <style>
-.grid-bg {
+/* .grid-bg {
 
   --charcoal: var(--foreground);
   background-image: repeating-linear-gradient(
@@ -24,5 +24,5 @@
       transparent 1px,
       transparent 30px
     );
-}
+} */
 </style>
