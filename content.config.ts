@@ -1,7 +1,36 @@
 import { defineCollection, defineContentConfig, z } from "@nuxt/content";
 
+const createBaseSchema = () => z.object({
+    title: z.string(),
+    description: z.string()
+})
+
+const createButtonSchema = () => z.object({
+    label: z.string(),
+    icon: z.string().optional(),
+    to: z.string().optional(),
+    color: z.enum(['primary', 'neutral', 'success', 'warning', 'error', 'info']).optional(),
+    size: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
+    variant: z.enum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link']).optional(),
+    target: z.enum(['_blank', '_self']).optional()
+})
+
+const createProjectSchema = () => z.object({
+    title: z.string().nonempty(),
+    description: z.string().nonempty(),
+    image: z.string().nonempty().editor({ input: "media" }),
+    url: z.string().url().nonempty(),
+    tags: z.array(z.string()),
+    date: z.date()
+})
+
 export default defineContentConfig({
     collections: {
+        project: defineCollection({
+            type: "data",
+            source: "projects/*.yml",
+            schema: createProjectSchema()
+        }),
         content: defineCollection({
             type: "page",
             source: "**/*.md"
@@ -64,7 +93,7 @@ export default defineContentConfig({
             schema: z.object({
                 name: z.string().min(2),
                 description: z.string(),
-                
+
             })
         })
     }

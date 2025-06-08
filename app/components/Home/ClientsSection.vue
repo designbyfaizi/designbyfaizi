@@ -8,7 +8,7 @@
         :to="client.url"
         target="_blank"
         rel="noopener noreferrer"
-        class="col-span-6 sm:col-span-3 lg:col-span-2 flex items-center justify-center py-10 px-4 bg-card hover:bg-accent rounded-xl group"
+        class="min-h-[160px] col-span-6 sm:col-span-3 lg:col-span-2 flex items-center justify-center py-10 px-4 bg-card hover:bg-accent rounded-xl group"
       >
         <NuxtImg
           :src="client.logo.src"
@@ -19,7 +19,7 @@
       </NuxtLink>
       <NuxtLink
         to="/contact"
-        class="border-2 border-dashed border-primary/20 col-span-6 sm:col-span-3 lg:col-span-2 flex flex-col items-center justify-center py-10 px-4 bg-primary/10 rounded-xl group"
+        class="min-h-[160px] border-2 border-dashed border-primary/20 col-span-6 sm:col-span-3 lg:col-span-2 flex flex-col items-center justify-center py-10 px-4 bg-primary/10 rounded-xl group"
       >
         <h2 class="text-2xl font-bold group-hover:hidden flex items-center gap-3">
           <span>You?</span>
@@ -119,6 +119,7 @@ const { data, status, error } = await useAsyncData("clients", () =>
 
 console.log({ data: data.value });
 const scope = ref(null);
+
 const isInView = useInView(scope, {
   once: true,
 });

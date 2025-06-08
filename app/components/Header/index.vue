@@ -39,9 +39,7 @@
       <ClientOnly>
         <ColorModeDropdown class="hidden md:flex" />
       </ClientOnly>
-      <NuxtLink to="/contact">
-        <Button size="sm"> Say Hello! </Button>
-      </NuxtLink>
+        <Button :as="nuxtLink" to="/contact" size="sm"> Say Hello! </Button>
       <HeaderMobileNav />
     </div>
   </header>
@@ -49,6 +47,7 @@
 </template>
 
 <script setup>
+const nuxtLink = resolveComponent("NuxtLink");
 import { Motion, motion } from "motion-v";
 const { y } = useWindowScroll();
 
