@@ -1,0 +1,10 @@
+title: Design By Faizi - Portfolio Website
+description: designbyfaizi is my personal portfolio website that you are viewing this on. This site has gone through many stages of changes and modifications and I keep changing it from time to time.
+image: /img/designbyfaizi-logo.svg
+url: https://designbyfaizi.com
+tags:
+  - Frontend
+  - Vue.js
+  - Nuxt
+  - UnoCSS
+date: '2025'
