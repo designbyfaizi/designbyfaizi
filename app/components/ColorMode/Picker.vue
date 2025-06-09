@@ -1,15 +1,18 @@
 <template>
-  <div class="grid grid-cols-3 gap-2">
+  <div class="flex items-center gap-2">
     <Button
       v-for="theme in themes"
       :key="theme.name"
       :variant="store === theme.name ? 'default' : 'soft'"
       size="sm"
       @click="setTheme(theme.name)"
-      :class="[theme.class, 'ring-none capitalize flex items-center gap-2 aqler-press']"
+      :class="[theme.class, 'ring-none capitalize flex items-center gap-2 p-1 h-fit w-fit']"
+      :title="theme.name"
     >
-      <Icon :name="theme.icon" class="size-[24px]" />
-      <span>
+    <div class="icon-container w-[36px] h-[36px] bg-foreground/10 rounded-full flex *:m-auto">
+      <Icon :name="theme.icon" class="min-w-[24px] min-h-[24px] aspect-square" />
+    </div>
+      <span class="sr-only">
         {{ theme.name }}
       </span>
     </Button>

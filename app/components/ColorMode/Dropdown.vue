@@ -10,8 +10,10 @@
     </PopoverTrigger>
     <PopoverPortal>
       <PopoverContent
-        side="left"
-        class="font-sans w-[320px] rounded-full bg-card/80 backdrop-blur-lg p-2 border shadow-sm z-10 border-foreground/20"
+        side="bottom"
+        align="end"
+        :align-offset="-16"
+        class="font-sans w-fit rounded-full bg-card/80 backdrop-blur-lg p-2 border shadow-sm z-10 border-foreground/20"
         :side-offset="5"
       >
         <ColorModePicker />
