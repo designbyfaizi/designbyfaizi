@@ -3,9 +3,13 @@
     <div class="relative flex flex-col gap-4 z-2">
       <div class="flex flex-col lg:flex-row gap-4">
         <slot name="pre" />
-        <h1 class="max-w-screen-sm font-medium text-4xl lg:text-6xl">{{ title }}</h1>
+        <h1 class="max-w-screen-sm font-medium text-4xl lg:text-6xl font-600">
+          {{ title }}
+        </h1>
       </div>
-      <slot>Cooking...</slot>
+      <div class="*:text-balance max-w-screen-sm">
+        <slot class="text-balance">Cooking...</slot>
+      </div>
     </div>
   </section>
 </template>

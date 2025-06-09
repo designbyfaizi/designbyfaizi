@@ -5,7 +5,7 @@
       <NuxtPage />
     </NuxtLayout>
     <Footer />
-    <NoiseTexture />
+    <NoiseTexture class="opacity-50" />
   </div>
 </template>
 <script setup>
@@ -21,12 +21,15 @@ useHead({
 
 <style>
 #app {
-  --font-family: 'Gabarito';
+  --font-family: 'Manrope';
   font-family: var(--font-family) !important;
   font-weight: 400;
   
   .font-sans {
     font-family: var(--font-family);
+  }
+  .font-manrope {
+    font-family: 'Manrope';
   }
 }
 

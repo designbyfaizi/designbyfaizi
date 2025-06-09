@@ -11,7 +11,7 @@
         <AnimatePresence multiple>
           <DialogOverlay as-child>
             <Motion
-              class="bg-neutral-900/60 backdrop-blur-lg fixed inset-0 z-30"
+              class="bg-stone-900/60 backdrop-blur-lg fixed inset-0 z-30"
               :initial="{ opacity: 0 }"
               :animate="{ opacity: 1 }"
               :exit="{ opacity: 0 }"

@@ -36,7 +36,7 @@
               </div>
             </article>
             <DialogClose
-              class="text-neutral-900 bg-neutral-200 hover:bg-neutral-900 hover:text-neutral-100 focus:shadow-neutral-300 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"
+              class="text-stone-900 bg-stone-200 hover:bg-stone-900 hover:text-stone-100 focus:shadow-stone-300 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"
               aria-label="Close"
             >
               <Icon name="lucide:x" />

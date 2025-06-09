@@ -39,7 +39,7 @@
       <ClientOnly>
         <ColorModeDropdown class="hidden md:flex" />
       </ClientOnly>
-        <Button :as="nuxtLink" to="/contact" size="sm"> Say Hello! </Button>
+      <Button :as="nuxtLink" to="/contact" size="sm"> Say Hello! </Button>
       <HeaderMobileNav />
     </div>
   </header>

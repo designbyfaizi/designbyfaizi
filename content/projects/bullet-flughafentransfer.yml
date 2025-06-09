@@ -1,6 +1,7 @@
 title: Bullet Flughafentransfer
+type: Web App
 description: Created a web application for a german client. The app allows users to book airport transfers and manage their bookings. It includes automatic price calculation, custom forms, and a user-friendly interface.
-image: https://bullet-flughafentransfer.de/LightLogo.svg
+image: https://bullet-flughafentransfer.de/favicon/favicon-96x96.png
 url: https://bullet-flughafentransfer.de
 tags:
   - Frontend

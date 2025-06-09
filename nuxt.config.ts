@@ -1,15 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  site: {
-    url: process.env.SITE_URL!,
-    name: "Design By Faizi"
-  },
   ssr: false,
   runtimeConfig: {
     public: {
       site_url: process.env.SITE_URL!,
       email: 'faizanullah1999@gmail.com',
+      google_sheets_url: process.env.GOOGLE_SHEETS_URL!,
     },
     api_url: process.env.API_URL!,
     api_key: process.env.API_KEY!,
@@ -29,7 +26,7 @@ export default defineNuxtConfig({
   ],
   fonts: {
     defaults: {
-      weights: [400],
+      weights: [100, 200, 300, 400, 500, 600, 700, 800],
     },
     provider: "google"
   },

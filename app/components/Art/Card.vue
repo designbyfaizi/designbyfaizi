@@ -8,7 +8,7 @@
     />
     <div
       :class="[
-        'content text-left absolute z-20 bottom-2 left-2 right-2 text-neutral-900 bg-neutral-100/20 border border-neutral-400/40 backdrop-blur-md',
+        'content text-left absolute z-20 bottom-2 left-2 right-2 text-stone-900 bg-stone-100/20 border border-stone-400/40 backdrop-blur-md',
         'p-4 group-hover:p-2 opacity-0 group-hover:opacity-100 transition-all duration-200 rounded-md',
       ]"
     >

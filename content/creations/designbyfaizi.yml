@@ -1,0 +1,12 @@
+title: Design By Faizi
+type: Website
+description: "'Design By Faizi' is my personal portfolio website that you are viewing this on. This site has gone through many stages of changes and modifications and I keep changing it from time to time."
+image: /img/designbyfaizi-logo.svg
+url: https://designbyfaizi.com
+github_url: https://github.com/designbyfaizi/designbyfaizi
+tags:
+  - Frontend
+  - Vue.js
+  - Nuxt
+  - UnoCSS
+date: '2025'

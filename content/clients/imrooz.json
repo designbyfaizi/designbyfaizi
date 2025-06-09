@@ -1,0 +1,11 @@
+{
+    "name": "Imrooz",
+    "slug": "imrooz",
+    "description": "Imrooz delivers top-tier raw materials, market-leading consumer goods, and cutting-edge media intelligence, driving Pakistan’s industries forward.",
+    "url":"https://imrooz.com",
+    "logo": {
+        "src": "https://imrooz.vercel.app/favicon/web-app-manifest-192x192.png",
+        "alt": "Imrooz Logo"
+    },
+    "date": "2025"
+}

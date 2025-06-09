@@ -1,7 +1,7 @@
 <template>
   <component
     :is="as"
-    class="card min-h-[100px] min-w-[200px] border-foreground/10 border-2 border-dashed rounded-lg before:rounded-lg hover:text-neutral-100 transition-colors duration-200"
+    class="card min-h-[100px] min-w-[200px] border-foreground/10 border-2 border-dashed rounded-lg before:rounded-lg hover:text-stone-100 transition-colors duration-200"
   >
     <div class="card-content">
       <slot></slot>

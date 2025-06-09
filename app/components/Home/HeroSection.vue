@@ -28,7 +28,7 @@
         </NuxtLink>
       </div> -->
       <!-- Availability Text -->
-      <NuxtLink to="/contact" class="flex gap-2 items-center text-green-500 hover:bg-green-500/10 px-3 py-2 rounded-xl cursor-pointer focus:ring ring-green-500/60 outline-none">
+      <NuxtLink to="/contact" class="flex gap-2 items-center text-green-500 hover:bg-green-500/10 px-3 py-2 rounded-xl cursor-pointer focus:ring-1 ring-green-500/60 outline-none">
         <div class="dot size-[10px] rounded-full bg-green-500 relative">
         <div class="absolute inset-0 bg-green-500 animate-ping rounded-full"></div>
         </div>
