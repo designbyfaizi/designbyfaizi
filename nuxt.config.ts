@@ -42,12 +42,12 @@ export default defineNuxtConfig({
   devtools: { enabled: process.env.ENV === 'DEV' },
   nitro: {
     compatibilityDate: '2024-11-01',
-    preset: "cloudflare-pages"
   },
   image: {
     domains: [
       "designbyfaizi.pages.dev",
-      "designbyfaizi.com"
+      "designbyfaizi.com",
+      "site.designbyfaizi.com",
     ]
   },
   components: [
