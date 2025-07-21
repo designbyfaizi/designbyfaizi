@@ -44,11 +44,9 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
   },
   image: {
-    provider: 'static',
     domains: [
-      "designbyfaizi.pages.dev",
-      "designbyfaizi.com",
-      "site.designbyfaizi.com",
+      "https://designbyfaizi.com",
+      "https://site.designbyfaizi.com",
     ]
   },
   components: [
