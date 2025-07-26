@@ -46,7 +46,6 @@ export default defineNuxtConfig({
   image: {
     domains: [
       "https://designbyfaizi.com",
-      "https://site.designbyfaizi.com",
     ]
   },
   components: [
