@@ -23,6 +23,7 @@
     "nuxt": "^3.17.2",
     "nuxt-og-image": "4.1.4",
     "reka-ui": "^2.2.1",
+    "sharp": "^0.34.3",
     "tailwind-merge": "^3.0.2",
     "unstorage": "^1.0.0",
     "vee-validate": "^4.15.0",
