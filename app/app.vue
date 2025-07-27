@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="relative min-h-dvh flex flex-col">
+    <h1 class="sr-only">Faizi</h1>
     <Header />
     <NuxtLayout>
       <NuxtPage />
