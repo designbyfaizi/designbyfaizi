@@ -44,6 +44,7 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
   },
   image: {
+    provider: 'ipx',
     domains: [
       "https://designbyfaizi.com",
     ]
