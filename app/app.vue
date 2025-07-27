@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="relative min-h-dvh flex flex-col">
+    <h1 class="sr-only">Faizi</h1>
     <Header />
     <NuxtLayout>
       <NuxtPage />
@@ -21,16 +22,15 @@ useHead({
 
 <style>
 #app {
-  --font-family: 'Manrope';
+  --font-family: "Manrope";
   font-family: var(--font-family) !important;
   font-weight: 400;
-  
+
   .font-sans {
     font-family: var(--font-family);
   }
   .font-manrope {
-    font-family: 'Manrope';
+    font-family: "Manrope";
   }
 }
-
 </style>
