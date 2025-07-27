@@ -44,9 +44,12 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
   },
   image: {
-    provider: 'ipx',
+    provider: "ipx",
+    ipx:{
+      baseURL: process.env.SITE_URL || 'http://localhost:3000',
+    },
     domains: [
-      "https://designbyfaizi.com",
+      process.env.SITE_URL || 'http://localhost:3000',
     ]
   },
   components: [
