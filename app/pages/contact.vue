@@ -22,7 +22,10 @@
           ></motion.span>
         </button>
       </div>
-      <form @submit.prevent="onSubmit" class="flex flex-col gap-4 mt-4 max-w-sm">
+      <form
+        @submit.prevent="onSubmit"
+        class="flex flex-col gap-4 mt-4 max-w-sm"
+      >
         <input
           name="name"
           v-model="name"
@@ -46,13 +49,12 @@
           placeholder="Message"
           required
         />
-        <pre
+        <p
           v-if="errors.email || errors.message || errors.name"
-          class="text-red-500 p-2 text-xs bg-foreground text-background rounded-xl overflow-x-scroll"
+          class="text-red-400 px-3 py-2 text-sm bg-foreground/10 text-background rounded-xl text-left font-semibold"
         >
-errors: {{ errors }}
-      </pre
-        >
+          {{ `Please fill all the required fields` }}
+        </p>
         <Button
           v-else
           type="submit"
@@ -128,17 +130,19 @@ const finalValues = computed(() => ({
 
 const onSubmit = handleSubmit(async (values) => {
   try {
-    const url = config.public.google_sheets_url;
-    const res = await $fetch(url, {
+    const res = await $fetch("/api/send-message", {
       method: "POST",
-      body: finalValues.value,
-      headers: { "Content-Type": "application/json" },
+      body: {
+        formData: finalValues.value,
+      },
     });
-  } catch (error) {
-    console.error("Error submitting form:", error);
-  } finally {
+
+    console.log({ res });
+
     alert("Form Submitted! Thank you for reaching out!");
     resetForm();
+  } catch (error: any) {
+    console.error("Error submitting form:", error.response);
   }
 });
 
