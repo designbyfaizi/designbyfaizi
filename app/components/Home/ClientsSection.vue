@@ -1,6 +1,6 @@
 <template>
   <section class="pt-[100px] space-y-4" ref="scope">
-    <h1 class="text-4xl font-bold text-center">My Clients</h1>
+    <h1 class="text-4xl font-bold text-center">My Clients, {{ status }}</h1>
     <ul
       class="flex flex-col sm:flex-row items-center justify-center gap-4 relative mx-auto"
     >
