@@ -2,6 +2,7 @@
   <main class="content-grid flex-1 flex flex-col">
     <HomeHeroSection
       :hero_heading="(data?.meta.hero_heading as string)"
+      :hero_subheading="(data?.meta.hero_subheading as string)"
       :hero_description="(data?.meta.hero_description as string)"
       :button_text="(data?.meta.button_text as string)"
       :availability_text="(data?.meta.availability_text as string)"

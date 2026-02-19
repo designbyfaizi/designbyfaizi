@@ -9,7 +9,7 @@
     <DialogPortal>
       <DialogOverlay class="bg-background/80 backdrop-blur-lg fixed inset-0 z-30" />
       <DialogContent
-        class="dialog-content fixed top-1/2 left-1/2 h-dvh w-[100vw] translate-x-[-50%] translate-y-[-50%] px-6 md:px-8 pb-3 focus:outline-none z-[100] flex flex-col gap-2"
+        class=" dialog-content fixed top-1/2 left-1/2 h-dvh w-[100vw] translate-x-[-50%] translate-y-[-50%] px-6 md:px-8 pb-3 focus:outline-none z-[100] flex flex-col gap-2"
       >
         <!-- <DialogTitle>Links</DialogTitle>
         <DialogDescription> View Links </DialogDescription> -->

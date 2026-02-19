@@ -47,7 +47,7 @@ export default defineConfig({
         "hover:bg-secondary/90 ring-2 ring-transparent hover:ring-secondary-foreground/20",
         ""
       ],
-      "aqler-press": "active:scale-98 transition-all duration-100"
+      "aqler-press": "active:scale-98 transition-all duration-100",
     }
   ],
   transformers: [

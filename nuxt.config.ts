@@ -25,10 +25,22 @@ export default defineNuxtConfig({
     '@nuxt/fonts'
   ],
   fonts: {
-    defaults: {
-      weights: [100, 200, 300, 400, 500, 600, 700, 800],
-    },
-    provider: "google"
+    families: [
+      {
+        name: "Cosmic Sans",
+        provider: "local",
+        src: "/fonts/cosmic/cosmic-sans-vf-regular.ttf",
+        weights: [100, 200, 300, 400, 500, 600, 700, 800],
+        styles: ["normal"],
+      },
+      {
+        name: "Cosmic Sans Italic",
+        provider: "local",
+        src: "/fonts/cosmic/cosmic-sans-vf-italic.ttf",
+        weights: [100, 200, 300, 400, 500, 600, 700, 800],
+        styles: ["italic"],
+      }
+    ]
   },
   css: [
     "@/assets/styles/main.css"

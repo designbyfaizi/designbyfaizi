@@ -28,18 +28,31 @@
                 class="max-h-[36px] rounded-lg"
               />
             </div>
-            <div class="rounded-lg w-fit bg-stone-100 dark:bg-stone-800 overflow-hidden">
-              <h3
-                class="type px-2 py-1 w-fit font-medium text-primary/80 text-xs bg-stone-900 dark:bg-stone-950 w-full"
+          </div>
+          <div class="content flex flex-col h-full">
+            <div class="flex items-baseline gap-2">
+              <h2 class="text-xl font-medium">{{ project.title }}</h2>
+              <h3 class="type text-muted-foreground bg-muted px-3 py-1 rounded-full">{{ project.type }}</h3>
+            </div>
+            <p class="text-base opacity-60 text-balance mt-1">
+              {{ project.description }}
+            </p>
+            <ul class="flex flex-row flex-wrap items-center gap-2 w-full mt-auto pt-4">
+              <li
+                class="px-3 py-1 bg-background/40 rounded-full ring-1 ring-foreground/10 text-muted-foreground text-xs font-semibold"
+                v-for="tag in project.tags"
+                :key="tag"
               >
-                {{ project.type }}
-              </h3>
+                {{ tag }}
+              </li>
+            </ul>
+            <div class="rounded-lg w-fit bg-stone-100 dark:bg-stone-800 overflow-hidden mt-4 divide-y divide-muted-foreground/10">
               <NuxtLink
                 v-if="project.url"
                 :to="project.url"
                 target="blank"
                 rel="noopener noreferrer"
-                class="text-xs px-2 py-1 font-semibold text-muted-foreground hover:underline flex items-center flex-wrap gap-1 group"
+                class="text-sm px-2 py-2 font-semibold text-muted-foreground hover:underline flex items-center flex-wrap gap-1 group"
               >
                 <span>
                   {{ project.url.split("https://")[1] }}
@@ -54,7 +67,7 @@
                 :to="project.github_url"
                 target="blank"
                 rel="noopener noreferrer"
-                class="text-xs px-2 py-1 font-semibold text-muted-foreground hover:underline flex items-center flex-wrap gap-1 group"
+                class="text-sm px-2 py-2 font-semibold text-muted-foreground hover:underline flex items-center flex-wrap gap-1 group"
               >
                 <span>
                   {{ "Github" }}
@@ -65,21 +78,6 @@
                 />
               </NuxtLink>
             </div>
-          </div>
-          <div class="content flex flex-col h-full">
-            <h2 class="text-xl font-medium">{{ project.title }}</h2>
-            <p class="text-base opacity-60 text-balance mt-1">
-              {{ project.description }}
-            </p>
-            <ul class="flex flex-row flex-wrap items-center gap-2 w-full mt-auto pt-4">
-              <li
-                class="px-3 py-1 bg-background/40 rounded-full ring-1 ring-foreground/10 text-muted-foreground text-xs font-semibold"
-                v-for="tag in project.tags"
-                :key="tag"
-              >
-                {{ tag }}
-              </li>
-            </ul>
           </div>
         </li>
       </ol>

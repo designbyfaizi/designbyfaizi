@@ -8,7 +8,7 @@
         </h1>
       </div>
       <div class="*:text-balance max-w-screen-sm">
-        <slot class="text-balance">Cooking...</slot>
+        <slot class="text-balance"></slot>
       </div>
     </div>
   </section>

@@ -5,17 +5,20 @@
     >
       <!-- Image -->
       <NuxtImg
-        src="/img/faizan_updated_pic_transparent_bg.png"
+        src="/img/faizi_dp_white_bg.png"
         alt="Faizan's Profile Picture"
         class="w-[80px] h-[80px] rounded-full bg-stone-200 !aspect-square object-cover outline outline-foreground/20 outline-1 outline-offset-2"
         :height="400"
       />
       <!-- Heading -->
-      <h1 class="text-4xl font-800 leading-[1.2em] opacity-80" v-html="hero_heading"></h1>
+      <div class="flex flex-col gap-2">
+        <h1 class="text-4xl font-800 leading-[1.2em] opacity-90" v-html="hero_heading"></h1>
+        <h2 class="text-2xl font-600 leading-[1.2em] opacity-80 text-balance" v-html="hero_subheading"></h2>
+      </div>
       <!-- Paragraph -->
-      <p class="text-muted-foreground">{{ hero_description }}</p>
+      <p class="text-muted-foreground text-balance">{{ hero_description }}</p>
       <!-- Buttons -->
-      <!-- <div class="flex gap-4 items-center">
+      <div class="flex flex-col md:flex-row gap-4 items-center">
         <NuxtLink :to="`mailto:${email}`">
           <Button variant="soft" class="gap-4" :animate="false">
             <p>
@@ -26,13 +29,13 @@
         <NuxtLink :to="button_link">
           <Button>{{ button_text }}</Button>
         </NuxtLink>
-      </div> -->
+      </div>
       <!-- Availability Text -->
       <NuxtLink to="/contact" class="flex gap-2 items-center text-green-500 hover:bg-green-500/10 px-3 py-2 rounded-xl cursor-pointer focus:ring-1 ring-green-500/60 outline-none">
         <div class="dot size-[10px] rounded-full bg-green-500 relative">
         <div class="absolute inset-0 bg-green-500 animate-ping rounded-full"></div>
         </div>
-        <p class="font-500">{{ availability_text }}</p>
+        <p class="font-300 text-sm">{{ availability_text }}</p>
       </NuxtLink>
     </div>
   </section>
@@ -44,6 +47,10 @@ const props = defineProps({
   hero_heading: {
     type: String,
     default: "Hero Heading",
+  },
+  hero_subheading: {
+    type: String,
+    default: "Hero Subheading"
   },
   hero_description: {
     type: String,
@@ -66,7 +73,6 @@ const props = defineProps({
     default: "Available",
   },
 });
-import { Motion, motion } from "motion-v";
 const {
   public: { email },
 } = config;

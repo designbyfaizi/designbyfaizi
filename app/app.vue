@@ -20,8 +20,7 @@ useHead({
 </script>
 
 <style>
-#app {
-  --font-family: "Manrope";
+/* #app {
   font-family: var(--font-family) !important;
   font-weight: 400;
 
@@ -31,5 +30,5 @@ useHead({
   .font-manrope {
     font-family: "Manrope";
   }
-}
+} */
 </style>

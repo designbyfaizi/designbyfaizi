@@ -1,9 +1,9 @@
 <template>
   <main class="content-grid">
-    <GeneralHeroSection title="Get in touch">
+    <GeneralHeroSection title="Get in touch" class="">
       <p>{{ description }}</p>
     </GeneralHeroSection>
-    <section>
+    <section class="bg-card p-4 rounded-xl">
       <div class="tabs flex items-center w-fit gap-4 rounded-xl">
         <button
           @click="activeTab = tab"
@@ -11,6 +11,7 @@
           :key="tab.name"
           class="px-4 py-2 rounded-lg hover:bg-accent relative"
           :class="activeTab?.name === tab.name && 'text-white'"
+          :disabled="isSubmitting"
         >
           <span class="relative z-2 font-medium">
             {{ tab.name }}
@@ -24,7 +25,7 @@
       </div>
       <form
         @submit.prevent="onSubmit"
-        class="flex flex-col gap-4 mt-4 max-w-sm"
+        class="grid grid-cols-6 gap-4 mt-4"
       >
         <input
           name="name"
@@ -33,6 +34,7 @@
           type="text"
           placeholder="Name"
           required
+          class="col-span-6 md:col-span-3"
         />
         <input
           name="email"
@@ -41,6 +43,7 @@
           type="text"
           placeholder="Email"
           required
+          class="col-span-6 md:col-span-3"
         />
         <textarea
           name="message"
@@ -48,21 +51,21 @@
           v-bind="messageAttrs"
           placeholder="Message"
           required
+          class="col-span-6 min-h-[10em]"
         />
-        <p
-          v-if="errors.email || errors.message || errors.name"
-          class="text-red-400 px-3 py-2 text-sm bg-foreground/10 text-background rounded-xl text-left font-semibold"
-        >
-          {{ `Please fill all the required fields` }}
-        </p>
         <Button
-          v-else
-          type="submit"
-          class="w-fit disabled:bg-stone-200 disabled:text-stone-400"
-          :disabled="isSubmitting"
+        type="submit"
+        class="w-fit disabled:bg-stone-200 disabled:text-stone-400"
+        :disabled="isSubmitting || errors.email || errors.message || errors.name || !dataReady"
         >
-          Submit
-        </Button>
+        {{ isSubmitting ? 'Sending...' : 'Submit' }}
+      </Button>
+      <!-- <p
+        v-if="errors.email || errors.message || errors.name"
+        class="text-red-400 px-3 py-2 text-sm bg-foreground/10 text-background rounded-xl text-left font-semibold"
+      >
+        {{ `Please fill all the required fields` }}
+      </p> -->
       </form>
     </section>
   </main>
@@ -70,10 +73,10 @@
 
 <script lang="ts" setup>
 const config = useRuntimeConfig();
-import { useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
-import * as z from "zod";
 import { motion } from "motion-v";
+import { useForm } from "vee-validate";
+import * as z from "zod";
 
 const schema = z.object({
   name: z.string().min(2).max(40),
@@ -127,6 +130,13 @@ const finalValues = computed(() => ({
   email: email.value,
   message: message.value,
 }));
+
+const dataReady = computed(() => {
+  if(finalValues.value.name && finalValues.value.email && finalValues.value.message){
+    return true
+  }
+  return false
+})
 
 const onSubmit = handleSubmit(async (values) => {
   try {

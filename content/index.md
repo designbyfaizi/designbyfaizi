@@ -1,8 +1,9 @@
 ---
 title: Design By Faizi
-description: I am a frontend developer and UI/UX designer, crafting sleek and scalable web experiences.
-hero_heading: Hey, I'm Faizan Ullah<br/>I'm a Frontend Engineer
-hero_description: I craft intuitive digital experiences where design meets functionality. Based in Marburg, bringing ideas to life through code and creativity.
-button_text: Say Hello!
+description: I'm Faizi/Faizan Ullah and this welcome to my personal website. I design and develop stuff.
+hero_heading: Hi, I'm Faizi
+hero_subheading: I design and develop stuff for the web.
+hero_description: I bring cool ideas to life. Say hello to learn more.
+button_text: Hallo!
 availability_text: Available for new projects
 ---
