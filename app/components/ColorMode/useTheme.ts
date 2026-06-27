@@ -7,11 +7,6 @@ type Theme = {
 
 const themes: Theme[] = [
     {
-        name: "auto",
-        icon: "material-symbols-light:computer",
-        class: "col-span-1"
-    },
-    {
         name: "light",
         icon: "mdi:white-balance-sunny",
         class: "col-span-1"
@@ -22,6 +17,8 @@ const themes: Theme[] = [
         class: "col-span-1"
     },
 ]
+
+import { onMounted } from "vue";
 
 export const useTheme = () => {
     const { store } = useColorMode();
@@ -34,6 +31,12 @@ export const useTheme = () => {
         const nextIndex = (currentThemeIndex.value + 1) % themes.length
         store.value = (themes as Theme[])[nextIndex]?.name!
     }
+
+    onMounted(() => {
+        if (!themes.some(theme => theme.name === store.value)) {
+            store.value = "light"
+        }
+    })
 
     const currentThemeIndex = computed(() => {
         return themes.findIndex(icon => icon.name === store.value)

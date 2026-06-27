@@ -1,7 +1,7 @@
-@import url("@unocss/reset/tailwind.css");
+@import url("@unocss/reset/tailwind-v4.css");
 
 :root {
-  --font-family: "Cosmic Sans", "Cosmic Sans Italic", sans-serif;
+  --font-family: "Outfit", sans-serif;
   --radius: 0.5rem;
   --background: 100% 0 0;
   --foreground: 14.1% 0.005 285.823;
@@ -78,12 +78,7 @@ body {
   font-weight: 400;
 }
 
-.font-cosmic{
-  font-style: "Cosmic Sans", sans-serif !important;
-}
-
-.italic{
-  font-family: "Cosmic Sans Italic", sans-serif;
+.italic {
   font-style: italic;
 }
 

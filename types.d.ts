@@ -1,4 +1,9 @@
-type ThemeName = "light" | "dark" | "auto";
+type ThemeName = "light" | "dark";
+
+declare module "*.svg?raw" {
+    const content: string;
+    export default content;
+}
 
 type PayloadResponse<T> = {
     docs: T[];
