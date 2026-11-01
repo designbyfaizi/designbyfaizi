@@ -1,108 +1,154 @@
-import { defineCollection, defineContentConfig, z } from "@nuxt/content";
+import { defineCollection, defineContentConfig } from "@nuxt/content";
+import { z } from "zod";
 
-const createBaseSchema = () => z.object({
-    title: z.string(),
-    description: z.string()
-})
+const pageIntro = z.object({ heading: z.string(), intro: z.string() });
 
-const createProjectSchema = () => z.object({
-    title: z.string().nonempty(),
-    type: z.string().nonempty(),
-    description: z.string().nonempty(),
-    image: z.string().nonempty().editor({ input: "media" }),
-    url: z.string().url().nonempty(),
-    tags: z.array(z.string()),
-    date: z.date()
-})
-
-const createCreationSchema = () => z.object({
-    title: z.string().nonempty(),
-    type: z.string().nonempty(),
-    description: z.string().nonempty(),
-    image: z.string().nonempty().editor({ input: "media" }),
-    url: z.string().url().optional(),
-    github_url: z.string().url().optional(),
-    tags: z.array(z.string()),
-    date: z.date()
-})
+const date = z.coerce.date();
 
 export default defineContentConfig({
-    collections: {
-        project: defineCollection({
-            type: "data",
-            source: "projects/*.yml",
-            schema: createProjectSchema()
+  collections: {
+    site: defineCollection({
+      type: "data",
+      source: "site.yml",
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        name: z.string(),
+        nickname: z.string(),
+        bio: z.string(),
+        email: z.string().email(),
+        location: z.string(),
+        timezone: z.string(),
+        footer: z.string(),
+        socials: z.array(z.object({ label: z.string(), url: z.string() })),
+        hero: z.object({
+          greeting: z.string(),
+          statement: z.string(),
+          avatar: z.string(),
+          avatar_alt: z.string(),
+          button_text: z.string(),
+          available: z.boolean(),
+          availability_text: z.string(),
         }),
-        creation: defineCollection({
-            type: "data",
-            source: "creations/*.yml",
-            schema: createCreationSchema()
+        marquee: z.array(z.string()),
+        intro: z.object({
+          title: z.string(),
+          statement: z.string(),
+          note: z.string(),
+          photo: z.string(),
+          photo_alt: z.string(),
+          button_text: z.string(),
         }),
-        content: defineCollection({
-            type: "page",
-            source: "**/*.md"
+        process: z.object({
+          title: z.string(),
+          steps: z.array(z.object({ title: z.string(), text: z.string() })),
         }),
-        skill: defineCollection({
-            type: "data",
-            source: "skills/**.json",
-            schema: z.object({
-                name: z.string(),
-                slug: z.string(),
-                skills: z.array(z.object({
-                    name: z.string(),
-                    icon: z.string(),
-                    slug: z.string()
-                }))
-            })
+        terminal: z.object({
+          title: z.string(),
+          note: z.string(),
+          os: z.string(),
+          kernel: z.string(),
+          wm: z.string(),
+          shell: z.string(),
+          uptime: z.string(),
+          cpu: z.string(),
+          motto: z.string(),
         }),
-        client: defineCollection({
-            type: "data",
-            source: "clients/*.json",
-            schema: z.object({
-                name: z.string(),
-                slug: z.string(),
-                description: z.string(),
-                url: z.string(),
-                logo: z.object({
-                    src: z.string(),
-                    alt: z.string()
-                }),
-                date: z.date()
-            })
+        sections: z.object({
+          work: z.string(),
+          skills: z.string(),
+          clients: z.string(),
+          art: z.string(),
+          art_note: z.string(),
+          journal: z.string(),
         }),
-        blog: defineCollection({
-            type: "page",
-            source: "blog/*.md",
-            schema: z.object({
-                title: z.string().min(5).max(150),
-                slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
-                featured_image: z.string().url().default("https://i.redd.it/e4y2xx4h0k791.jpg"),
-                author: z.string(), // Reference key to author id
-                tags: z.array(z.string().min(1)).optional(),
-                published: z.boolean().default(false),
-                created_at: z.date(),
-                updated_at: z.date().optional()
-            })
+        closing: z.object({
+          title: z.string(),
+          text: z.string(),
+          button_text: z.string(),
         }),
-        author: defineCollection({
-            type: "data",
-            source: "authors/*.json",
-            schema: z.object({
-                name: z.string().min(2),
-                slug: z.string(),
-                bio: z.string().optional(),
-                email: z.string().email().optional(),
-                avatar_url: z.string().url().optional(),
-            })
-        }),
-        art: defineCollection({
-            type: "data",
-            source: "art/*.json",
-            schema: z.object({
-                name: z.string().min(2),
-                description: z.string(),
-
-            })
-        })
-    }
-})
+        projects: pageIntro,
+        creations: pageIntro,
+        skills: pageIntro,
+        blog: pageIntro,
+        art: pageIntro,
+        contact: pageIntro,
+      }),
+    }),
+    client: defineCollection({
+      type: "data",
+      source: "clients/*.yml",
+      schema: z.object({
+        name: z.string(),
+        logo: z.string(),
+        url: z.string().optional(),
+        order: z.number(),
+      }),
+    }),
+    project: defineCollection({
+      type: "data",
+      source: "projects/*.yml",
+      schema: z.object({
+        title: z.string(),
+        type: z.string(),
+        description: z.string(),
+        image: z.string(),
+        cover: z.string().optional(),
+        url: z.string().url(),
+        tags: z.array(z.string()),
+        date,
+      }),
+    }),
+    creation: defineCollection({
+      type: "data",
+      source: "creations/*.yml",
+      schema: z.object({
+        title: z.string(),
+        type: z.string(),
+        description: z.string(),
+        image: z.string(),
+        url: z.string().url().optional(),
+        github_url: z.string().url().optional(),
+        tags: z.array(z.string()),
+        date,
+      }),
+    }),
+    skill: defineCollection({
+      type: "data",
+      source: "skills/*.yml",
+      schema: z.object({
+        name: z.string(),
+        order: z.number(),
+        skills: z.array(z.object({ name: z.string(), icon: z.string() })),
+      }),
+    }),
+    art: defineCollection({
+      type: "data",
+      source: "art/*.yml",
+      schema: z.object({
+        title: z.string(),
+        series: z.string(),
+        description: z.string(),
+        image: z.string(),
+        link: z.string().optional(),
+        account: z.string().optional(),
+        picked: z.boolean().default(false),
+        order: z.number(),
+      }),
+    }),
+    blog: defineCollection({
+      type: "page",
+      source: "blog/*.md",
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        featured_image: z.string().optional(),
+        tags: z.array(z.string()).optional(),
+        published: z.boolean().default(false),
+        created_at: date,
+        updated_at: date.optional(),
+        rawbody: z.string(),
+      }),
+    }),
+  },
+});

@@ -1,0 +1,93 @@
+# Text used across the whole site. Edit it from the /admin page.
+title: Design By Faizi
+description: I'm Faizi/Faizan Ullah and this welcome to my personal website. I design and develop stuff.
+name: Faizan Ullah
+nickname: Faizi
+bio: A passionate developer and designer.
+email: faizanullah1999@gmail.com
+location: Germany / Pakistan
+timezone: Europe/Berlin
+footer: Ⓒ designbyfaizi 2025 - All Rights Reserved
+socials:
+  - label: GitHub
+    url: https://github.com/designbyfaizi
+  - label: Instagram @khakcsar
+    url: https://www.instagram.com/khakcsar/
+  - label: Instagram @khak.csar
+    url: https://www.instagram.com/khak.csar/
+  - label: Ko-fi
+    url: https://ko-fi.com/designbyfaizi
+  - label: PayPal
+    url: https://paypal.me/designbyfaizi
+hero:
+  greeting: Hi, I'm
+  statement: I design and develop stuff for the web. Designer in rose, developer in black.
+  avatar: /images/rustacean-flat-gesture.svg
+  avatar_alt: Ferris the Rust crab
+  button_text: Hallo
+  available: true
+  availability_text: Available for new projects
+marquee:
+  - Frontend Developer
+  - UI/UX Designer
+  - Illustrator
+  - Rust Learner
+  - Ink Drawer
+  - Brand Design
+intro:
+  title: The short version
+  statement: I design, develop, and deploy apps on the internet. With expertise in modern frameworks and design tools, I build fast, intuitive, and visually polished interfaces.
+  note: Looking for job opportunities in Germany. To learn more, send me a message.
+  photo: /img/faizan_backview.jpeg
+  photo_alt: Faizan standing in front of a large red church door
+  button_text: Send a message
+process:
+  title: How a job runs
+  steps:
+    - title: Brief
+      text: We talk it through first. What the thing is for, who it's for, and what good looks like.
+    - title: Sketch
+      text: Layouts, type and colour come together in design tools until the idea has a shape you can react to.
+    - title: Build
+      text: The design becomes real software with modern frameworks, built to be fast, intuitive and scalable.
+    - title: Deploy
+      text: It goes live on the internet, and I stay close to tune it, fix it and keep it running.
+terminal:
+  title: The black plate
+  note: The developer half has a shell. Type help, or tap a command.
+  os: Faizan Ullah
+  kernel: NERD-DEV 3.14
+  wm: Hyprland
+  shell: fish
+  uptime: 26 years
+  cpu: NeuraCore AX-1
+  motto: Stay Determined!
+sections:
+  work: Selected work
+  skills: My Skills
+  clients: My Clients
+  art: Off the clock, in ink
+  art_note: I draw too. No AI involved. If I want to ghiblify myself, I do it myself 😤
+  journal: From the journal
+closing:
+  title: Got an idea?
+  text: Have a question or an idea? Let me know!
+  button_text: Start a job ticket
+projects:
+  heading: Projects
+  intro: View some of my past projects with different clients. Want your project to be featured? Contact me now!
+creations:
+  heading: Creations
+  intro: View some of the projects I own. This list will get updated & you'll get to see some amazing stuff from me soon 🔥
+skills:
+  heading: Skills
+  intro: A curated list of technologies, tools, and frameworks I use to build seamless digital experiences.
+blog:
+  heading: Journal
+  intro: Have a look at my writings.
+art:
+  heading: Ink
+  intro: Some of my artwork. No AI involved. If I want to ghiblify myself, I do it myself 😤
+contact:
+  heading: Job ticket
+  intro: Have a question or an idea? Let me know!

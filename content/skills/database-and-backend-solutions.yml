@@ -1,0 +1,17 @@
+name: "Database & Backend Solutions"
+order: 4
+skills:
+  - name: "MongoDB"
+    icon: "devicon:mongodb"
+  - name: "Firebase"
+    icon: "devicon:firebase"
+  - name: "Supabase"
+    icon: "devicon:supabase"
+  - name: "MySQL"
+    icon: "devicon:mysql"
+  - name: "PostgreSQL"
+    icon: "devicon:postgresql"
+  - name: "SQLite"
+    icon: "devicon:sqlite"
+  - name: "Turso"
+    icon: "simple-icons:turso"

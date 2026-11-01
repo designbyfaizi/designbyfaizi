@@ -1,103 +1,65 @@
 <template>
-  <main class="content-grid">
-    <GeneralHeroSection title="Creations">
-      <p>{{ description }}</p>
-    </GeneralHeroSection>
-    <section class="clients-section flex flex-col overflow-y-visible">
-      <div v-if="status === 'pending' && !data" class="mx-auto"><Loader /></div>
-      <div v-else-if="error && !data">
-        {{ "Uh-oh! Some Error occured.💀 Check server logs!" }}
-      </div>
-      <ol v-else class="grid grid-cols-6 *:col-span-6 lg:*:col-span-3 gap-4">
+  <main>
+    <PageHero :title="site.creations.heading" label="Things I own">
+      <RiseText :text="site.creations.intro" class="font-serif text-2xl leading-snug md:text-3xl" :delay="0.4" />
+    </PageHero>
+    <section class="sheet py-14 md:py-24">
+      <ol class="flex flex-col gap-10">
         <li
-          v-for="project in data"
-          :key="project.title"
-          target="_blank"
-          :class="[
-            'project p-4 flex flex-col gap-4 items-start h-full border-1 border-foreground/10 bg-accent/30 dark:bg-card rounded-xl overflow-hidden mb-1',
-          ]"
+          v-for="(creation, index) in creations"
+          :key="creation.stem"
+          v-reveal
+          class="grid gap-8 border border-foreground bg-card p-5 md:grid-cols-12 md:p-10"
         >
-          <div class="header flex items-center gap-4">
-            <div
-              class="img-container bg-stone-900 dark:bg-stone-800 p-2 w-fit rounded-lg"
+          <div class="md:col-span-4">
+            <motion.div
+              class="flex aspect-square w-full items-center justify-center bg-foreground p-[18%]"
+              :while-hover="{ rotate: -3, scale: 1.02 }"
+              :transition="snappy"
             >
-              <img
-                v-if="project.image"
-                :src="project.image"
-                :alt="`${project.title} Logo`"
-                class="max-h-[36px] rounded-lg"
-              />
-            </div>
+              <img :src="creation.image" :alt="`${creation.title} logo`" class="size-full object-contain" />
+            </motion.div>
           </div>
-          <div class="content flex flex-col h-full">
-            <div class="flex items-baseline gap-2">
-              <h2 class="text-xl font-medium">{{ project.title }}</h2>
-              <h3 class="type text-muted-foreground bg-muted px-3 py-1 rounded-full">{{ project.type }}</h3>
-            </div>
-            <p class="text-base opacity-60 text-balance mt-1">
-              {{ project.description }}
-            </p>
-            <ul class="flex flex-row flex-wrap items-center gap-2 w-full mt-auto pt-4">
-              <li
-                class="px-3 py-1 bg-background/40 rounded-full ring-1 ring-foreground/10 text-muted-foreground text-xs font-semibold"
-                v-for="tag in project.tags"
-                :key="tag"
-              >
-                {{ tag }}
-              </li>
-            </ul>
-            <div class="rounded-lg w-fit bg-stone-100 dark:bg-stone-800 overflow-hidden mt-4 divide-y divide-muted-foreground/10">
-              <NuxtLink
-                v-if="project.url"
-                :to="project.url"
-                target="blank"
-                rel="noopener noreferrer"
-                class="text-sm px-2 py-2 font-semibold text-muted-foreground hover:underline flex items-center flex-wrap gap-1 group"
-              >
-                <span>
-                  {{ project.url.split("https://")[1] }}
-                </span>
-                <Icon
-                  name="ic:outline-arrow-outward"
-                  class="group-hover:translate-x-1 transition-transform duration-200"
-                />
-              </NuxtLink>
-              <NuxtLink
-                v-if="project.github_url"
-                :to="project.github_url"
-                target="blank"
-                rel="noopener noreferrer"
-                class="text-sm px-2 py-2 font-semibold text-muted-foreground hover:underline flex items-center flex-wrap gap-1 group"
-              >
-                <span>
-                  {{ "Github" }}
-                </span>
-                <Icon
-                  name="ic:outline-arrow-outward"
-                  class="group-hover:translate-x-1 transition-transform duration-200"
-                />
-              </NuxtLink>
-            </div>
+          <div class="flex flex-col md:col-span-8">
+            <p class="slug text-rose-ink">No. {{ String(index + 1).padStart(2, "0") }} / {{ creation.type }}</p>
+            <h2 class="display mt-4 text-6xl md:text-8xl">{{ creation.title }}</h2>
+            <p class="mt-5 max-w-2xl font-serif text-2xl leading-snug">{{ creation.description }}</p>
+            <dl class="slug mt-8 grid border-t md:grid-cols-[8rem_1fr]">
+              <dt class="pt-3 text-muted-foreground md:py-3">Built with</dt>
+              <dd class="py-3"><TagList :tags="creation.tags" /></dd>
+              <template v-if="creation.url">
+                <dt class="border-t pt-3 text-muted-foreground md:py-3">Live</dt>
+                <dd class="py-3 md:border-t">
+                  <OutLink :to="creation.url">{{ creation.url.split("https://")[1] }}</OutLink>
+                </dd>
+              </template>
+              <template v-if="creation.github_url">
+                <dt class="border-t pt-3 text-muted-foreground md:py-3">Source</dt>
+                <dd class="py-3 md:border-t"><OutLink :to="creation.github_url">Github</OutLink></dd>
+              </template>
+            </dl>
           </div>
+        </li>
+        <li v-reveal class="flex flex-col items-center gap-2 border border-dashed border-foreground/50 p-10 text-center md:p-16">
+          <p class="display text-5xl md:text-7xl">More on press</p>
+          <p class="font-serif text-xl italic">This sheet is still drying.</p>
         </li>
       </ol>
     </section>
   </main>
 </template>
 
-<script lang="ts" setup>
-const { data, status, error } = await useAsyncData("creations", () =>
-  queryCollection("creation").order("date", "DESC").all()
+<script setup lang="ts">
+import { motion } from "motion-v";
+import { snappy } from "@/lib/motion";
+
+const site = useSite();
+
+const { data: creations } = await useAsyncData(
+  "creations",
+  () => queryCollection("creation").order("date", "DESC").all(),
+  { getCachedData: fromPayload },
 );
 
-const title = "Creations - Design By Faizi";
-const description =
-  "View some of the projects I own. This list will get updated & you'll get to see some amazing stuff from me soon 🔥";
-
-useSeoMeta({
-  title,
-  description,
-});
+usePageSeo("Creations - Design By Faizi", site.value.creations.intro);
 </script>
-
-<style></style>

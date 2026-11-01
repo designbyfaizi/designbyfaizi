@@ -1,17 +1,6 @@
+// Runs before the page paints so a saved dark theme never flashes white.
 (function () {
-  let theme = localStorage.getItem("vueuse-color-scheme") || "auto";
-  if (theme === "auto") {
-    theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  }
-
-  document.documentElement.classList.add(theme);
-
-  let styles = getComputedStyle(document.documentElement);
-  let bgColor = styles.getPropertyValue("--background").trim();
-  let textColor = styles.getPropertyValue("--foreground").trim();
-
-  document.documentElement.style.backgroundColor = `hsl(${bgColor})`;
-  document.documentElement.style.color = `hsl(${textColor})`;
+  var saved = localStorage.getItem("vueuse-color-scheme") || "auto";
+  var dark = saved === "auto" ? matchMedia("(prefers-color-scheme: dark)").matches : saved === "dark";
+  document.documentElement.classList.add(dark ? "dark" : "light");
 })();

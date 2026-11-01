@@ -1,47 +1,36 @@
 <template>
-  <div class="flex flex-col items-center content-grid">
-    <div v-if="status === 'pending' && !data" class="mx-auto"><Loader /></div>
-    <div v-else-if="error && !data">{{ error.message }}</div>
-    <div v-else class="flex flex-col gap-4 w-full">
-      <GeneralHeroSection
-        :title="data?.name || ''"
-        class="relative lg:!flex-row !justify-start !min-h-auto !h-auto"
-      >
-        <template #pre>
-          <Button :as="(nuxtLink as string)" to="/skills" variant="soft" size="sm">
-            <Icon
-              name="material-symbols:arrow-back-ios-new-rounded"
-              class="size-[16px] -ms-1"
-            />
-            <span> Back </span>
-          </Button>
-        </template>
-      </GeneralHeroSection>
-      <ul class="flex flex-col divide-y divide-border">
-        <li v-for="skill in data?.skills" class="py-2">
-          {{ skill?.name }}
+  <main>
+    <PageHero :title="category!.name" label="The toolbox" :plate="4">
+      <p class="font-serif text-2xl leading-snug">{{ category!.skills.length }} tools I reach for.</p>
+      <Button :as="NuxtLink" to="/skills" variant="outline" size="sm" class="mt-5">
+        <Icon name="lucide:arrow-left" class="size-4" />
+        All skills
+      </Button>
+    </PageHero>
+    <section class="sheet py-14 md:py-24">
+      <ul class="grid grid-cols-3 border-t border-l sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8">
+        <li v-for="(tool, index) in category!.skills" :key="tool.name" v-reveal="index * 0.03">
+          <SkillSwatch :tool="tool" />
         </li>
       </ul>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
-<script lang="ts" setup>
-const router = useRouter();
+<script setup lang="ts">
+const NuxtLink = resolveComponent("NuxtLink");
+const route = useRoute();
+const slug = route.params.slug as string;
 
-const { params } = useRoute();
-console.log(params.slug);
-const { data, status, error } = await useFetch(
-  `/api/payload/skill-categories/${params.slug}`
+const { data: category } = await useAsyncData(
+  `skill-${slug}`,
+  () => queryCollection("skill").where("stem", "=", `skills/${slug}`).first(),
+  { getCachedData: fromPayload },
 );
 
-const title = `${data?.value?.name} | Design By Faizi`;
-const nuxtLink = resolveComponent("NuxtLink");
+if (!category.value) {
+  throw createError({ statusCode: 404, statusMessage: "Skill not found" });
+}
 
-const goBack = () => {
-  if (!history) return;
-  router.push("/skills");
-};
+usePageSeo(`${category.value.name} - Design By Faizi`, `The ${category.value.name} tools I work with.`);
 </script>
-
-<style></style>

@@ -1,0 +1,17 @@
+name: "Design & UI/UX Tools"
+order: 3
+skills:
+  - name: "Figma"
+    icon: "devicon:figma"
+  - name: "Adobe Illustrator"
+    icon: "devicon:illustrator"
+  - name: "Adobe Photoshop"
+    icon: "devicon:photoshop"
+  - name: "Adobe XD"
+    icon: "logos:adobe-xd"
+  - name: "Inkscape"
+    icon: "devicon:inkscape"
+  - name: "Affinity Designer"
+    icon: "vscode-icons:file-type-affinitydesigner"
+  - name: "Affinity Photo"
+    icon: "vscode-icons:file-type-affinityphoto"

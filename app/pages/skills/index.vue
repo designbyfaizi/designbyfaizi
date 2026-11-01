@@ -1,70 +1,27 @@
 <template>
-  <main class="space-y-4 content-grid">
-    <GeneralHeroSection title="Skills">
-      <p class="">
-        {{ description }}
-      </p>
-    </GeneralHeroSection>
-    <section class="skills-section flex flex-col">
-      <div v-if="status === 'pending' && !data" class="mx-auto"><Loader /></div>
-      <div v-else-if="error && !data">
-        {{ "Uh-oh! Some Error occured.💀 Check server logs!" }}
-      </div>
-      <ol class="grid grid-cols-12 gap-4 w-full bg-red-500">
-        <li
-          v-for="category in categories"
-          :key="category.id"
-          class="col-span-12"
-        >
-          <div class="p-4">
-            <h3 class="card-title text-2xl leading-10 mb-10 font-semibold">
-              {{ category.name }}
-            </h3>
-            <ul class="flex items-center flex-wrap gap-8">
-              <li
-                v-for="skill in category.skills"
-                :key="skill.name"
-                class="rounded-full flex items-center gap-2"
-              >
-                <Icon v-if="skill.icon" :name="skill.icon" class="size-6" />
-                <span>
-                  {{ skill.name }}
-                </span>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ol>
-    </section>
+  <main>
+    <PageHero :title="site.skills.heading" label="The toolbox">
+      <RiseText :text="site.skills.intro" class="font-serif text-2xl leading-snug md:text-3xl" :delay="0.4" />
+    </PageHero>
+    <div class="sheet flex flex-col gap-16 py-14 md:gap-24 md:py-24">
+      <section v-for="(category, index) in categories" :key="category.stem">
+        <SheetLabel :number="String(index + 2).padStart(2, '0')" :title="`${category.skills.length} tools`" as="span" />
+        <NuxtLink :to="`/skills/${skillSlug(category.stem)}`" class="group mt-6 block">
+          <h2 v-reveal class="display text-5xl transition-colors group-hover:text-rose-ink md:text-7xl">{{ category.name }}</h2>
+        </NuxtLink>
+        <ul class="mt-6 grid grid-cols-3 border-t border-l sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-8">
+          <li v-for="(tool, toolIndex) in category.skills" :key="tool.name" v-reveal="toolIndex * 0.03">
+            <SkillSwatch :tool="tool" />
+          </li>
+        </ul>
+      </section>
+    </div>
   </main>
 </template>
 
-<script lang="ts" setup>
-const {
-  data: categories,
-  status,
-  error,
-} = await useAsyncData("skills", () =>
-  queryCollection("skill").order("name", "DESC").all(),
-);
+<script setup lang="ts">
+const site = useSite();
+const { data: categories } = await useSkills();
 
-const config = useRuntimeConfig();
-const title = "Skills - Design By Faizi";
-const description =
-  "A curated list of technologies, tools, and frameworks I use to build seamless digital experiences.";
-
-useSeoMeta({
-  title: title,
-  description: description,
-  ogTitle: title,
-  ogDescription: description,
-  ogImage: `https://r2.designbyfaizi.com/og_index.jpg`,
-  ogUrl: config.public.site_url,
-  twitterTitle: title,
-  twitterDescription: description,
-  twitterImage: `https://r2.designbyfaizi.com/og_index.jpg`,
-  twitterCard: "summary_large_image",
-});
+usePageSeo("Skills - Design By Faizi", site.value.skills.intro);
 </script>
-
-<style></style>

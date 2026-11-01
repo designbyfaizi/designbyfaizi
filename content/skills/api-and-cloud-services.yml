@@ -1,0 +1,7 @@
+name: "API & Cloud Services"
+order: 7
+skills:
+  - name: "Google Cloud API"
+    icon: "logos:google-cloud"
+  - name: "Google Maps API"
+    icon: "logos:google-maps"

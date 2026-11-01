@@ -1,14 +1,13 @@
 ---
 title: Why I love UnoCSS
-slug: why-i-love-unocss
+description: How I went from Bootstrap to Tailwind, and why UnoCSS changed how I think about CSS.
 featured_image: /why-i-love-unocss-banner.png.png
-author: faizi
 tags:
   - intro
   - welcome
 published: true
-created_at: 2025-04-04T00:00:00.000Z
-updated_at: 2025-04-04T00:00:00.000Z
+created_at: 2025-04-04
+updated_at: 2025-04-04
 ---
 
 # Why I love UnoCSS

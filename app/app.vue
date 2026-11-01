@@ -1,34 +1,43 @@
 <template>
-  <div id="app" class="relative min-h-dvh flex flex-col">
-    <Header />
+  <div class="relative flex min-h-dvh flex-col">
+    <SiteHeader />
     <NuxtLayout>
-      <NuxtPage />
+      <NuxtPage :transition="pageTransition" />
     </NuxtLayout>
-    <Footer />
-    <NoiseTexture class="opacity-50" />
+    <SiteFooter />
+    <NoiseTexture />
+    <InkWipe ref="wipe" />
+    <ClientOnly>
+      <InkCursor />
+      <Toaster position="bottom-center" />
+    </ClientOnly>
   </div>
 </template>
-<script setup>
+
+<script setup lang="ts">
+import "vue-sonner/style.css";
+
+const site = useSite();
+useThemeSwitch();
+
+const wipe = useTemplateRef("wipe");
+
 useHead({
-  script: [
-    {
-      src: "/theme-loader.js",
-      async: false, // Ensures it runs before rendering
-    },
-  ],
+  titleTemplate: (title) => title || site.value.title,
+  noscript: [{ innerHTML: "<style>[data-enter]{opacity:1!important;transform:none!important}</style>" }],
 });
+
+// Pages change like sheets going through the press: rose and black sweep over,
+// then lift away to show the next page.
+const pageTransition = {
+  mode: "out-in" as const,
+  css: false,
+  onLeave(_el: Element, done: () => void) {
+    (wipe.value?.cover() ?? Promise.resolve()).finally(done);
+  },
+  onEnter(_el: Element, done: () => void) {
+    window.scrollTo({ top: 0, behavior: "instant" });
+    (wipe.value?.reveal() ?? Promise.resolve()).finally(done);
+  },
+};
 </script>
-
-<style>
-/* #app {
-  font-family: var(--font-family) !important;
-  font-weight: 400;
-
-  .font-sans {
-    font-family: var(--font-family);
-  }
-  .font-manrope {
-    font-family: "Manrope";
-  }
-} */
-</style>

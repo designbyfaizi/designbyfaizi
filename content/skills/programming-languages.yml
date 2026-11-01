@@ -1,0 +1,9 @@
+name: "Programming Languages"
+order: 1
+skills:
+  - name: "Rust"
+    icon: "material-icon-theme:rust"
+  - name: "JavaScript"
+    icon: "devicon:javascript"
+  - name: "TypeScript"
+    icon: "devicon:typescript"

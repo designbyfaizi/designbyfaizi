@@ -1,0 +1,307 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@import "@fontsource-variable/bricolage-grotesque/standard.css";
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource-variable/newsreader/opsz-italic.css";
+@import "@fontsource-variable/jetbrains-mono/index.css";
+@import "@fontsource/noto-nastaliq-urdu/arabic-400.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@custom-variant data-open {
+  &:where([data-state="open"]) {
+    @slot;
+  }
+}
+
+@custom-variant data-closed {
+  &:where([data-state="closed"]) {
+    @slot;
+  }
+}
+
+@theme {
+  --font-sans: "Bricolage Grotesque Variable", sans-serif;
+  --font-display: "Bricolage Grotesque Variable", sans-serif;
+  --font-serif: "Newsreader Variable", Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --font-urdu: "Noto Nastaliq Urdu", serif;
+
+  --animate-marquee: marquee 38s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-rose-ink: var(--rose-ink);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: #16120f;
+  --color-paper: #f4efe6;
+}
+
+/* Two inks on paper. Rose is the design plate, black is the code plate. */
+:root {
+  --radius: 0;
+  --background: #f4efe6;
+  --foreground: #16120f;
+  --card: #fbf8f2;
+  --card-foreground: #16120f;
+  --popover: #fbf8f2;
+  --popover-foreground: #16120f;
+  --primary: var(--color-rose-500);
+  --primary-foreground: var(--color-rose-50);
+  --rose-ink: var(--color-rose-600);
+  --secondary: #e9e2d6;
+  --secondary-foreground: #16120f;
+  --muted: #e9e2d6;
+  --muted-foreground: #6b6359;
+  --accent: #e9e2d6;
+  --accent-foreground: #16120f;
+  --destructive: var(--color-rose-700);
+  --border: rgb(22 18 15 / 18%);
+  --input: rgb(22 18 15 / 30%);
+  --ring: var(--color-rose-500);
+}
+
+.dark {
+  --background: #141110;
+  --foreground: #f1ebe1;
+  --card: #1d1917;
+  --card-foreground: #f1ebe1;
+  --popover: #1d1917;
+  --popover-foreground: #f1ebe1;
+  --rose-ink: var(--color-rose-400);
+  --secondary: #29231f;
+  --secondary-foreground: #f1ebe1;
+  --muted: #29231f;
+  --muted-foreground: #a89e91;
+  --accent: #29231f;
+  --accent-foreground: #f1ebe1;
+  --destructive: var(--color-rose-400);
+  --border: rgb(241 235 225 / 16%);
+  --input: rgb(241 235 225 / 28%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-background text-foreground font-sans font-normal antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Page margins shared by every section. */
+  .sheet {
+    @apply relative w-full;
+    padding-inline: clamp(1.25rem, 4vw, 4rem);
+  }
+
+  /* Small technical labels, like the slug line on a printer's proof. */
+  .slug {
+    @apply font-mono text-[0.6875rem] leading-4 tracking-[0.08em] uppercase;
+  }
+
+  .display {
+    @apply font-display font-extrabold uppercase;
+    font-stretch: 75%;
+    font-variation-settings: "opsz" 28;
+    letter-spacing: 0;
+    line-height: 0.9;
+  }
+
+  /* The name on the home page, sized so five letters fill the sheet. */
+  .mega {
+    @apply font-display font-extrabold uppercase;
+    font-stretch: 100%;
+    font-variation-settings: "opsz" 40;
+    font-size: 40.5vw;
+    margin-left: -0.075em;
+    line-height: 0.76;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Halftone: the photo is screened into dots and printed on rose stock. */
+.halftone {
+  position: relative;
+  background: #fff;
+  filter: contrast(16);
+  overflow: hidden;
+}
+
+.halftone img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) brightness(1.15);
+}
+
+.halftone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at center, #000, #fff);
+  background-size: 7px 7px;
+  mix-blend-mode: hard-light;
+}
+
+.perforated {
+  background-image: radial-gradient(circle, var(--background) 4px, transparent 4.5px);
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: repeat-y;
+}
+
+/* Keeps toast messages inside narrow screens. */
+@media (max-width: 600px) {
+  .toaster {
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    max-width: calc(100vw - 2rem);
+    transform: none !important;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* The theme switch grows out of the button, see useThemeSwitch. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Blog posts read like a printed page. */
+.prose {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-links: var(--rose-ink);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--primary);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-hr: var(--border);
+  --tw-prose-bullets: var(--primary);
+  --tw-prose-counters: var(--rose-ink);
+  --tw-prose-pre-bg: var(--card);
+  --tw-prose-pre-code: var(--foreground);
+}
+
+.prose > h1:first-child {
+  display: none;
+}
+
+.prose :is(h2, h3, h4) {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.prose :is(h2, h3, h4) a {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.prose :is(h2, h3, h4) a:hover {
+  color: var(--rose-ink);
+}
+
+.prose > p:nth-of-type(1)::first-letter {
+  float: left;
+  margin: 0.08em 0.1em 0 0;
+  color: var(--primary);
+  font-family: var(--font-display);
+  font-size: 4.4em;
+  font-stretch: 75%;
+  font-weight: 800;
+  line-height: 0.8;
+}
+
+.prose pre {
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.prose :not(pre) > code {
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  font-weight: 500;
+  padding: 0.15em 0.35em;
+}
+
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
+
+.prose pre code span {
+  color: var(--shiki-default, inherit);
+}
+
+.dark .prose pre code span,
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}

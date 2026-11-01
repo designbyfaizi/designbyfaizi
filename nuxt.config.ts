@@ -1,73 +1,109 @@
+import { readdirSync, readFileSync } from "node:fs";
 import tailwindcss from "@tailwindcss/vite";
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// Skill icons are named in the content files, so collect them here to ship
+// them with the site. Icons from any other set still load from Iconify.
+const iconSets = [
+  "devicon",
+  "logos",
+  "material-icon-theme",
+  "simple-icons",
+  "skill-icons",
+  "vscode-icons",
+  "mdi",
+  "ic",
+  "lucide",
+];
+const skillIcons = readdirSync("content/skills").flatMap((file) =>
+  [...readFileSync(`content/skills/${file}`, "utf8").matchAll(/icon:\s*["']?([\w-]+:[\w-]+)/g)]
+    .map((match) => match[1]!)
+    .filter((icon) => iconSets.includes(icon.split(":")[0]!)),
+);
+
 export default defineNuxtConfig({
-  compatibilityDate: "2024-11-01",
-  runtimeConfig: {
-    public: {
-      site_url: process.env.SITE_URL!,
-      email: "faizanullah1999@gmail.com",
-      google_sheets_url: process.env.GOOGLE_SHEETS_URL!,
-    },
-    api_url: process.env.API_URL!,
-    api_key: process.env.API_KEY!,
-  },
+  compatibilityDate: "2025-07-01",
+  devtools: { enabled: false },
+  // The About page was removed from the site.
+  ignore: ["**/pages/about.vue"],
   modules: [
-    // "@unocss/nuxt",
-    "@vueuse/nuxt",
+    "@nuxt/content",
     "@nuxt/icon",
     "@nuxt/image",
-    "reka-ui/nuxt",
+    "@vueuse/nuxt",
     "motion-v/nuxt",
-    "@nuxt/content",
-    "@nuxt/fonts",
     "shadcn-nuxt",
   ],
-  fonts: {
-    families: [
-      {
-        name: "Outfit",
-        provider: "google",
-        weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-        styles: ["normal"],
-      },
-    ],
+  css: ["~/assets/css/main.css"],
+  vite: {
+    plugins: [tailwindcss() as any],
   },
-  css: ["@/assets/styles/main.css"],
-  nitro: {
-    compatibilityDate: "2024-11-01",
+  app: {
+    head: {
+      htmlAttrs: { lang: "en" },
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+      script: [{ src: "/theme-loader.js" }],
+    },
   },
-  image: {
-    domains: [process.env.SITE_URL || "http://localhost:3000"],
+  runtimeConfig: {
+    // Set on the server with NUXT_SMTP_USER and NUXT_SMTP_PASSWORD, see EDITING.md.
+    smtp: {
+      host: "smtp.gmail.com",
+      port: 465,
+      user: "",
+      password: "",
+      to: "",
+    },
+    // Set on the server with NUXT_INSTAGRAM_TOKEN_KHAKCSAR and
+    // NUXT_INSTAGRAM_TOKEN_KHAK_DOT_CSAR, see EDITING.md.
+    instagram: {
+      api: "https://graph.instagram.com",
+      tokenKhakcsar: "",
+      tokenKhakDotCsar: "",
+    },
+    public: { siteUrl: "https://designbyfaizi.com" },
   },
   components: [
     {
-      path: "@/components",
-      pathPrefix: true,
-    },
-    {
-      path: "@/components/ui",
+      path: "~/components",
       pathPrefix: false,
+      ignore: ["ui/**", "SpotlightCard.vue", "ThemePicker.vue"],
     },
   ],
-  vite: {
-    server: {
-      allowedHosts: true,
-    },
-    plugins: [tailwindcss()],
-  },
   shadcn: {
-    /**
-     * Prefix for all the imported component.
-     * @default "Ui"
-     */
     prefix: "",
-    /**
-     * Directory that the component lives in.
-     * Will respect the Nuxt aliases.
-     * @link https://nuxt.com/docs/api/nuxt-config#alias
-     * @default "@/components/ui"
-     */
-    componentDir: "@/components/ui",
+    componentDir: "~/components/ui",
+  },
+  content: {
+    experimental: { sqliteConnector: "bun" },
+    build: {
+      markdown: {
+        toc: { depth: 3, searchDepth: 3 },
+        highlight: {
+          theme: { default: "github-light", dark: "github-dark" },
+          langs: ["html", "css", "js", "ts", "vue", "bash", "json", "yaml"],
+        },
+      },
+    },
+  },
+  icon: {
+    mode: "svg",
+    provider: "iconify",
+    serverBundle: { collections: iconSets },
+    clientBundle: {
+      icons: [...new Set(skillIcons)],
+      scan: true,
+    },
+  },
+  image: {
+    quality: 80,
+    format: ["webp"],
+  },
+  nitro: {
+    preset: "bun",
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/sitemap.xml", "/feed.xml", "/404.html"],
+      ignore: ["/api"],
+    },
   },
 });

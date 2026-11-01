@@ -1,7 +1,6 @@
 ---
 title: Hello World
-slug: hello-world
-author: faizi
+description: My first post on this site, and a quick note on how it was made.
 tags:
   - intro
   - welcome

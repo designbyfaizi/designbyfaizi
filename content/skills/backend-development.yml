@@ -1,0 +1,9 @@
+name: "Backend Development"
+order: 6
+skills:
+  - name: "Node.js"
+    icon: "logos:nodejs-icon"
+  - name: "Express.js"
+    icon: "simple-icons:express"
+  - name: "Nest.js"
+    icon: "devicon:nestjs"

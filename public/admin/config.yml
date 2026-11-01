@@ -1,0 +1,253 @@
+# The forms shown at /admin. Each save becomes a commit on main, which rebuilds
+# the site on the VPS.
+backend:
+  name: github
+  repo: designbyfaizi/designbyfaizi
+  branch: main
+  commit_messages:
+    create: "content: add {{slug}}"
+    update: "content: update {{slug}}"
+    delete: "content: remove {{slug}}"
+    uploadMedia: "content: upload {{path}}"
+    deleteMedia: "content: delete {{path}}"
+
+site_url: https://designbyfaizi.com
+display_url: https://designbyfaizi.com
+app_title: Edit Design By Faizi
+logo:
+  src: /favicon.svg
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: blog
+    label: Blog posts
+    label_singular: Blog post
+    icon: edit_note
+    folder: content/blog
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    preview_path: blog/{{slug}}
+    summary: "{{title}} ({{created_at | date('YYYY-MM-DD')}})"
+    sortable_fields: [title, created_at]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Short summary, widget: text, hint: Shown on the blog page and in search results. }
+      - { name: featured_image, label: Cover picture, widget: image, required: false, hint: Leave empty for a rose cover. }
+      - { name: tags, label: Tags, widget: list, required: false, hint: Separate tags with commas. }
+      - { name: published, label: Published, widget: boolean, default: true, hint: Turn off to keep this post as a private draft. }
+      - { name: created_at, label: Date, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+      - { name: updated_at, label: Last updated, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false, required: false }
+      - { name: body, label: Post, widget: markdown }
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    icon: work
+    folder: content/projects
+    extension: yml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    identifier_field: title
+    fields:
+      - { name: title, label: Name, widget: string }
+      - { name: type, label: Type, widget: string, hint: For example Website or Web App. }
+      - { name: description, label: Description, widget: text }
+      - { name: image, label: Logo, widget: image }
+      - { name: cover, label: Big picture, widget: image, required: false, hint: A wide screenshot of the project. }
+      - { name: url, label: Link, widget: string, pattern: ["^https?://", "Start with https://"] }
+      - { name: tags, label: Tags, widget: list, hint: Separate tags with commas. }
+      - { name: date, label: Date, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false, hint: Newest projects come first. }
+
+  - name: creations
+    label: Creations
+    label_singular: Creation
+    icon: auto_awesome
+    folder: content/creations
+    extension: yml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    identifier_field: title
+    fields:
+      - { name: title, label: Name, widget: string }
+      - { name: type, label: Type, widget: string, hint: For example Website or App. }
+      - { name: description, label: Description, widget: text }
+      - { name: image, label: Logo, widget: image }
+      - { name: url, label: Link, widget: string, required: false, pattern: ["^https?://", "Start with https://"] }
+      - { name: github_url, label: GitHub link, widget: string, required: false, pattern: ["^https?://", "Start with https://"] }
+      - { name: tags, label: Tags, widget: list, hint: Separate tags with commas. }
+      - { name: date, label: Date, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false, hint: Newest creations come first. }
+
+  - name: clients
+    label: Clients
+    label_singular: Client
+    icon: handshake
+    folder: content/clients
+    extension: yml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}}"
+    identifier_field: name
+    sortable_fields: [name, order]
+    fields:
+      - { name: name, label: Name, widget: string }
+      - { name: logo, label: Logo, widget: image, hint: A black logo on a clear background works best. }
+      - { name: url, label: Website, widget: string, required: false, pattern: ["^https?://", "Start with https://"] }
+      - { name: order, label: Position, widget: number, value_type: int, default: 10, hint: Lower numbers show first. }
+
+  - name: skills
+    label: Skills
+    label_singular: Skill group
+    icon: psychology
+    folder: content/skills
+    extension: yml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}}"
+    identifier_field: name
+    sortable_fields: [name, order]
+    fields:
+      - { name: name, label: Group name, widget: string }
+      - { name: order, label: Position, widget: number, value_type: int, default: 10, hint: Lower numbers show first. }
+      - name: skills
+        label: Skills
+        label_singular: Skill
+        widget: list
+        summary: "{{fields.name}}"
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: icon, label: Icon, widget: string, hint: "Find an icon at https://icones.js.org and paste its name, such as devicon:vuejs" }
+
+  - name: art
+    label: Art
+    label_singular: Artwork
+    icon: palette
+    folder: content/art
+    extension: yml
+    format: yaml
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    identifier_field: title
+    sortable_fields: [title, order]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: series, label: Series, widget: string, hint: For example Inktober 2026, Digital or Sketch. Pieces are grouped by this. }
+      - { name: description, label: Description, widget: text }
+      - { name: image, label: Picture, widget: image }
+      - { name: link, label: Instagram post, widget: string, required: false, hint: Paste the post link so the live feed doesn't show this piece twice. }
+      - { name: account, label: Instagram account, widget: string, required: false }
+      - { name: picked, label: Circle it in rose pencil, widget: boolean, default: false }
+      - { name: order, label: Position, widget: number, value_type: int, default: 1, hint: Lower numbers show first. }
+
+  - name: pages
+    label: Page text
+    icon: article
+    files:
+      - name: site
+        label: Site text
+        file: content/site.yml
+        format: yaml
+        fields:
+          - { name: title, label: Site title, widget: string }
+          - { name: description, label: Site description, widget: text, hint: Shown in search results and link previews. }
+          - { name: name, label: Full name, widget: string }
+          - { name: nickname, label: Name on the home page, widget: string }
+          - { name: bio, label: Short bio, widget: text }
+          - { name: email, label: Email address, widget: string }
+          - { name: location, label: Location, widget: string }
+          - { name: timezone, label: Time zone for the clock, widget: string, hint: For example Europe/Berlin. }
+          - { name: footer, label: Footer text, widget: string }
+          - name: socials
+            label: Links elsewhere
+            label_singular: Link
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { name: label, label: Label, widget: string }
+              - { name: url, label: Link, widget: string }
+          - name: hero
+            label: Home, top of page
+            widget: object
+            fields:
+              - { name: greeting, label: Greeting, widget: string }
+              - { name: statement, label: Statement, widget: text }
+              - { name: avatar, label: Sticker, widget: image }
+              - { name: avatar_alt, label: Sticker description, widget: string }
+              - { name: button_text, label: Button text, widget: string }
+              - { name: available, label: Show that I'm available, widget: boolean }
+              - { name: availability_text, label: Availability text, widget: string }
+          - { name: marquee, label: Moving banner, widget: list, hint: Separate items with commas. }
+          - name: intro
+            label: Home, the short version
+            widget: object
+            fields:
+              - { name: title, label: Section label, widget: string }
+              - { name: statement, label: Big statement, widget: text }
+              - { name: note, label: Note, widget: text }
+              - { name: photo, label: Photo, widget: image }
+              - { name: photo_alt, label: Photo description, widget: string }
+              - { name: button_text, label: Button text, widget: string }
+          - name: process
+            label: Home, how a job runs
+            widget: object
+            fields:
+              - { name: title, label: Section label, widget: string }
+              - name: steps
+                label: Steps
+                label_singular: Step
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: title, label: Title, widget: string }
+                  - { name: text, label: Text, widget: text }
+          - name: terminal
+            label: Home, terminal
+            widget: object
+            fields:
+              - { name: title, label: Heading, widget: string }
+              - { name: note, label: Note, widget: text }
+              - { name: os, label: OS, widget: string }
+              - { name: kernel, label: Kernel, widget: string }
+              - { name: wm, label: Window manager, widget: string }
+              - { name: shell, label: Shell, widget: string }
+              - { name: uptime, label: Uptime, widget: string }
+              - { name: cpu, label: CPU, widget: string }
+              - { name: motto, label: Motto, widget: string }
+          - name: sections
+            label: Home, section labels
+            widget: object
+            fields:
+              - { name: work, label: Work, widget: string }
+              - { name: skills, label: Skills, widget: string }
+              - { name: clients, label: Clients, widget: string }
+              - { name: art, label: Art, widget: string }
+              - { name: art_note, label: Art note, widget: text }
+              - { name: journal, label: Journal, widget: string }
+          - name: closing
+            label: Home, closing
+            widget: object
+            fields:
+              - { name: title, label: Section label, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: button_text, label: Button text, widget: string }
+          - name: projects
+            label: Projects page
+            widget: object
+            fields: &intro
+              - { name: heading, label: Heading, widget: string }
+              - { name: intro, label: Intro, widget: text }
+          - { name: creations, label: Creations page, widget: object, fields: *intro }
+          - { name: skills, label: Skills page, widget: object, fields: *intro }
+          - { name: blog, label: Journal page, widget: object, fields: *intro }
+          - { name: art, label: Art page, widget: object, fields: *intro }
+          - { name: contact, label: Contact page, widget: object, fields: *intro }

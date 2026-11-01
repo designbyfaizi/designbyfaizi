@@ -1,71 +1,96 @@
 <template>
-  <main class="space-y-4 content-grid">
-    <GeneralHeroSection title="Blogs">
-      <p>{{ description }}</p>
-    </GeneralHeroSection>
-    <section class="skills-section text-center flex flex-col">
-      <div v-if="status === 'pending' && !blog" class="mx-auto"><Loader /></div>
-      <div v-else-if="error && !blog">{{ error.message }}</div>
-      <ul v-else class="grid grid-cols-6 gap-4 items-stretch">
-        <li
-          v-for="_blog in blog"
-          :key="_blog.slug"
-          class="col-span-6 sm:col-span-3 w-full"
+  <main>
+    <PageHero :title="site.blog.heading" label="Writing">
+      <RiseText :text="site.blog.intro" class="font-serif text-2xl leading-snug md:text-3xl" :delay="0.4" />
+    </PageHero>
+    <section class="sheet py-12 md:py-20">
+      <div v-if="tags.length > 1" class="mb-10 flex flex-wrap gap-1">
+        <button
+          v-for="tag in ['All', ...tags]"
+          :key="tag"
+          :class="['slug relative px-3 py-2', activeTag === tag && 'text-ink']"
+          @click="activeTag = tag"
         >
-          <NuxtLink
-            :to="_blog.path"
-            class="block w-full p-2 bg-card group rounded-md hover:bg-card/80 text-left h-full border border-transparent hover:border-foreground/10"
-          >
-            <div class="flex flex-col">
-              <NuxtImg
-                :src="_blog.featured_image"
-                :alt="_blog.title"
-                class="w-full object-cover aspect-video rounded-sm bg-background ring ring-2 ring-foreground/10"
-                width="600px"
-                loading="lazy"
-              />
-              <div class="p-2 md:p-3 md:px-1 flex flex-col gap-2">
-                <p
-                  class="px-3 py-1 bg-foreground/5 w-fit rounded-sm text-foreground/60 text-sm"
-                >
-                  {{ new Date(_blog.created_at)?.toISOString().split("T")[0] }}
-                </p>
-                <h3 class="font-normal text-lg group-hover:underline">
-                  {{ _blog.title }}
-                </h3>
-              </div>
+          <motion.span
+            v-if="activeTag === tag"
+            layout-id="blog-tag"
+            class="absolute inset-0 bg-primary"
+            :transition="snappy"
+          />
+          <span class="relative">{{ tag }}</span>
+        </button>
+      </div>
+
+      <AnimatePresence mode="popLayout" :initial="false">
+        <motion.article
+          v-if="lead"
+          :key="lead.path"
+          layout
+          class="border-t border-foreground pt-6"
+          :initial="{ opacity: 0 }"
+          :animate="{ opacity: 1 }"
+          :exit="{ opacity: 0 }"
+        >
+          <NuxtLink :to="lead.path" class="group grid gap-6 md:grid-cols-12 md:gap-8">
+            <div class="overflow-hidden border border-foreground [container-type:inline-size] md:col-span-7">
+              <BlogCover :src="lead.featured_image" :title="lead.title" class="transition-transform duration-700 group-hover:scale-105" />
+            </div>
+            <div class="flex flex-col md:col-span-5">
+              <p class="slug text-rose-ink">{{ shortDate(lead.created_at) }} / {{ lead.minutes }} min read</p>
+              <h2 class="display mt-4 text-6xl group-hover:text-rose-ink md:text-7xl lg:text-8xl">{{ lead.title }}</h2>
+              <p class="mt-4 font-serif text-2xl leading-snug">{{ lead.description }}</p>
             </div>
           </NuxtLink>
-        </li>
-        <li
-          class="border border-dashed bg-foreground/5 border-foreground/20 col-span-6 sm:col-span-3 p-4 rounded-md flex flex-col items-center justify-center text-center"
-        >
-          More coming 😃
+        </motion.article>
+      </AnimatePresence>
+
+      <ul class="mt-12 grid gap-x-8 border-t md:grid-cols-3">
+        <AnimatePresence mode="popLayout" :initial="false">
+          <motion.li
+            v-for="post in rest"
+            :key="post.path"
+            layout
+            class="border-b py-6 md:border-r md:border-b-0 md:pr-8 md:last:border-r-0"
+            :initial="{ opacity: 0 }"
+            :animate="{ opacity: 1 }"
+            :exit="{ opacity: 0 }"
+          >
+            <NuxtLink :to="post.path" class="group block">
+              <div class="overflow-hidden border border-foreground [container-type:inline-size]">
+                <BlogCover :src="post.featured_image" :title="post.title" class="transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <p class="slug mt-4 text-rose-ink">{{ shortDate(post.created_at) }} / {{ post.minutes }} min read</p>
+              <h3 class="display mt-2 text-4xl group-hover:text-rose-ink">{{ post.title }}</h3>
+              <p class="mt-2 font-serif text-lg leading-snug">{{ post.description }}</p>
+            </NuxtLink>
+          </motion.li>
+        </AnimatePresence>
+        <li class="flex flex-col justify-center py-6">
+          <p class="display text-4xl text-muted-foreground">More coming 😃</p>
         </li>
       </ul>
     </section>
   </main>
 </template>
 
-<script lang="ts" setup>
-const { data: blog, error, status } = await useAsyncData("blog", () => {
-  return queryCollection("blog").all();
-});
+<script setup lang="ts">
+import { AnimatePresence, motion } from "motion-v";
+import { snappy } from "@/lib/motion";
 
-const config = useRuntimeConfig();
-const title = "Blogs - Design by Faizi";
-const description = "Have a look at my writings.";
+const site = useSite();
+const { data: posts } = await usePosts();
 
-useSeoMeta({
-  title: title,
-  description: description,
-  ogTitle: title,
-  ogDescription: description,
-  ogImage: `https://r2.designbyfaizi.com/og_index.jpg`,
-  ogUrl: config.public.site_url,
-  twitterTitle: title,
-  twitterDescription: description,
-  twitterImage: `https://r2.designbyfaizi.com/og_index.jpg`,
-  twitterCard: "summary_large_image",
-});
+const activeTag = ref("All");
+const tags = computed(() => [...new Set(posts.value?.flatMap((post) => post.tags ?? []))]);
+const visible = computed(() =>
+  activeTag.value === "All"
+    ? (posts.value ?? [])
+    : (posts.value ?? []).filter((post) => post.tags?.includes(activeTag.value)),
+);
+
+// The first post runs as the lead story, like the top of a front page.
+const lead = computed(() => visible.value.find((post) => post.featured_image) ?? visible.value[0]);
+const rest = computed(() => visible.value.filter((post) => post !== lead.value));
+
+usePageSeo("Journal - Design By Faizi", site.value.blog.intro);
 </script>

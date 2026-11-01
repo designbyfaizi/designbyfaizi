@@ -1,9 +1,10 @@
 title: Mano Animation Studios
 type: Website
 description: Created the wordpress website for award-winning animation studio "Mano Animation Studios"
-image: https://manoanimationstudios.com/wp-content/uploads/2022/04/mano-cat-white.svg
+image: /uploads/mano-cat-white.svg
+cover: /uploads/projects/mano.jpg
 url: https://manoanimationstudios.com
 tags:
   - Wordpress
   - Elementor
-date: '2022-12-01T00:00:00.000Z'
+date: 2022-12-01

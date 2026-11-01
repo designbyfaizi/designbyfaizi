@@ -1,26 +1,17 @@
 <template>
-  <div class="noise-texture-container">
-    <div class="noise-texture"></div>
-  </div>
+  <div class="paper-grain pointer-events-none fixed inset-0 z-30" aria-hidden="true" />
 </template>
 
-<script lang="ts" setup></script>
+<style>
+.paper-grain {
+  background-image: url("/noise-texture.png");
+  background-size: 180px;
+  mix-blend-mode: multiply;
+  opacity: 0.045;
+}
 
-<style scoped>
-.noise-texture-container {
-  inset: 0px;
-  position: fixed;
-  z-index: 10;
-  pointer-events: none;
-
-  .noise-texture {
-    width: 100%;
-    height: 100%;
-    background-size: 109px;
-    background-repeat: repeat;
-    background-image: url("/noise-texture.png");
-    opacity: 0.06;
-    border-radius: 0px;
-  }
+.dark .paper-grain {
+  mix-blend-mode: screen;
+  opacity: 0.04;
 }
 </style>

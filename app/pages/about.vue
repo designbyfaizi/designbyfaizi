@@ -1,39 +1,45 @@
 <template>
   <main class="content-grid">
-    <GeneralHeroSection title="About Me"> </GeneralHeroSection>
-    <section
-      class="scroll-section py-[32px] text-base md:text-xl leading-tight font-medium flex flex-col lg:flex-row gap-10 items-center w-full"
-    >
-      <div
-        class="img-container cursor-pointer min-h-[400px] w-full rounded-xl -rotate-3 hover:rotate-0 transition-all duration-200 overflow-hidden group"
+    <PageHero :title="site.about.heading" />
+    <section class="flex w-full flex-col items-center gap-10 py-8 text-base/tight font-medium md:text-xl/7 lg:flex-row">
+      <motion.div
+        data-enter
+        class="group min-h-[400px] w-full cursor-pointer overflow-hidden rounded-xl"
+        :initial="{ opacity: 0, rotate: -9, scale: 0.94 }"
+        :animate="{ opacity: 1, rotate: -3, scale: 1 }"
+        :while-hover="{ rotate: 0, scale: 1.01 }"
+        :transition="gentle"
       >
         <NuxtImg
-          class="w-full h-[400px] aspect-square object-cover object-center basis-[100%] group-hover:scale-120 transition-all duration-200"
-          :width="1024"
-          src="/img/faizan_backview.jpeg"
+          format="webp"
+          :src="site.about.photo"
+          :alt="site.about.photo_alt"
+          width="1024"
+          class="aspect-square h-[400px] w-full basis-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
         />
-      </div>
-      <div class="content flex flex-col gap-4 basis-[100%] bg-card p-4 rounded-xl border border-dashed border-3">
-        <p class="w-full text-balance">
-          I design, develop, and deploy apps on the internet. Looking for job opportunities in Germany. <br/>To learn more, send me a message.
-        </p>
-        <NuxtLink to="/contact">
-          <Button>{{ "Say Hello" }}</Button>
-        </NuxtLink>
-      </div>
+      </motion.div>
+      <motion.div
+        data-enter
+        class="flex basis-full flex-col gap-4 rounded-xl border-3 border-dashed border-current bg-card p-4"
+        :initial="{ opacity: 0, x: 24 }"
+        :animate="{ opacity: 1, x: 0 }"
+        :transition="{ ...gentle, delay: 0.12 }"
+      >
+        <p class="w-full text-balance whitespace-pre-line">{{ site.about.text }}</p>
+        <div>
+          <Button :as="NuxtLink" to="/contact">{{ site.about.button_text }}</Button>
+        </div>
+      </motion.div>
     </section>
   </main>
 </template>
 
-<script lang="ts" setup>
-const title = "About - Design By Faizi";
-const description =
-  "I am a frontend <b>developer and UI/UX designer, crafting sleek and scalable web experiences.";
+<script setup lang="ts">
+import { motion } from "motion-v";
+import { gentle } from "@/lib/motion";
 
-useSeoMeta({
-  title,
-  description,
-});
+const NuxtLink = resolveComponent("NuxtLink");
+const site = useSite();
+
+usePageSeo("About - Design By Faizi", site.value.about.description);
 </script>
-
-<style></style>
