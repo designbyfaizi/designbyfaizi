@@ -1,5 +1,5 @@
 <template>
-  <main class="content-grid flex-1 flex flex-col">
+  <main class="app-container content-grid flex-1 flex flex-col">
     <section
       class="flex flex-col items-center gap-4 justify-center rounded-xl py-20"
     >
@@ -14,7 +14,7 @@
       <p class="text-lg">I design and develop stuff for the web.</p>
       <div class="flex flex-col md:flex-row gap-4 items-center">
         <nuxt-link :to="`mailto:faizanullah1999@gmail.com`">
-          <Button variant="soft" class="gap-4" :animate="false">
+          <Button variant="secondary" class="gap-4" :animate="false">
             <p>
               {{ "faizanullah1999@gmail.com" }}
             </p>

@@ -1,3 +1,5 @@
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
@@ -10,11 +12,8 @@ export default defineNuxtConfig({
     api_url: process.env.API_URL!,
     api_key: process.env.API_KEY!,
   },
-  future: {
-    compatibilityVersion: 4,
-  },
   modules: [
-    "@unocss/nuxt",
+    // "@unocss/nuxt",
     "@vueuse/nuxt",
     "@nuxt/icon",
     "@nuxt/image",
@@ -22,6 +21,7 @@ export default defineNuxtConfig({
     "motion-v/nuxt",
     "@nuxt/content",
     "@nuxt/fonts",
+    "shadcn-nuxt",
   ],
   fonts: {
     families: [
@@ -34,13 +34,6 @@ export default defineNuxtConfig({
     ],
   },
   css: ["@/assets/styles/main.css"],
-  routeRules: {
-    "/skills": { isr: true },
-    "/skills/**": { isr: true },
-    "/blog": { isr: true },
-    "/blog/**": { isr: true },
-  },
-  devtools: { enabled: process.env.ENV === "DEV" },
   nitro: {
     compatibilityDate: "2024-11-01",
   },
@@ -61,5 +54,20 @@ export default defineNuxtConfig({
     server: {
       allowedHosts: true,
     },
+    plugins: [tailwindcss()],
+  },
+  shadcn: {
+    /**
+     * Prefix for all the imported component.
+     * @default "Ui"
+     */
+    prefix: "",
+    /**
+     * Directory that the component lives in.
+     * Will respect the Nuxt aliases.
+     * @link https://nuxt.com/docs/api/nuxt-config#alias
+     * @default "@/components/ui"
+     */
+    componentDir: "@/components/ui",
   },
 });

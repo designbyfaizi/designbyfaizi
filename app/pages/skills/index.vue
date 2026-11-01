@@ -10,14 +10,42 @@
       <div v-else-if="error && !data">
         {{ "Uh-oh! Some Error occured.💀 Check server logs!" }}
       </div>
-      <SkillCategories v-else :categories="data" />
+      <ol class="grid grid-cols-12 gap-4 w-full bg-red-500">
+        <li
+          v-for="category in categories"
+          :key="category.id"
+          class="col-span-12"
+        >
+          <div class="p-4">
+            <h3 class="card-title text-2xl leading-10 mb-10 font-semibold">
+              {{ category.name }}
+            </h3>
+            <ul class="flex items-center flex-wrap gap-8">
+              <li
+                v-for="skill in category.skills"
+                :key="skill.name"
+                class="rounded-full flex items-center gap-2"
+              >
+                <Icon v-if="skill.icon" :name="skill.icon" class="size-6" />
+                <span>
+                  {{ skill.name }}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ol>
     </section>
   </main>
 </template>
 
 <script lang="ts" setup>
-const { data, status, error } = await useAsyncData("skills", () =>
-  queryCollection("skill").order("name", "DESC").all()
+const {
+  data: categories,
+  status,
+  error,
+} = await useAsyncData("skills", () =>
+  queryCollection("skill").order("name", "DESC").all(),
 );
 
 const config = useRuntimeConfig();
@@ -25,7 +53,7 @@ const title = "Skills - Design By Faizi";
 const description =
   "A curated list of technologies, tools, and frameworks I use to build seamless digital experiences.";
 
-  useSeoMeta({
+useSeoMeta({
   title: title,
   description: description,
   ogTitle: title,
