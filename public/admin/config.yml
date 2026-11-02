@@ -144,8 +144,7 @@ collections:
       - { name: series, label: Series, widget: string, hint: For example Inktober 2026, Digital or Sketch. Pieces are grouped by this. }
       - { name: description, label: Description, widget: text }
       - { name: image, label: Picture, widget: image }
-      - { name: link, label: Instagram post, widget: string, required: false, hint: Paste the post link so the live feed doesn't show this piece twice. }
-      - { name: account, label: Instagram account, widget: string, required: false }
+      - { name: link, label: Instagram post, widget: string, required: false, pattern: ["^https://(www\\.)?instagram\\.com/", "Paste a link from instagram.com"], hint: Adds a View on Instagram link that opens this post. }
       - { name: picked, label: Circle it in rose pencil, widget: boolean, default: false }
       - { name: order, label: Position, widget: number, value_type: int, default: 1, hint: Lower numbers show first. }
 

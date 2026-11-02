@@ -44,7 +44,7 @@
         <AnimatePresence mode="popLayout" :initial="false">
           <motion.li
             v-for="(piece, index) in visible"
-            :key="piece.id"
+            :key="piece.stem"
             layout
             data-enter
             :initial="{ opacity: 0, y: 24 }"
@@ -56,18 +56,10 @@
               <div class="relative aspect-square bg-white">
                 <span class="absolute inset-0 bg-primary transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2" />
                 <NuxtImg
-                  v-if="piece.local"
                   format="webp"
                   :src="piece.image"
                   :alt="`${piece.title}. ${piece.description}`"
                   width="640"
-                  loading="lazy"
-                  class="relative size-full object-cover"
-                />
-                <img
-                  v-else
-                  :src="piece.image"
-                  :alt="piece.title"
                   loading="lazy"
                   class="relative size-full object-cover"
                 />
@@ -87,14 +79,20 @@
       <DialogContent class="w-[94vw] max-w-5xl gap-0 rounded-none border border-foreground bg-card p-0 ring-0 sm:max-w-5xl">
         <motion.article
           v-if="selected"
-          :key="selected.id"
+          :key="selected.stem"
           class="grid max-h-[88dvh] overflow-y-auto md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
           :initial="{ opacity: 0, scale: 0.98 }"
           :animate="{ opacity: 1, scale: 1 }"
           :transition="snappy"
         >
           <div class="bg-white">
-            <img :src="selected.fullImage" :alt="selected.title" class="mx-auto max-h-[70dvh] object-contain md:max-h-[88dvh]" />
+            <NuxtImg
+              format="webp"
+              :src="selected.image"
+              :alt="selected.title"
+              width="640"
+              class="mx-auto max-h-[70dvh] object-contain md:max-h-[88dvh]"
+            />
           </div>
           <div class="flex flex-col gap-3 p-5 md:p-8">
             <p class="slug text-rose-ink">{{ selected.series }}</p>
@@ -119,72 +117,11 @@ import { AnimatePresence, motion } from "motion-v";
 import { onKeyStroke } from "@vueuse/core";
 import { snappy } from "@/lib/motion";
 
-type Piece = {
-  id: string;
-  title: string;
-  series: string;
-  description: string;
-  image: string;
-  fullImage: string;
-  link?: string;
-  picked: boolean;
-  local: boolean;
-};
-
 const site = useSite();
-const img = useImage();
 const accounts = ["khakcsar", "khak.csar"];
 
 const { data: artworks } = await useArtworks();
-
-const saved = computed<Piece[]>(() =>
-  (artworks.value ?? []).map((art) => ({
-    id: art.stem,
-    title: art.title,
-    series: art.series,
-    description: art.description,
-    image: art.image,
-    fullImage: img(art.image, { width: 640, format: "webp" }),
-    link: art.link ?? undefined,
-    picked: art.picked,
-    local: true,
-  })),
-);
-
-// New posts arrive from Instagram after the page loads. Anything already saved
-// on the site keeps its title, and the saved gallery shows if the feed is off.
-const live = ref<Piece[]>([]);
-
-const postId = (link?: string) => link?.match(/\/(?:p|reel)\/([\w-]+)/)?.[1];
-
-onMounted(async () => {
-  try {
-    const posts = await $fetch<
-      { id: string; account: string; caption: string; link: string; image: string; date: string }[]
-    >("/api/instagram");
-    const known = new Set(saved.value.map((piece) => postId(piece.link)));
-    live.value = posts
-      .filter((post) => !known.has(postId(post.link)))
-      .map((post) => {
-        const firstLine = post.caption.split("\n")[0]?.trim() ?? "";
-        return {
-          id: post.id,
-          title: firstLine.slice(0, 40) || `@${post.account}`,
-          series: "New on Instagram",
-          description: post.caption,
-          image: post.image,
-          fullImage: post.image,
-          link: post.link,
-          picked: false,
-          local: false,
-        };
-      });
-  } catch {
-    live.value = [];
-  }
-});
-
-const pieces = computed(() => [...live.value, ...saved.value]);
+const pieces = computed(() => artworks.value ?? []);
 
 const activeSeries = ref("Everything");
 const seriesList = computed(() => [

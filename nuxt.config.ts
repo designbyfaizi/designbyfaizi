@@ -53,13 +53,6 @@ export default defineNuxtConfig({
       password: "",
       to: "",
     },
-    // Set on the server with NUXT_INSTAGRAM_TOKEN_KHAKCSAR and
-    // NUXT_INSTAGRAM_TOKEN_KHAK_DOT_CSAR, see EDITING.md.
-    instagram: {
-      api: "https://graph.instagram.com",
-      tokenKhakcsar: "",
-      tokenKhakDotCsar: "",
-    },
     public: { siteUrl: "https://designbyfaizi.com" },
   },
   components: [

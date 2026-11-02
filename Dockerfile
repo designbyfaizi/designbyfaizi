@@ -24,8 +24,7 @@ ENV NODE_ENV=production \
 # Nitro bundles the server and its dependencies into .output.
 COPY --from=build /app/.output ./.output
 
-# Persistent data: Instagram token refreshes are written to .data/kv.
-# Mount a volume here so they survive redeploys.
+# Nuxt Content keeps its SQLite database in here while the server runs.
 RUN mkdir -p /app/.data
 
 EXPOSE 3000

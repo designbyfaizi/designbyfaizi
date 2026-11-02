@@ -50,11 +50,9 @@ A new page must be linked from somewhere to be prerendered. Add it to the hardco
 `server/` handles what can't be prerendered. `/api` is excluded from prerendering.
 
 - `api/contact.post.ts`: emails the contact form through nodemailer. `shared/contact.ts` holds the zod schema used by both the form and the server (import as `#shared/contact`). Rate limiting is in-memory, per IP.
-- `utils/instagram.ts`: fetches two accounts' feeds, cached for an hour with `defineCachedFunction`. Long-lived tokens are renewed every 30 days and stored in `useStorage("data")`, which is `.data/kv` on disk.
-- `api/instagram/image/[id].get.ts`: proxies images, only for ids present in the current feed.
 - `routes/sitemap.xml.ts`, `routes/feed.xml.ts`: generated from content and prerendered.
 
-`/art` renders the saved gallery from content, then merges live Instagram posts on the client. Art entries with a `link` are de-duplicated against the feed by post id. The feed being unavailable must leave the saved gallery intact.
+`/art` is entirely content-driven: artwork is managed in the CMS and stored in `content/art/`. The optional `link` field is the Instagram post, shown as a "View on Instagram" link in the lightbox. There is no Instagram API integration.
 
 ### Components
 
@@ -75,9 +73,9 @@ The site is styled as a two-ink print job: rose is the design plate, black is th
 
 ## Deployment
 
-`Dockerfile` builds a Bun image deployed on Dokploy, listening on port 3000. Mount a volume at `/app/.data` or refreshed Instagram tokens are lost on redeploy.
+`Dockerfile` builds a Bun image deployed on Dokploy, listening on port 3000. Nuxt Content writes its SQLite database under `/app/.data` at runtime, so the image creates that folder.
 
-Runtime environment variables: `NUXT_SMTP_USER`, `NUXT_SMTP_PASSWORD`, `NUXT_SMTP_TO` (optional, defaults to the user), `NUXT_INSTAGRAM_TOKEN_KHAKCSAR`, `NUXT_INSTAGRAM_TOKEN_KHAK_DOT_CSAR`. Without SMTP credentials the contact endpoint returns 503; an account with no token is skipped.
+Runtime environment variables: `NUXT_SMTP_USER`, `NUXT_SMTP_PASSWORD`, `NUXT_SMTP_TO` (optional, defaults to the user). Without SMTP credentials the contact endpoint returns 503.
 
 ## Stale references
 
