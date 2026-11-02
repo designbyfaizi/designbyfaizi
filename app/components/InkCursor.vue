@@ -2,8 +2,9 @@
   <motion.div
     v-if="enabled"
     aria-hidden="true"
-    class="pointer-events-none fixed top-0 left-0 z-[60] text-primary"
-    :style="{ x, y, scale, opacity: visible ? 1 : 0 }"
+    class="pointer-events-none fixed top-0 left-0 z-[60] text-primary transition-opacity duration-300"
+    :class="visible ? 'opacity-100' : 'opacity-0'"
+    :style="{ x, y, scale }"
   >
     <svg class="-translate-x-1/2 -translate-y-1/2" width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.25">
       <circle cx="18" cy="18" r="9" />
@@ -33,12 +34,18 @@ if (enabled) {
   useEventListener(window, "pointermove", (event: PointerEvent) => {
     rawX.set(event.clientX);
     rawY.set(event.clientY);
-    visible.value = true;
+    // Coming back in, the mark appears at the pointer rather than flying over to it.
+    if (!visible.value) {
+      x.jump(event.clientX);
+      y.jump(event.clientY);
+      visible.value = true;
+    }
     const target = event.target as Element | null;
     rawScale.set(target?.closest("a, button, [role='button'], input, textarea, label") ? 1.5 : 0.6);
   });
-  useEventListener(document, "pointerleave", () => {
-    visible.value = false;
+  // No element to move to means the pointer has left the site.
+  useEventListener(window, "pointerout", (event: PointerEvent) => {
+    if (!event.relatedTarget) visible.value = false;
   });
 }
 </script>
