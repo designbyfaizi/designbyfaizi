@@ -4,8 +4,9 @@
       <defs>
         <path id="stamp-circle" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0" />
       </defs>
-      <text class="fill-current font-mono text-[9.6px] tracking-[0.1em] uppercase">
-        <textPath href="#stamp-circle">{{ text }} • {{ text }} •</textPath>
+      <!-- Spaced out to run exactly once around the ring, whatever the text is. -->
+      <text class="fill-current font-mono uppercase" :font-size="FONT_SIZE" :letter-spacing="spacing">
+        <textPath href="#stamp-circle">{{ label }}</textPath>
       </text>
     </motion.svg>
     <span class="absolute inset-0 m-auto size-3.5 bg-green-500">
@@ -17,7 +18,17 @@
 <script setup lang="ts">
 import { motion, useScroll, useTransform } from "motion-v";
 
-defineProps<{ text: string }>();
+const props = defineProps<{ text: string }>();
+
+// The circle the text follows has a radius of 46. JetBrains Mono gives every
+// character the same 0.6em width, so the gap that spreads the text evenly round
+// the whole ring can be worked out exactly. Firefox ignores textLength on a
+// textPath, which is why this isn't left to the browser.
+const FONT_SIZE = 9.6;
+const RING = 2 * Math.PI * 46;
+// The non-breaking space keeps a gap after the dot, where a plain space would be dropped.
+const label = computed(() => `${props.text} •\u00A0`);
+const spacing = computed(() => RING / label.value.length - FONT_SIZE * 0.6);
 
 // The stamp turns as the page scrolls.
 const { scrollY } = useScroll();
