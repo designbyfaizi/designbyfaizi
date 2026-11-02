@@ -58,6 +58,7 @@ A new page must be linked from somewhere to be prerendered. Add it to the hardco
 
 - `app/components/` auto-imports without a path prefix.
 - `app/components/ui/` is shadcn-vue, registered by the `shadcn-nuxt` module rather than Nuxt's component scan (hence the `ui/**` ignore in `nuxt.config.ts`).
+- Home page sections below the hero use lazy hydration (`<LazyX :hydrate-on-visible="ahead">` in `app/pages/index.vue`), so the page isn't hydrated in one long task on load. Give new below-the-fold sections the same treatment.
 - Deliberately disabled: `app/pages/about.vue` (the About page was removed; it's in Nuxt's `ignore`), and `SpotlightCard.vue` and `ThemePicker.vue` (excluded from auto-import).
 
 ### Design system
