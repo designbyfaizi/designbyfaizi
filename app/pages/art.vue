@@ -85,7 +85,7 @@
       >
         <article
           v-if="selected"
-          class="lightbox relative flex w-fit flex-col overflow-hidden border border-foreground bg-card sm:flex-row"
+          class="lightbox relative flex flex-col overflow-hidden border border-foreground bg-card max-sm:mt-auto max-sm:mb-6 sm:flex-row"
         >
           <!-- Stays on one element so the current picture holds until the next is ready. -->
           <img
@@ -93,13 +93,13 @@
             :alt="selected.title"
             width="640"
             height="640"
-            class="lightbox-art block w-auto shrink-0 bg-white object-cover transition-opacity duration-200"
+            class="lightbox-art block shrink-0 bg-ink object-contain transition-opacity duration-200 sm:bg-white sm:object-cover"
             :class="isLoading ? 'opacity-40 delay-150' : ''"
             @load="isLoading = false"
             @error="isLoading = false"
           />
-          <div class="lightbox-text flex min-h-0 flex-1 flex-col p-5 lg:p-8">
-            <div :key="selected.stem" class="flex min-h-0 flex-1 flex-col gap-3 overflow-x-hidden overflow-y-auto">
+          <div class="lightbox-text flex min-h-0 flex-initial flex-col p-5 sm:flex-1 lg:p-8">
+            <div :key="selected.stem" class="flex min-h-0 flex-initial flex-col gap-3 overflow-x-hidden overflow-y-auto sm:flex-1">
               <p class="slug text-rose-ink">{{ selected.series }}</p>
               <DialogTitle class="display text-4xl sm:text-5xl lg:text-6xl">{{ selected.title }}</DialogTitle>
               <DialogDescription class="font-serif text-xl leading-snug text-foreground">
@@ -115,7 +115,7 @@
             </Button>
           </DialogClose>
         </article>
-        <div class="flex gap-2">
+        <div class="flex gap-2 max-sm:mb-6">
           <Button variant="outline" size="sm" class="bg-card" @click="step(-1)">Previous</Button>
           <Button variant="outline" size="sm" class="bg-card" @click="step(1)">Next</Button>
         </div>
@@ -184,34 +184,38 @@ usePageSeo("Art - Design By Faizi", site.value.art.intro);
 </script>
 
 <style scoped>
-/* The height is set per screen size and the picture decides the width, so there
-   are never bars around it. A picture too wide for the screen is cropped. */
+/* Phones: the card keeps its width and each picture sets its own height. Tall
+   pictures stop at a height limit, with dark bars at the sides. */
 .lightbox {
   /* The screen, less three 1.5rem gaps, the buttons and the card's border. */
   --frame: calc(100dvh - 6.5rem - 2px);
-  --art: min(94vw, var(--frame) * 0.6);
-  --art-max: 94vw;
   box-sizing: content-box;
-  height: min(var(--frame), var(--art) + 16rem);
+  width: 94vw;
+  max-height: var(--frame);
 }
 
 .lightbox-art {
-  height: var(--art);
-  max-width: var(--art-max);
+  width: 100%;
+  height: auto;
+  max-height: max(94vw, var(--frame) * 0.6);
 }
 
-/* On phones the text sits below the picture and takes its width from it. */
-.lightbox-text {
-  width: 0;
-  min-width: 100%;
-}
-
+/* Larger screens: the height is set per screen size and the picture decides the
+   width, so there are never bars. A picture too wide for the screen is cropped. */
 @media (min-width: 40rem) {
   .lightbox {
     --text: min(24rem, 40vw);
     --art: min(var(--frame), 94vw - var(--text));
-    --art-max: calc(94vw - var(--text));
+    width: fit-content;
+    max-height: none;
     height: var(--art);
+  }
+
+  .lightbox-art {
+    width: auto;
+    height: var(--art);
+    max-width: calc(94vw - var(--text));
+    max-height: none;
   }
 
   .lightbox-text {
