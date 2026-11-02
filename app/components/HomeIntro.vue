@@ -5,7 +5,11 @@
       <div class="md:col-span-4">
         <div class="md:sticky md:top-24">
           <HalftonePhoto :src="site.intro.photo" :alt="site.intro.photo_alt" class="aspect-4/5 w-full" />
-          <p class="slug mt-3 text-muted-foreground">Fig. 1 — Move over the drawing to develop it</p>
+          <p class="slug mt-3 text-muted-foreground">
+            Fig. 1 —
+            <span class="pointer-coarse:hidden">Move over the drawing to develop it</span>
+            <span class="hidden pointer-coarse:inline">Press and hold the drawing to develop it</span>
+          </p>
         </div>
       </div>
       <div class="md:col-span-7 md:col-start-6">
