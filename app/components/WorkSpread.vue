@@ -1,5 +1,5 @@
 <template>
-  <article ref="spread" class="grid items-center gap-6 md:grid-cols-12 md:gap-8">
+  <article class="grid items-center gap-6 md:grid-cols-12 md:gap-8">
     <a
       :href="project.url"
       target="_blank"
@@ -8,18 +8,17 @@
       :aria-label="`Visit ${project.title}`"
     >
       <div class="absolute inset-0 translate-x-2 translate-y-2 bg-primary transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0 md:translate-x-3 md:translate-y-3" />
-      <div class="relative aspect-16/10 overflow-hidden border border-foreground">
-        <motion.div class="absolute inset-x-0 -top-[8%] -bottom-[8%]" :style="{ y: drift }">
-          <NuxtImg
-            v-if="project.cover"
-            format="webp"
-            :src="project.cover"
-            :alt="`${project.title} website`"
-            width="1100"
-            loading="lazy"
-            class="size-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-          />
-        </motion.div>
+      <!-- The screenshot sets its own height, so it is shown whole, from the top of the site. -->
+      <div class="relative overflow-hidden border border-foreground">
+        <NuxtImg
+          v-if="project.cover"
+          format="webp"
+          :src="project.cover"
+          :alt="`${project.title} website`"
+          width="1100"
+          loading="lazy"
+          class="block h-auto w-full transition-transform duration-700 group-hover:scale-105"
+        />
       </div>
     </a>
 
@@ -35,13 +34,8 @@
 
 <script setup lang="ts">
 import type { ProjectCollectionItem } from "@nuxt/content";
-import { motion, useScroll, useTransform } from "motion-v";
 
 const props = defineProps<{ project: ProjectCollectionItem; index: number }>();
 
 const flipped = computed(() => props.index % 2 === 1);
-
-const spread = useTemplateRef("spread");
-const { scrollYProgress } = useScroll({ target: spread, offset: ["start end", "end start"] });
-const drift = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 </script>
