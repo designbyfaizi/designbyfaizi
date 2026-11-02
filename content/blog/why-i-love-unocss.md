@@ -10,8 +10,6 @@ created_at: 2025-04-04
 updated_at: 2025-04-04
 ---
 
-# Why I love UnoCSS
-
 ## Some backstory
 
 I am a simple guy. I see something interesting; I try to learn more about it. I came across html, css in 2019; I learnt it. I saw javascript in 2020; I learnt it. I came accross tailwind; I immediately learnt it and used it before my colleagues even knew about it. Then 2 years ago, I came accross something which changed the way I think about CSS entirely. No, I’m not talking about Bootstrap. Even though I did learn it before Tailwind, I never exactly liked it. What i’m talking about is far more versatile, flexible and simple in implementation and usage. Ladies and gentlemen, I introduce you to UnoCSS.

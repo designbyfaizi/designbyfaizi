@@ -126,7 +126,7 @@ const site = useSite();
 const fieldClass =
   "mt-1 h-auto rounded-none border-0 border-b border-foreground bg-transparent px-0 py-2 font-serif text-xl focus-visible:border-primary focus-visible:ring-0 md:text-xl dark:bg-transparent";
 
-const jobs = ["Say hello", "Idea", "Sponsor"] as const;
+const jobs = ["Job offer", "Project", "Say hello"] as const;
 const activeJob = ref<(typeof jobs)[number]>(jobs[0]);
 
 const form = reactive({ name: "", email: "", message: "", website: "" });

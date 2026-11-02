@@ -1,6 +1,6 @@
 title: Design By Faizi
 type: Website
-description: "'Design By Faizi' is my personal portfolio website that you are viewing this on. This site has gone through many stages of changes and modifications and I keep changing it from time to time."
+description: The portfolio you are on. Designed as a two-ink print and built with Nuxt, Tailwind CSS and Motion. Every page is prerendered and compressed, and the content is edited through a Git-based CMS.
 image: /img/designbyfaizi-logo.svg
 url: https://designbyfaizi.com
 github_url: https://github.com/designbyfaizi/designbyfaizi

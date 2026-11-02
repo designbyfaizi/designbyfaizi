@@ -9,12 +9,12 @@
         </a>
       </div>
       <nav class="slug flex flex-col gap-2 md:col-span-2 md:col-start-7" aria-label="Footer">
-        <span class="mb-2 opacity-50">Pages</span>
+        <span class="mb-2 opacity-70">Pages</span>
         <NuxtLink v-for="link in navLinks" :key="link.to" :to="link.to" class="hover:text-primary">{{ link.name }}</NuxtLink>
         <NuxtLink to="/contact" class="hover:text-primary">Contact</NuxtLink>
       </nav>
       <div class="slug flex flex-col gap-2 md:col-span-3">
-        <span class="mb-2 opacity-50">Elsewhere</span>
+        <span class="mb-2 opacity-70">Elsewhere</span>
         <a
           v-for="social in site.socials"
           :key="social.url"

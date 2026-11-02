@@ -1,5 +1,6 @@
 <template>
-  <component :is="as" :aria-label="text">
+  <component :is="as">
+    <span class="sr-only">{{ text }}</span>
     <template v-for="(word, index) in words" :key="index">
       <span aria-hidden="true" class="inline-block overflow-hidden pb-[0.1em] -mb-[0.1em] align-bottom">
         <motion.span

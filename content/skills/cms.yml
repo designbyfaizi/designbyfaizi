@@ -1,7 +1,7 @@
 name: "CMS"
 order: 5
 skills:
-  - name: "Wordpress"
+  - name: "WordPress"
     icon: "skill-icons:wordpress"
   - name: "Framer"
     icon: "simple-icons:framer"

@@ -1,13 +1,14 @@
 title: Bullet Flughafentransfer
 type: Web App
-description: Created a web application for a german client. The app allows users to book airport transfers and manage their bookings. It includes automatic price calculation, custom forms, and a user-friendly interface.
+description: A full booking platform for an airport transfer company in Darmstadt. Customers get an instant fixed price from a Google Maps route, book in German or English and manage their rides in an account. Behind it sit an admin panel for bookings and customers, PDF invoices with VAT, automated emails and SEO pages for each city served.
 image: /uploads/bullet-icon.png
 cover: /uploads/projects/bullet-flughafentransfer.jpg
 url: https://bullet-flughafentransfer.de
 tags:
-  - Frontend
-  - Backend
-  - Vue.js
+  - Full stack
   - Nuxt
+  - Vue.js
+  - TypeScript
   - MongoDB
+  - Google Maps API
 date: 2025-01-01

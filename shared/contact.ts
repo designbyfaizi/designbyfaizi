@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // One set of rules for the form and the server, so both always agree.
 export const contactSchema = z.object({
-  purpose: z.enum(["Say hello", "Idea", "Sponsor"]),
+  purpose: z.enum(["Job offer", "Project", "Say hello"]),
   name: z.string().trim().min(2, "Please add your name.").max(80, "That name is a bit long."),
   email: z.string().trim().email("That email address doesn't look right."),
   message: z

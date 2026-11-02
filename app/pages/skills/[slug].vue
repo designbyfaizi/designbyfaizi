@@ -32,5 +32,5 @@ if (!category.value) {
   throw createError({ statusCode: 404, statusMessage: "Skill not found" });
 }
 
-usePageSeo(`${category.value.name} - Design By Faizi`, `The ${category.value.name} tools I work with.`);
+usePageSeo(`${category.value.name} - Design By Faizi`, `${category.value.name}: the tools I work with.`);
 </script>
