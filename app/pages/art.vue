@@ -76,37 +76,49 @@
     </section>
 
     <Dialog v-model:open="isOpen">
-      <DialogContent class="w-[94vw] max-w-5xl gap-0 rounded-none border border-foreground bg-card p-0 ring-0 sm:max-w-5xl">
-        <motion.article
+      <!-- A full-screen layer, so the buttons stay put however wide each picture makes the card.
+           The spacing shares the leftover height equally above, between and below. -->
+      <DialogContent
+        :show-close-button="false"
+        class="top-0 left-0 h-dvh w-full max-w-none translate-x-0 translate-y-0 flex flex-col items-center justify-evenly gap-0 rounded-none bg-transparent p-0 ring-0 sm:max-w-none"
+        @click.self="isOpen = false"
+      >
+        <article
           v-if="selected"
-          :key="selected.stem"
-          class="grid max-h-[88dvh] overflow-y-auto md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
-          :initial="{ opacity: 0, scale: 0.98 }"
-          :animate="{ opacity: 1, scale: 1 }"
-          :transition="snappy"
+          class="lightbox relative flex w-fit flex-col overflow-hidden border border-foreground bg-card sm:flex-row"
         >
-          <div class="bg-white">
-            <NuxtImg
-              format="webp"
-              :src="selected.image"
-              :alt="selected.title"
-              width="640"
-              class="mx-auto max-h-[70dvh] object-contain md:max-h-[88dvh]"
-            />
-          </div>
-          <div class="flex flex-col gap-3 p-5 md:p-8">
-            <p class="slug text-rose-ink">{{ selected.series }}</p>
-            <DialogTitle class="display text-5xl md:text-6xl">{{ selected.title }}</DialogTitle>
-            <DialogDescription class="font-serif text-xl leading-snug text-foreground">
-              {{ selected.description }}
-            </DialogDescription>
-            <OutLink v-if="selected.link" :to="selected.link" class="mt-1">View on Instagram</OutLink>
-            <div class="mt-auto flex gap-2 pt-6">
-              <Button variant="outline" size="sm" @click="step(-1)">Previous</Button>
-              <Button variant="outline" size="sm" @click="step(1)">Next</Button>
+          <!-- Stays on one element so the current picture holds until the next is ready. -->
+          <img
+            :src="lightboxImage(selected.image)"
+            :alt="selected.title"
+            width="640"
+            height="640"
+            class="lightbox-art block w-auto shrink-0 bg-white object-cover transition-opacity duration-200"
+            :class="isLoading ? 'opacity-40 delay-150' : ''"
+            @load="isLoading = false"
+            @error="isLoading = false"
+          />
+          <div class="lightbox-text flex min-h-0 flex-1 flex-col p-5 lg:p-8">
+            <div :key="selected.stem" class="flex min-h-0 flex-1 flex-col gap-3 overflow-x-hidden overflow-y-auto">
+              <p class="slug text-rose-ink">{{ selected.series }}</p>
+              <DialogTitle class="display text-4xl sm:text-5xl lg:text-6xl">{{ selected.title }}</DialogTitle>
+              <DialogDescription class="font-serif text-xl leading-snug text-foreground">
+                {{ selected.description }}
+              </DialogDescription>
+              <OutLink v-if="selected.link" :to="selected.link" class="mt-1">View on Instagram</OutLink>
             </div>
           </div>
-        </motion.article>
+          <DialogClose as-child>
+            <Button variant="ghost" size="icon-sm" class="absolute top-2 right-2 max-sm:bg-card">
+              <Icon name="lucide:x" class="size-4" />
+              <span class="sr-only">Close</span>
+            </Button>
+          </DialogClose>
+        </article>
+        <div class="flex gap-2">
+          <Button variant="outline" size="sm" class="bg-card" @click="step(-1)">Previous</Button>
+          <Button variant="outline" size="sm" class="bg-card" @click="step(1)">Next</Button>
+        </div>
       </DialogContent>
     </Dialog>
   </main>
@@ -118,6 +130,7 @@ import { onKeyStroke } from "@vueuse/core";
 import { snappy } from "@/lib/motion";
 
 const site = useSite();
+const img = useImage();
 const accounts = ["khakcsar", "khak.csar"];
 
 const { data: artworks } = await useArtworks();
@@ -148,8 +161,62 @@ const step = (change: number) => {
   selectedIndex.value = (selectedIndex.value + change + total) % total;
 };
 
+const lightboxImage = (image: string) => img(image, { width: 1600, format: "webp" });
+
+const isLoading = ref(false);
+watch(() => selected.value?.stem, () => {
+  isLoading.value = true;
+});
+
+// Fetches the pictures on either side so stepping to them is instant.
+watch([isOpen, selectedIndex], ([open, index]) => {
+  if (!open) return;
+  const total = visible.value.length;
+  [-1, 1].forEach((change) => {
+    new Image().src = lightboxImage(visible.value[(index + change + total) % total]!.image);
+  });
+});
+
 onKeyStroke("ArrowRight", () => isOpen.value && step(1));
 onKeyStroke("ArrowLeft", () => isOpen.value && step(-1));
 
 usePageSeo("Art - Design By Faizi", site.value.art.intro);
 </script>
+
+<style scoped>
+/* The height is set per screen size and the picture decides the width, so there
+   are never bars around it. A picture too wide for the screen is cropped. */
+.lightbox {
+  /* The screen, less three 1.5rem gaps, the buttons and the card's border. */
+  --frame: calc(100dvh - 6.5rem - 2px);
+  --art: min(94vw, var(--frame) * 0.6);
+  --art-max: 94vw;
+  box-sizing: content-box;
+  height: min(var(--frame), var(--art) + 16rem);
+}
+
+.lightbox-art {
+  height: var(--art);
+  max-width: var(--art-max);
+}
+
+/* On phones the text sits below the picture and takes its width from it. */
+.lightbox-text {
+  width: 0;
+  min-width: 100%;
+}
+
+@media (min-width: 40rem) {
+  .lightbox {
+    --text: min(24rem, 40vw);
+    --art: min(var(--frame), 94vw - var(--text));
+    --art-max: calc(94vw - var(--text));
+    height: var(--art);
+  }
+
+  .lightbox-text {
+    width: var(--text);
+    min-width: var(--text);
+  }
+}
+</style>
