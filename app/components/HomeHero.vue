@@ -1,5 +1,5 @@
 <template>
-  <section class="sheet relative flex min-h-dvh flex-col justify-between overflow-hidden pt-20 pb-6 md:pb-8">
+  <section class="sheet relative flex min-h-svh flex-col justify-between overflow-hidden pt-20 pb-6 md:pb-8">
     <CropMarks />
 
     <div class="slug grid grid-cols-2 gap-y-1 md:grid-cols-4">

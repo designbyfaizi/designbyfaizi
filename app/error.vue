@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex min-h-dvh flex-col">
+  <div class="relative flex min-h-svh flex-col">
     <SiteHeader />
     <main class="sheet relative flex flex-1 flex-col justify-center overflow-hidden pt-24 pb-16">
       <CropMarks />

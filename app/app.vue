@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex min-h-dvh flex-col">
+  <div class="relative flex min-h-svh flex-col">
     <SiteHeader />
     <NuxtLayout>
       <NuxtPage :transition="pageTransition" />
