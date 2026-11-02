@@ -31,9 +31,12 @@
       <span>{{ site.footer }}</span>
       <span>Set in Bricolage Grotesque, Newsreader &amp; JetBrains Mono. Printed in two inks.</span>
     </div>
-    <p aria-hidden="true" class="display -mb-[0.1em] text-center text-[19.5vw] whitespace-nowrap text-primary">
-      Design By Faizi
-    </p>
+    <!-- Sized to the sheet rather than the window so the words always fill the margins exactly. -->
+    <div class="sheet @container">
+      <p aria-hidden="true" class="display -mb-[0.1em] text-center text-[17cqw] whitespace-nowrap text-primary">
+        Design By Faizi
+      </p>
+    </div>
   </footer>
 </template>
 

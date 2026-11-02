@@ -6,13 +6,14 @@
       <span class="h-px flex-1 bg-ink/40" />
       <span>{{ site.closing.title }}</span>
     </div>
+    <!-- Nastaliq letters sit well below the centre of their line, so the Urdu is lifted back into the frame. -->
     <div class="relative mt-8 flex h-[34vw] min-h-40 items-center overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.p
           :key="greeting.text"
           :lang="greeting.lang"
           :dir="greeting.lang === 'ur' ? 'rtl' : 'ltr'"
-          :class="greeting.lang === 'ur' ? 'w-full font-urdu text-[17vw] leading-[1.9]' : 'display text-[30vw]'"
+          :class="greeting.lang === 'ur' ? 'relative bottom-[0.53em] w-full font-urdu text-[17vw] leading-[1.9]' : 'display text-[30vw]'"
           :initial="{ y: '100%', opacity: 0 }"
           :animate="{ y: '0%', opacity: 1 }"
           :exit="{ y: '-100%', opacity: 0 }"
