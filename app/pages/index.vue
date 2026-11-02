@@ -1,7 +1,7 @@
 <template>
   <main>
     <HomeHero />
-    <InkMarquee :items="ticker" />
+    <InkMarquee :items="site.marquee" />
     <LazyHomeIntro :hydrate-on-visible="ahead" />
 
     <section id="work" class="sheet py-16 md:py-28">
@@ -51,11 +51,6 @@ const { data: clients } = await useClients();
 const { data: categories } = await useSkills();
 const { data: artworks } = await useArtworks();
 const { data: posts } = await usePosts();
-
-const ticker = computed(() => [
-  ...site.value.marquee,
-  ...(clients.value ?? []).map((client) => client.name),
-]);
 
 usePageSeo(site.value.title, site.value.description);
 </script>

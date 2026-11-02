@@ -1,4 +1,3 @@
-# Text used across the whole site. Edit it from the /admin page.
 title: Design By Faizi
 description: I'm Faizi/Faizan Ullah and this welcome to my personal website. I design and develop stuff.
 name: Faizan Ullah
@@ -28,18 +27,19 @@ hero:
   available: true
   availability_text: Available for new projects
 marquee:
-  - Frontend Developer
-  - UI/UX Designer
-  - Illustrator
-  - Rust Learner
-  - Ink Drawer
+  - Frontend
+  - UI/UX Design
+  - Rust
+  - Javascript
+  - Digital Art
+  - Illustrations
   - Brand Design
 intro:
   title: The short version
   statement: I design, develop, and deploy apps on the internet. With expertise in modern frameworks and design tools, I build fast, intuitive, and visually polished interfaces.
   note: Looking for job opportunities in Germany. To learn more, send me a message.
-  photo: /img/klein_moretti.jpg
-  photo_alt: Klein Moretti in a top hat tossing a coin, drawn in ink
+  photo: /img/faizan_backview.jpeg
+  photo_alt: Faizan standing in front of a large red church door
   button_text: Send a message
 process:
   title: How a job runs
