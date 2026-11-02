@@ -12,7 +12,7 @@
         class="fixed inset-0 z-[70] focus:outline-none"
       >
         <motion.div
-          class="flex h-dvh w-screen flex-col justify-between overflow-y-auto bg-primary p-5 text-ink"
+          class="menu flex h-dvh w-screen flex-col justify-between overflow-y-auto bg-primary p-5 text-ink"
           :initial="{ clipPath: 'inset(0 0 100% 0)' }"
           :animate="{ clipPath: 'inset(0 0 0% 0)' }"
           :transition="{ duration: 0.5, ease: press }"
@@ -71,3 +71,25 @@ watch(() => route.path, () => {
   isOpen.value = false;
 });
 </script>
+
+<style scoped>
+/* The dialog waits for this to finish before it removes the menu. */
+.menu[data-state="closed"] {
+  animation: roll-up 0.4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes roll-up {
+  from {
+    clip-path: inset(0 0 0% 0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu[data-state="closed"] {
+    animation: none;
+  }
+}
+</style>
