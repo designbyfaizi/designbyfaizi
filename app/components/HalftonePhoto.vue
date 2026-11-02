@@ -7,7 +7,8 @@
   >
     <div class="absolute inset-0 mix-blend-multiply">
       <div class="halftone size-full">
-        <img :src="src" alt="" loading="lazy" />
+        <!-- Same size and format as the picture below, so the browser fetches it once. -->
+        <NuxtImg format="webp" :src="src" alt="" width="800" loading="lazy" />
       </div>
     </div>
     <motion.div class="absolute inset-0" :style="{ clipPath }">
