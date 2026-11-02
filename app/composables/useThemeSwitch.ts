@@ -1,4 +1,4 @@
-import { useColorMode } from "@vueuse/core";
+import { useStorage } from "@vueuse/core";
 
 export type ThemeName = "light" | "dark";
 
@@ -9,15 +9,24 @@ export const themes: { name: ThemeName; icon: string }[] = [
 
 // Switching theme grows the new colours out of the button in a circle.
 export const useThemeSwitch = () => {
-  const { store, system } = useColorMode({ disableTransition: false });
-  const current = computed<ThemeName>(() =>
-    store.value === "auto" ? system.value : (store.value as ThemeName),
-  );
+  // Ink unless the visitor saved Paper, the same rule as theme-loader.js.
+  const current = useStorage<ThemeName>("vueuse-color-scheme", "dark", undefined, {
+    serializer: {
+      read: (saved) => (saved === "light" ? "light" : "dark"),
+      write: (theme) => theme,
+    },
+  });
+
+  watch(current, (theme) => {
+    const { classList } = document.documentElement;
+    classList.toggle("dark", theme === "dark");
+    classList.toggle("light", theme === "light");
+  });
 
   const setTheme = (next: ThemeName, event?: MouseEvent) => {
     const motionOff = matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!document.startViewTransition || motionOff) {
-      store.value = next;
+      current.value = next;
       return;
     }
 
@@ -29,7 +38,7 @@ export const useThemeSwitch = () => {
     );
 
     const transition = document.startViewTransition(async () => {
-      store.value = next;
+      current.value = next;
       await nextTick();
     });
     transition.ready.then(() => {
