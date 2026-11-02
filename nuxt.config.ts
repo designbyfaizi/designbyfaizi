@@ -87,12 +87,21 @@ export default defineNuxtConfig({
       scan: true,
     },
   },
+  routeRules: {
+    // Resized images have no hash in their URL, so they are cached for 30 days rather
+    // than forever: a replaced picture shows up after that.
+    "/_ipx/**": { headers: { "cache-control": "public, max-age=2592000" } },
+  },
   image: {
     quality: 80,
     format: ["webp"],
   },
   nitro: {
     preset: "bun",
+    // Every page is prerendered, so build-time brotli and gzip copies cover the HTML,
+    // payloads, scripts and styles. Nitro serves them to browsers that accept them.
+    // Nothing in front of the app compresses: Traefik (Dokploy) passes responses through.
+    compressPublicAssets: { gzip: true, brotli: true },
     prerender: {
       crawlLinks: true,
       routes: ["/", "/sitemap.xml", "/feed.xml", "/404.html"],
