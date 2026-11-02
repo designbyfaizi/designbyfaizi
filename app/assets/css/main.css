@@ -8,6 +8,64 @@
 @import "@fontsource-variable/jetbrains-mono/index.css";
 @import "@fontsource/noto-nastaliq-urdu/arabic-400.css";
 
+/* Stand-ins shown while the fonts load, resized to take the same space so
+   nothing moves when the real fonts swap in. Worked out from the font files
+   the way @nuxt/fonts does: Arial, Times New Roman and Courier New cover Apple
+   and Windows, their Liberation twins cover Linux, the rest cover Android. */
+@font-face {
+  font-family: "Bricolage Grotesque Arial Fallback";
+  src: local("Arial"), local("Liberation Sans");
+  size-adjust: 100.04%;
+  ascent-override: 92.96%;
+  descent-override: 26.99%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque Roboto Fallback";
+  src: local("Roboto");
+  size-adjust: 100.26%;
+  ascent-override: 92.75%;
+  descent-override: 26.93%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Newsreader Times New Roman Fallback";
+  src: local("Times New Roman"), local("Liberation Serif");
+  size-adjust: 100.68%;
+  ascent-override: 73.01%;
+  descent-override: 26.32%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Newsreader Noto Serif Fallback";
+  src: local("Noto Serif");
+  size-adjust: 85.03%;
+  ascent-override: 86.44%;
+  descent-override: 31.17%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Courier New Fallback";
+  src: local("Courier New"), local("Liberation Mono");
+  size-adjust: 99.98%;
+  ascent-override: 102.02%;
+  descent-override: 30.00%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Droid Sans Mono Fallback";
+  src: local("Droid Sans Mono");
+  size-adjust: 99.98%;
+  ascent-override: 102.02%;
+  descent-override: 30.00%;
+  line-gap-override: 0.00%;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @custom-variant data-open {
@@ -23,10 +81,10 @@
 }
 
 @theme {
-  --font-sans: "Bricolage Grotesque Variable", sans-serif;
-  --font-display: "Bricolage Grotesque Variable", sans-serif;
-  --font-serif: "Newsreader Variable", Georgia, serif;
-  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --font-sans: "Bricolage Grotesque Variable", "Bricolage Grotesque Arial Fallback", "Bricolage Grotesque Roboto Fallback", sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque Arial Fallback", "Bricolage Grotesque Roboto Fallback", sans-serif;
+  --font-serif: "Newsreader Variable", "Newsreader Times New Roman Fallback", "Newsreader Noto Serif Fallback", Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono Courier New Fallback", "JetBrains Mono Droid Sans Mono Fallback", ui-monospace, monospace;
   --font-urdu: "Noto Nastaliq Urdu", serif;
 
   --animate-marquee: marquee 38s linear infinite;

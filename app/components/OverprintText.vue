@@ -1,10 +1,12 @@
 <template>
   <component :is="as" class="relative inline-block">
+    <!-- Starts faint rather than invisible: browsers skip invisible text when timing the
+         page's largest paint, which would make it wait for this animation's script. -->
     <motion.span
       data-enter
       aria-hidden="true"
       class="absolute inset-0 block text-primary select-none"
-      :initial="{ opacity: 0, x: -48, y: 32 }"
+      :initial="{ opacity: 0.05, x: -48, y: 32 }"
       :animate="{ opacity: 1, x: 0, y: 0 }"
       :transition="{ ...gentle, delay: delay + 0.25 }"
     >

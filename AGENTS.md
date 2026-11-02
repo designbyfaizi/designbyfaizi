@@ -67,6 +67,7 @@ The site is styled as a two-ink print job: rose is the design plate, black is th
 
 - Tokens and utility classes are in `app/assets/css/main.css`. `--radius` is `0`, so corners are square. Use `.sheet` for section margins, `.slug` for small mono labels, `.display` and `.mega` for headline type. Use the token colors (`primary`, `rose-ink`, `foreground`, ...) so light and dark both work.
 - Fonts come from Fontsource: Bricolage Grotesque (sans/display), Newsreader (serif), JetBrains Mono, Noto Nastaliq Urdu.
+- Each font stack in `main.css` has size-matched fallback faces (`... Fallback`), so text doesn't move when the fonts swap in. Their `size-adjust` and `*-override` values come from the font files' metrics (the method `@nuxt/fonts` uses), so recalculate them if a font changes. `app/app.vue` preloads only Bricolage: preloading the other fonts as well measured slower.
 - Use the spring and easing presets in `app/lib/motion.ts` rather than new values.
 - Size in-flow sections with `svh`, not `dvh`: `dvh` changes whenever a mobile browser's toolbar shows or hides, shifting the page while scrolling. `dvh` is only for fixed overlays (the mobile menu, the art lightbox).
 - Animations must respect `prefers-reduced-motion` and leave the page complete without JavaScript. Any element that starts hidden for an entrance animation needs the `data-enter` attribute, which the `<noscript>` style in `app/app.vue` uses to reveal it. For scroll-in effects use the `v-reveal` directive (`app/plugins/reveal.ts`; its value is a delay).
