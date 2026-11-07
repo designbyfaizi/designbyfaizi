@@ -45,9 +45,7 @@ That first version was a playground. It has six color themes (light, dark, sepia
 
 On detail survived everything that came later: the accent color. In the first ever color file, I had:
 
-
 `--primary: 225, 29, 72`
- 
 
 which is rose. Four years and five versions later, the site is still rose.
 
@@ -59,7 +57,11 @@ In October 2023, I upgraded to Nuxt 3.8, added the Satoshi and Tanker typefaces,
 
 It also ended with a code block containing `console.log("Hello World")`, so in a way this post has been coming for a while.
 
-A month later I made another commit named **"Major Design Overhaul"**. I added pages for projects, products and my stack, a contact page, a tooltip component, and a custom 404 page. Getting that error page to deploy took more commits than I can count right now, and the messages tell the story better than I can: 
+A month later I made another commit named
+
+> "Major Design Overhaul"
+
+I added pages for projects, products and my stack, a contact page, a tooltip component, and a custom 404 page. Getting that error page to deploy took more commits than I can count right now, and the messages tell the story better than I can: 
 
 > "Updated Error Page Again T_T"
 
