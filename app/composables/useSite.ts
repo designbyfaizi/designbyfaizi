@@ -7,10 +7,10 @@ export const useSite = () => useState<SiteCollectionItem>("site");
 export const fromPayload = (key: string, nuxtApp: { payload: any; static: any }) =>
   nuxtApp.payload.data[key] ?? nuxtApp.static.data[key];
 
-export const usePageSeo = (title: string, description: string) => {
+export const usePageSeo = (title: string, description: string, picture = "/og_index.jpg") => {
   const config = useRuntimeConfig();
   const route = useRoute();
-  const image = `${config.public.siteUrl}/og_index.jpg`;
+  const image = `${config.public.siteUrl}${picture}`;
 
   useSeoMeta({
     title,

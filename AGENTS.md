@@ -30,7 +30,7 @@ A content schema is defined twice and the two must stay in sync:
 - `content.config.ts`: the zod schemas used at build time.
 - `public/admin/config.yml`: the Sveltia CMS forms served at `/admin`. Each save there commits to `main` (`content: ...` messages) and triggers a rebuild, so expect those commits on `main`. `public/admin/sveltia-cms.js` and `public/admin/chunks/` are vendored; don't edit them.
 
-Adding a field to `content/site.yml` touches both of those files plus the page that reads it. Blog posts rely on `rawbody` in the schema for reading time, and only posts with `published: true` are shown.
+Adding a field to `content/site.yml` touches both of those files plus the page that reads it. Blog posts rely on `rawbody` in the schema for reading time, and only posts with `published: true` are shown. Images in posts render through `app/components/content/ProseImg.vue` (lazy, responsive WebP); give each one its pixel size, `![alt](/uploads/blog/x.webp){width="1600" height="900"}`, so the page doesn't shift while it loads. Post images live in `public/uploads/blog/`.
 
 `nuxt.config.ts` reads `content/skills/*.yml` at config time and bundles the icons named there. A skill icon from a set outside `iconSets` still works but loads from Iconify at runtime.
 

@@ -32,7 +32,7 @@
           :exit="{ opacity: 0 }"
         >
           <NuxtLink :to="lead.path" class="group grid gap-6 md:grid-cols-12 md:gap-8">
-            <div class="overflow-hidden border border-foreground [container-type:inline-size] md:col-span-7">
+            <div class="self-start overflow-hidden border border-foreground [container-type:inline-size] md:col-span-7">
               <BlogCover :src="lead.featured_image" :title="lead.title" class="transition-transform duration-700 group-hover:scale-105" />
             </div>
             <div class="flex flex-col md:col-span-5">

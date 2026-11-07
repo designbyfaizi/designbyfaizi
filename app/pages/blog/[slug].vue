@@ -15,7 +15,8 @@
           <NuxtLink to="/blog" class="hover:text-rose-ink">
             <Icon name="lucide:arrow-left" class="mr-1 inline size-3.5" />Journal
           </NuxtLink>
-          <span class="text-rose-ink">{{ shortDate(post!.created_at) }}</span>
+          <time class="text-rose-ink" :datetime="shortDate(post!.created_at)">{{ shortDate(post!.created_at) }}</time>
+          <span v-if="updated">Updated <time :datetime="updated">{{ updated }}</time></span>
           <span>{{ site.name }}</span>
           <span>{{ minutes }} min read</span>
         </div>
@@ -37,14 +38,30 @@
 
       <div class="sheet mt-12 grid gap-10 pb-16 md:mt-16 md:grid-cols-12">
         <aside v-if="toc.length" class="hidden md:col-span-3 md:block">
-          <nav class="sticky top-24 flex flex-col gap-2" aria-label="On this page">
-            <p class="slug text-rose-ink">On this page</p>
+          <!-- The rail inks in rose as the reader moves through the post; the square marks where they are.
+               It sits on the middle of the first line's letters (padding + half the line, less the
+               part of the line Newsreader leaves empty above them), not the middle of the box. -->
+          <nav class="sticky top-24 flex flex-col" aria-label="On this page">
+            <p class="slug mb-3 text-rose-ink">On this page</p>
             <a
-              v-for="link in toc"
+              v-for="(link, index) in toc"
               :key="link.id"
               :href="`#${link.id}`"
-              class="font-serif text-lg leading-snug hover:text-rose-ink"
+              :aria-current="index === current ? 'location' : undefined"
+              :class="[
+                'relative border-l-2 py-1.5 pl-4 font-serif text-lg leading-snug hover:text-rose-ink motion-safe:transition-colors motion-safe:duration-300',
+                index > current && 'border-border text-muted-foreground',
+                index < current && 'border-primary',
+                index === current && 'border-primary text-rose-ink',
+              ]"
             >
+              <motion.span
+                v-if="index === current"
+                layout-id="toc-marker"
+                aria-hidden="true"
+                class="absolute top-[calc(0.375rem+0.5625em-5px)] -left-[6px] size-2.5 bg-primary"
+                :transition="snappy"
+              />
               {{ link.text }}
             </a>
           </nav>
@@ -75,7 +92,7 @@
 
 <script setup lang="ts">
 import { motion, useScroll, useSpring } from "motion-v";
-import { gentle } from "@/lib/motion";
+import { gentle, snappy } from "@/lib/motion";
 
 const NuxtLink = resolveComponent("NuxtLink");
 const route = useRoute();
@@ -109,5 +126,69 @@ const toc = computed(() => post.value?.body?.toc?.links ?? []);
 const { scrollYProgress } = useScroll();
 const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
 
-usePageSeo(`${post.value.title} - Design By Faizi`, post.value.description);
+// The section being read is the last heading above the top third of the screen.
+// -1 means the reader hasn't reached the first heading yet.
+const current = ref(-1);
+let frame = 0;
+const findCurrent = () => {
+  cancelAnimationFrame(frame);
+  frame = requestAnimationFrame(() => {
+    const line = window.innerHeight / 3;
+    current.value = toc.value.findLastIndex((link) => {
+      const heading = document.getElementById(link.id);
+      return heading ? heading.getBoundingClientRect().top <= line : false;
+    });
+  });
+};
+useEventListener("scroll", findCurrent, { passive: true });
+useEventListener("resize", findCurrent, { passive: true });
+onMounted(findCurrent);
+
+const created = shortDate(post.value.created_at);
+const updated = post.value.updated_at && shortDate(post.value.updated_at) !== created ? shortDate(post.value.updated_at) : undefined;
+
+// Link previews get the cover cut to the 1200×630 shape every platform expects, so the size
+// below is always true whatever picture was uploaded. Posts without a cover use the site image.
+const cover = post.value.featured_image
+  ? useImage()(post.value.featured_image, { width: 1200, height: 630, fit: "cover", format: "jpg", quality: 85 })
+  : undefined;
+if (cover && import.meta.server) prerenderRoutes([cover]);
+
+usePageSeo(`${post.value.title} - Design By Faizi`, post.value.description, cover);
+
+const { public: { siteUrl } } = useRuntimeConfig();
+useSeoMeta({
+  ...(cover && {
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
+    ogImageType: "image/jpeg" as const,
+    ogImageAlt: `Cover of “${post.value.title}”`,
+    twitterImageAlt: `Cover of “${post.value.title}”`,
+  }),
+  ogType: "article",
+  articlePublishedTime: created,
+  articleModifiedTime: updated ?? created,
+  articleAuthor: [site.value.name],
+  articleTag: post.value.tags,
+});
+// Tells search engines this page is an article, by whom, and when it was written and revised.
+useHead({
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.value.title,
+        description: post.value.description,
+        image: post.value.featured_image ? `${siteUrl}${post.value.featured_image}` : undefined,
+        datePublished: created,
+        dateModified: updated ?? created,
+        author: { "@type": "Person", name: site.value.name, url: siteUrl },
+        mainEntityOfPage: `${siteUrl}${path}`,
+        keywords: post.value.tags?.join(", "),
+      }),
+    },
+  ],
+});
 </script>
