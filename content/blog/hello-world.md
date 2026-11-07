@@ -45,13 +45,31 @@ On detail survived everything that came later: the accent color. In the first ev
 
 ### Late 2023: content and a blog
 
-In October 2023, I upgraded to Nuxt 3.8, added the Satoshi and Tanker typefaces, and set up [Nuxt Content](https://content.nuxt.com) so I could write posts in Markdown. I also connected Nuxt Studio which is a visual editor for Nuxt Content. The first post was called "First Blog", and it said: "This was edited using Nuxt Studio's editor. It's an awesome piece of tech. I don't fully understand it but I **love** it." It also ended with a code block containing `console.log("Hello World")`, so in a way this post has been coming for a while.
+In October 2023, I upgraded to Nuxt 3.8, added the Satoshi and Tanker typefaces, and set up [Nuxt Content](https://content.nuxt.com) so I could write posts in Markdown. I also connected Nuxt Studio which is a visual editor for Nuxt Content. The first post was called "First Blog", and it said: 
 
-A month later I made another commit named "Major Design Overhaul". I added pages for projects, products and my stack, a contact page, a tooltip component, and a custom 404 page. Getting that error page to deploy took more commits than I can count right now, and the messages tell the story better than I can: **"Updated Error Page Again T_T"**, then **"Updated Error Page Again >_<"_** _four times and finally "Created a custom middleware to handle 404. I'm done <_>". 
+> "This was edited using Nuxt Studio's editor. It's an awesome piece of tech. I don't fully understand it but I **love** it."
+
+It also ended with a code block containing `console.log("Hello World")`, so in a way this post has been coming for a while.
+
+A month later I made another commit named **"Major Design Overhaul"**. I added pages for projects, products and my stack, a contact page, a tooltip component, and a custom 404 page. Getting that error page to deploy took more commits than I can count right now, and the messages tell the story better than I can: 
+
+> "Updated Error Page Again T_T"
+
+then
+
+> "Updated Error Page Again >_<"_ 
+
+_four times and finally_ 
+
+> _"Created a custom middleware to handle 404. I'm done <_>"
 
 (I removed the middleware a few commits later, the same day.)
 
-By february 2024, I was honest enough to put a banner at the top that said "⚠️ This website is under construction". The animated cursor came out the same day.
+By february 2024, I was honest enough to put a banner at the top that said 
+
+> "⚠️ This website is under construction". 
+
+The animated cursor came out the same day.
 
 ### 2025: the content merry-go-round
 
