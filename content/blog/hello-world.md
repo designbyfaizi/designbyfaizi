@@ -59,25 +59,25 @@ It also ended with a code block containing `console.log("Hello World")`, so in a
 
 A month later I made another commit named
 
-> "Major Design Overhaul"
+> Major Design Overhaul
 
 I added pages for projects, products and my stack, a contact page, a tooltip component, and a custom 404 page. Getting that error page to deploy took more commits than I can count right now, and the messages tell the story better than I can: 
 
-> "Updated Error Page Again T_T"
+> Updated Error Page Again T_T
 
 then
 
-> "Updated Error Page Again >_<"_ 
+> Updated Error Page Again >_<_
 
 _four times and finally_ 
 
-> _"Created a custom middleware to handle 404. I'm done <_>"
+> _Created a custom middleware to handle 404. I'm done <_>
 
 (I removed the middleware a few commits later, the same day.)
 
 By february 2024, I was honest enough to put a banner at the top that said 
 
-> "⚠️ This website is under construction". 
+> ⚠️ This website is under construction
 
 The animated cursor came out the same day.
 
