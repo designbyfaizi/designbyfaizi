@@ -8,7 +8,7 @@ tags:
   - design
 published: true
 created_at: 2023-10-22
-updated_at: 2026-11-02
+updated_at: 2026-11-07
 ---
 
 Hallo, I'm Faizan Ullah, although most people refer to me as Faizi. I'm a frontend developer and designer living in Germany. I design interfaces, build them in frontend technologies like React, Vue, Next.js, Nuxt and Vite, and in-between I also draw. Welcome to my edge of the internet.
