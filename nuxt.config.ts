@@ -53,6 +53,10 @@ export default defineNuxtConfig({
       password: "",
       to: "",
     },
+    // GitHub OAuth app behind "Sign in with GitHub" on /admin (server/api/auth/).
+    // Set with NUXT_GITHUB_CLIENT_ID and NUXT_GITHUB_CLIENT_SECRET.
+    githubClientId: "",
+    githubClientSecret: "",
     public: { siteUrl: "https://designbyfaizi.com" },
   },
   components: [

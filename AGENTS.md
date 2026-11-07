@@ -30,7 +30,7 @@ A content schema is defined twice and the two must stay in sync:
 - `content.config.ts`: the zod schemas used at build time.
 - `public/admin/config.yml`: the Sveltia CMS forms served at `/admin`. Each save there commits to `main` (`content: ...` messages) and triggers a rebuild, so expect those commits on `main`. `public/admin/sveltia-cms.js` and `public/admin/chunks/` are vendored; don't edit them.
 
-Adding a field to `content/site.yml` touches both of those files plus the page that reads it. Blog posts rely on `rawbody` in the schema for reading time, and only posts with `published: true` are shown. Images in posts render through `app/components/content/ProseImg.vue` (lazy, responsive WebP); give each one its pixel size, `![alt](/uploads/blog/x.webp){width="1600" height="900"}`, so the page doesn't shift while it loads. Post images live in `public/uploads/blog/`.
+Adding a field to `content/site.yml` touches both of those files plus the page that reads it. Blog posts rely on `rawbody` in the schema for reading time, and only posts with `published: true` are shown. Images in posts render through `app/components/content/ProseImg.vue` (lazy, responsive WebP); give each one its pixel size, `![alt](/uploads/blog/x.webp){width="1600" height="900"}`, so the page doesn't shift while it loads. Post images live in `public/uploads/blog/`. Tables render through `ProseTable.vue`, which lets a wide table scroll inside its own box on phones.
 
 `nuxt.config.ts` reads `content/skills/*.yml` at config time and bundles the icons named there. A skill icon from a set outside `iconSets` still works but loads from Iconify at runtime.
 
@@ -51,6 +51,7 @@ A new page must be linked from somewhere to be prerendered. Add it to the hardco
 
 - `api/contact.post.ts`: emails the contact form through nodemailer. `shared/contact.ts` holds the zod schema used by both the form and the server (import as `#shared/contact`). Rate limiting is in-memory, per IP.
 - `routes/sitemap.xml.ts`, `routes/feed.xml.ts`: generated from content and prerendered.
+- `api/auth/`: "Sign in with GitHub" for the CMS at `/admin`. `index.get.ts` sends the popup to GitHub, and `callback.get.ts` swaps the code for a token and passes it back to the CMS window. `backend.base_url` in `public/admin/config.yml` points here; without it Sveltia uses Netlify's sign-in, which fails off Netlify.
 
 `/art` is entirely content-driven: artwork is managed in the CMS and stored in `content/art/`. The optional `link` field is the Instagram post, shown as a "View on Instagram" link in the lightbox. There is no Instagram API integration.
 
@@ -78,7 +79,7 @@ The site is styled as a two-ink print job: rose is the design plate, black is th
 
 `Dockerfile` builds a Bun image deployed on Dokploy, listening on port 3000. Nuxt Content writes its SQLite database under `/app/.data` at runtime, so the image creates that folder.
 
-Runtime environment variables: `NUXT_SMTP_USER`, `NUXT_SMTP_PASSWORD`, `NUXT_SMTP_TO` (optional, defaults to the user). Without SMTP credentials the contact endpoint returns 503.
+Runtime environment variables: `NUXT_SMTP_USER`, `NUXT_SMTP_PASSWORD`, `NUXT_SMTP_TO` (optional, defaults to the user). Without SMTP credentials the contact endpoint returns 503. `NUXT_GITHUB_CLIENT_ID` and `NUXT_GITHUB_CLIENT_SECRET` come from a GitHub OAuth app whose callback URL is `https://designbyfaizi.com/api/auth/callback`; without them CMS sign-in shows an error.
 
 ## Stale references
 

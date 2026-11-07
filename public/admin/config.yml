@@ -4,6 +4,10 @@ backend:
   name: github
   repo: designbyfaizi/designbyfaizi
   branch: main
+  # "Sign in with GitHub" goes through the site's own server (server/api/auth/)
+  # instead of Netlify's, which only works for sites hosted on Netlify.
+  base_url: https://designbyfaizi.com
+  auth_endpoint: api/auth
   commit_messages:
     create: "content: add {{slug}}"
     update: "content: update {{slug}}"
