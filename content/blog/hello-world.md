@@ -13,7 +13,7 @@ updated_at: 2026-11-02
 
 Hallo, I'm Faizan Ullah, although most people refer to me as Faizi. I'm a frontend developer and designer living in Germany. I design interfaces, build them in frontend technologies like React, Vue, Next.js, Nuxt and Vite, and in-between I also draw. Welcome to my edge of the internet.
 
-A "Hello World" post is a tradition, and I initially started this blog back in October 2023. The first version was just three lines long, and later I just hid it as a draft. This rewrite is the actual post it should have been. I'll explain who I am, how this site is built, and how it reached its current state. If you are a developer, there is real code in here. If you are hiring, it's an honest look at how I work.
+A "Hello World" post is a tradition, and I continued this tradition in my blog when I initially started this blog back in October 2023. The first version was just three lines long, and later I just hid it as a draft. This rewrite is the actual post it should have been. I'll explain who I am, how this site is built, and how it reached its current state. If you are a developer, there is real code in here. If you are hiring, it's an honest look at how I work.
 
 ## Who I am
 
@@ -35,13 +35,21 @@ None of that was the plan on day one. It took four years and more rebuilds than 
 
 ### December 2022: the first commit
 
-The repo starts on December 1st 2022, with a commit called **Initialized New Nuxt 3 Project**. Nuxt 3.0 had come out about two weeks ago, so I was just messing around with it.
+The repo starts on December 1st 2022, with a commit called 
+
+> Initialized New Nuxt 3 Project.
+
+Nuxt 3.0 had come out about two weeks ago, so I was just messing around with it.
 
 That first version was a playground. It has six color themes (light, dark, sepia, cyan, green and purple) because why not 🗿. It had a glassy dropdown menu, an animated circle cursor that followed the mouse, and a bottom dock for navigation; similar to a Mac's doc. The styling was done using UnoCSS, which I loved so much that it will get its own post soon.
 
 On detail survived everything that came later: the accent color. In the first ever color file, I had:
+
+
 `--primary: 225, 29, 72`
- which is rose. Four years and five versions later, the site is still rose.
+ 
+
+which is rose. Four years and five versions later, the site is still rose.
 
 ### Late 2023: content and a blog
 
