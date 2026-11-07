@@ -53,7 +53,7 @@ which is rose. Four years and five versions later, the site is still rose.
 
 In October 2023, I upgraded to Nuxt 3.8, added the Satoshi and Tanker typefaces, and set up [Nuxt Content](https://content.nuxt.com) so I could write posts in Markdown. I also connected Nuxt Studio which is a visual editor for Nuxt Content. The first post was called "First Blog", and it said: 
 
-> "This was edited using Nuxt Studio's editor. It's an awesome piece of tech. I don't fully understand it but I **love** it."
+> This was edited using Nuxt Studio's editor. It's an awesome piece of tech. I don't fully understand it but I **love** it.
 
 It also ended with a code block containing `console.log("Hello World")`, so in a way this post has been coming for a while.
 
