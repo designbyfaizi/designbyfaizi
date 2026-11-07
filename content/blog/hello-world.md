@@ -153,7 +153,7 @@ The one rule I follow is that the two definitions must stay in sync: a field add
 
 ![The blog fields side by side: title, description, featured_image, published and created_at appear in both the Zod schema and the Sveltia config. rawbody exists only in Zod and body only in Sveltia](/uploads/blog/hello-world-schema.webp){width="1600" height="1746"}
 
-![Silly Hamster holding lollipop with Sveltia logo](/uploads/sveltia-cms-silly-hamster.png "Fig. 🐹 / Will commit to main for lollipops"){width="260" height="265"}
+![Silly Hamster holding lollipop with Sveltia logo](/uploads/sveltia-cms-silly-hamster.png "Will commit to main for lollipops"){width="260" height="265"}
 
 ![How a post travels from the Sveltia editor to a visitor: a commit to GitHub, a Docker build on Dokploy, Nuxt Content and prerendering, then static HTML](/uploads/blog/hello-world-pipeline.webp){width="1600" height="2066"}
 
@@ -165,7 +165,7 @@ Publishing then looks like this:
 4. During the build, Nuxt Content validates every file against its schema and Nitro prerenders every page.
 5. The new container replaces the old one, and the post is live a few minutes after I pressed save.
 
-![Silly Hamster holding lollipop with Nuxt logo](/uploads/silly-hamster-nuxt.png "Fig. 🐹 / Prerendered his lollipop at build time"){width="260" height="265"}
+![Silly Hamster holding lollipop with Nuxt logo](/uploads/silly-hamster-nuxt.png "Prerendered his lollipop at build time"){width="260" height="265"}
 
 My content history is my Git history. I can see who changed what (always me 🗿), roll back a bad edit with one command, and move the whole site anywhere a container runs. Compared with Notion and Payload, there's nothing extra to host, pay for or back up.
 
