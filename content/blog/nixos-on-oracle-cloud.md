@@ -14,7 +14,7 @@ updated_at: 2026-11-09
 
 I have been deploying my side projects with Dokploy. It's a nice open-source Vercel-like dashboard built on top of docker that you can install on any machine. Write a Dockerfile, push, done. It works but the abstraction makes it hard to learn what's going on underneath.
 
-So I got a free ARM instance on [Oracle Cloud Infrastructure (OCI)](https://www.oracle.com/de/cloud/){target="\_blank"} and set myself a goal:
+So I got a free ARM instance on [Oracle Cloud Infrastructure (OCI)](https://www.oracle.com/de/cloud/){target="_blank"} and set myself a goal:
 
 **Learn NixOS by running real things on it, without Docker.** This post covers everything it took:
 
@@ -28,7 +28,7 @@ I'll include the mistakes too. There were plenty.
 
 ![A "Chat, am I cooked?" meme: a livestream of the NixOS install stuck after "machine will boot into nixos in 6s", stamped Instance unresponsive, while the stream chat says he's cooked and skill issue, until a moderator points out that disko never ran and a force reboot fixes it](/uploads/blog/nixos-cooked.webp "Me after kexec left Ubuntu with no disk and no network"){width="560" height="463"}
 
-You can check my config repo [here](https://github.com/designbyfaizi/nixos-config){target="\_blank"}. Here is the setup we are heading to. Keep this picture in mind.
+You can check my config repo [here](https://github.com/designbyfaizi/nixos-config){target="_blank"}. Here is the setup we are heading to. Keep this picture in mind.
 
 ![Diagram of the finished setup: three lanes lead into the server through two firewalls, Oracle's security list and the NixOS firewall, which only open ports 22, 80 and 443. My laptop reaches sshd over SSH with just deploy, GitHub reaches mysite-deploy over SSH on every push, and visitors reach Caddy over HTTPS. Below, the three GitHub repos: the public nixos-config holds the base system and is imported by the private nixos-infra, which I deploy from, and the private app repo runs the GitHub Action](/uploads/blog/nixos-overview.webp){width="1600" height="2124"}
 
@@ -46,7 +46,7 @@ You can check my config repo [here](https://github.com/designbyfaizi/nixos-confi
 
 ### The free tier is smaller than most guides say
 
-If you look at older tutorials, they say that you get **4 OCPU / 24 GB** of ARM. Oracle's [Always Free page](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm){target="\_blank"} now says:
+If you look at older tutorials, they say that you get **4 OCPU / 24 GB** of ARM. Oracle's [Always Free page](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm){target="_blank"} now says:
 
 > All tenancies get the first 1,500 OCPU hours and 9,000 GB hours per month for free [...] For Always Free tenancies, this is equivalent to **2 OCPUs and 12 GB of memory**.
 
@@ -112,8 +112,8 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 
 Two Arch surprises (Nix 2.35):
 
-1. **There is no `nix-users` group** (`usermod: group 'nix-users' does not exist`). In older guides and tutorials, they tell you to join it but you don't need to. The daemon socket is world-accessible and `allowed-users` defaults to `*`.\`
-`2. `/nix/store`didn't exist, so the first command failed with`error: opening file "/nix/store": No such file or directory\`. The fix:
+1. **There is no `nix-users` group** (`usermod: group 'nix-users' does not exist`). In older guides and tutorials, they tell you to join it but you don't need to. The daemon socket is world-accessible and `allowed-users` defaults to `*`.
+2. `/nix/store` didn't exist, so the first command failed with `error: opening file "/nix/store": No such file or directory`. The fix:
 
 ```fish
 sudo mkdir -p /nix/store
@@ -418,8 +418,6 @@ Fun fact: deploying an identical config **doesn't create a new generation**. The
 
 ![How deploy, test and rollback move the current and boot generations, and which of them build anything](/uploads/blog/nixos-generations.webp){width="1600" height="1456"}
 
-![The Caddy test page next to a terminal listing three system generations, and the config repo on the laptop](/uploads/blog/nixos-shot-generations-caddy.webp "NixOS serving a static page from my instance 🗿"){width="1802" height="1142"}
-
 My safety nets:
 
 1. Bad deploy, but SSH still works: `switch --rollback`.
@@ -428,7 +426,7 @@ My safety nets:
 
 ### A justfile so I never forget --target-host
 
-[just](https://github.com/casey/just){target="\_blank"} is a small command runner. You write named recipes in a file called `justfile`, and `just deploy` runs the matching one. Think of it as a `Makefile` without the build-system baggage.
+[just](https://github.com/casey/just){target="_blank"} is a small command runner. You write named recipes in a file called `justfile`, and `just deploy` runs the matching one. Think of it as a `Makefile` without the build-system baggage.
 
 **Installing it on the laptop.** Pick one:
 
@@ -492,7 +490,7 @@ Two firewalls guard every port: **OCI's Security List** and **`networking.firewa
 
 ![A request to port 443 passing the visitor, Oracle's Security List, the VM firewall and Caddy, with what each curl error means](/uploads/blog/nixos-firewalls.webp){width="1600" height="1558"}
 
-I didn't own a domain for testing, so I used [sslip.io](https://sslip.io){target="\_blank"}: `203-0-113-10.sslip.io` resolves to `203.0.113.10`, so you put your own IP in place of that one. **Let's Encrypt** issues real certificates for those names.
+I didn't own a domain for testing, so I used [sslip.io](https://sslip.io){target="_blank"}: `203-0-113-10.sslip.io` resolves to `203.0.113.10`, so you put your own IP in place of that one. **Let's Encrypt** issues real certificates for those names.
 
 `services/caddy.nix`:
 
@@ -523,6 +521,8 @@ in
 ```
 
 `pkgs.writeTextDir` puts the page in `/nix/store/HASH-index.html/`. Change the HTML and you get a new store path; roll back and the old page comes back. **The website is part of the system generation.** Caddy gets a Let's Encrypt certificate, redirects HTTP to HTTPS and renews automatically, with zero TLS config.
+
+![The Caddy test page next to a terminal listing three system generations, and the config repo on the laptop](/uploads/blog/nixos-shot-generations-caddy.webp "NixOS serving a static page from my instance 🗿"){width="1802" height="1142"}
 
 > **Bug:** my first `caddy.nix` started with `{ pkgs, ... };`. It needs a **colon**, because a module is a function. These typos will be the end of me.
 
@@ -591,7 +591,7 @@ Changing the base means pushing the public repo, then running `nix flake update 
 
 **My favourite trick from this whole project:** after each refactor, I ran `just check` and confirmed the **`.drv` hash was identical**. Moving files or splitting flakes doesn't change what gets built, so a matching hash proves the refactor changed nothing, giving me an inner peace moment.
 
-One more thing: if you're hiding hostnames for privacy, don't count on it. **Every Let's Encrypt certificate is published** in Certificate Transparency logs ([crt.sh](https://crt.sh){target="\_blank"}). The private repo hides _how_ things run, not _that_ they exist.
+One more thing: if you're hiding hostnames for privacy, don't count on it. **Every Let's Encrypt certificate is published** in Certificate Transparency logs ([crt.sh](https://crt.sh){target="_blank"}). The private repo hides _how_ things run, not _that_ they exist.
 
 ## Part 7: A Nuxt and Bun app without Docker
 
@@ -605,9 +605,8 @@ My primary domain was connected to my main vps, so I decided to create .nix subd
 
 | Name | Type | Content |
 | --- | --- | --- |
-
-| `nix` | A | `<instance-ip>` |\`
-`| `\*.nix`| A |`<instance-ip>\` |
+| `nix` | A | `<instance-ip>` |
+| `*.nix` | A | `<instance-ip>` |
 
 Now `anything.nix.example.com` reaches the server. I originally wanted `*-nix.example.com`, but **a DNS wildcard has to be a whole label**, so `*.nix` is the closest you can get. Caddy still gets one normal certificate per hostname you configure. You don't need a wildcard certificate.
 
@@ -889,7 +888,7 @@ Sveltia CMS saves are just commits to `main`, so **content edits deploy themselv
 - **Site versions aren't part of NixOS generations.** Rolling back the system doesn't roll back the site (the `releases/` folder handles that separately).
 - The **`LD_LIBRARY_PATH` workaround** keeps prebuilt binaries happy. The pure approach builds `sharp` against Nix's `vips` instead.
 
-**What the pure way would look like:** package the site as a Nix derivation, with [bun2nix](https://github.com/baileyluTCD/bun2nix){target="\_blank"} turning `bun.lock` into fixed-output dependency fetches. The build output lands in `/nix/store`, and the service's `ExecStart` points into the store. Deploying a new version means `nix flake update mysite && just deploy`.
+**What the pure way would look like:** package the site as a Nix derivation, with [bun2nix](https://github.com/baileyluTCD/bun2nix){target="_blank"} turning `bun.lock` into fixed-output dependency fetches. The build output lands in `/nix/store`, and the service's `ExecStart` points into the store. Deploying a new version means `nix flake update mysite && just deploy`.
 
 **Why I didn't do that (yet):** with a git-based CMS, **every content edit would mean updating a lock file and rebuilding the whole system**, and automating that across two repos means giving CI write access to my infra repo. Nuxt, Bun and sharp are also known to be fiddly to package purely. Because content changes much more often than infrastructure, splitting things this way made sense: **NixOS owns the infrastructure, and the app ships its own releases.**
 
@@ -926,4 +925,6 @@ Some stuff that I plan to use and implement for learning purposes:
 
 If you're thinking about trying NixOS on Oracle's free tier: do it. Test the serial console first, keep `--kexec` in your back pocket, and run `nix eval` before every deploy.
 
-_The config is at_ _[github.com/designbyfaizi/nixos-config](https://github.com/designbyfaizi/nixos-config)_{target="_blank"}_.\_
+_The config is at [github.com/designbyfaizi/nixos-config](https://github.com/designbyfaizi/nixos-config){target="_blank"}._
+
+![A small hand-drawn character in a black hoodie with rose drawstrings sits on the floor, blushing, under handwritten text that says thank you for reading, with a little rose heart](/uploads/blog/nixos-thanks.webp "See you in the next one"){width="420" height="420"}
