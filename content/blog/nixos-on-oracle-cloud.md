@@ -28,7 +28,7 @@ I'll include the mistakes too. There were plenty.
 
 ![A "Chat, am I cooked?" meme: a livestream of the NixOS install stuck after "machine will boot into nixos in 6s", stamped Instance unresponsive, while the stream chat says he's cooked and skill issue, until a moderator points out that disko never ran and a force reboot fixes it](/uploads/blog/nixos-cooked.webp "Me after kexec left Ubuntu with no disk and no network"){width="560" height="463"}
 
-> The config: github.com/designbyfaizi/nixos-config{target="\_blank"}.
+You can check my config repo [here](github.com/designbyfaizi/nixos-config){target="\_blank"}.
 
 Here is the setup we are heading to. Keep this picture in mind.
 
