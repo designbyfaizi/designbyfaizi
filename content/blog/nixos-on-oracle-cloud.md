@@ -28,7 +28,7 @@ I'll include the mistakes too. There were plenty.
 
 ![A "Chat, am I cooked?" meme: a livestream of the NixOS install stuck after "machine will boot into nixos in 6s", stamped Instance unresponsive, while the stream chat says he's cooked and skill issue, until a moderator points out that disko never ran and a force reboot fixes it](/uploads/blog/nixos-cooked.webp "Me after kexec left Ubuntu with no disk and no network"){width="560" height="463"}
 
-Here is the setup we are heading to. Keep this picture in mind.
+You can check my config repo [here](https://github.com/designbyfaizi/nixos-config){target="\_blank"}. Here is the setup we are heading to. Keep this picture in mind.
 
 ![Diagram of the finished setup: three lanes lead into the server through two firewalls, Oracle's security list and the NixOS firewall, which only open ports 22, 80 and 443. My laptop reaches sshd over SSH with just deploy, GitHub reaches mysite-deploy over SSH on every push, and visitors reach Caddy over HTTPS. Below, the three GitHub repos: the public nixos-config holds the base system and is imported by the private nixos-infra, which I deploy from, and the private app repo runs the GitHub Action](/uploads/blog/nixos-overview.webp){width="1600" height="2124"}
 
