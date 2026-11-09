@@ -75,6 +75,11 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         toc: { depth: 3, searchDepth: 3 },
+        // Outside links in posts are ones I vouch for (clients, tools I use), so they
+        // drop the default rel="nofollow" and count for search engines.
+        rehypePlugins: {
+          "rehype-external-links": { options: { rel: ["noopener"] } },
+        },
         highlight: {
           theme: { default: "github-light", dark: "github-dark" },
           langs: ["html", "css", "js", "ts", "vue", "bash", "json", "yaml"],
