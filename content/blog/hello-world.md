@@ -19,13 +19,13 @@ A "Hello World" post is a tradition, and I continued this tradition in my blog w
 
 I got swept up in web the way most people do: curiosity. I picked up HTML and CSS in 2019, Javascript in 2020, and then a framework, a design tool, a utility-first CSS library, and so on. Each time I hit the limit of what I knew.
 
-Today I sit on both sides of the work. I can take a product from a blank Figma page to a deployed working app, and I care a lot about the parts where these two steps meet: spacing, motion, type, scrolling behaviour e.t.c. Most recently I built the booking platform for [Bullet Flughafentransfer](https://bullet-flughafentransfer.de), an airport transfer company based in Darmstadt. Besides the frontend side of things, working on this app has also taught me a lot about continuous deployment, accessibility, security, scalability, and end-to-end testing. I also built other stuff which you can find on the [projects page](/projects) in detail.
+Today I sit on both sides of the work. I can take a product from a blank Figma page to a deployed working app, and I care a lot about the parts where these two steps meet: spacing, motion, type, scrolling behaviour e.t.c. Most recently I built the booking platform for [Bullet Flughafentransfer](https://bullet-flughafentransfer.de){target="_blank"}, an airport transfer company based in Darmstadt. Besides the frontend side of things, working on this app has also taught me a lot about continuous deployment, accessibility, security, scalability, and end-to-end testing. I also built other stuff which you can find on the [projects page](/projects) in detail.
 
 With this site, I'm experimenting with a two-sided view where the brand is a print job with two inks: **rose red is the design plate, black is the code plate**. You'll see that idea everywhere here, down to the code comments.
 
 ## The stack in one breath
 
-This site is a [Nuxt](https://nuxt.com) app written in Vue 3 and Typescript. Every page is prerendered to a static HTML page at build time. For styling I'm using [Tailwind CSS v4](https://tailwindcss.com/) with [Shadcn-Vue](https://www.shadcn-vue.com/) components over it and the animations are done using [motion.dev](https://motion.dev). All the content and pictures live as Markdown and YAML files in repository. A Git-based CMS called [Sveltia CMS](https://github.com/sveltia/sveltia-cms) gives me a friendly editor for those files. Bun runs the build, and a small Docker container on my own server (managed with Dokploy) serves the result.
+This site is a [Nuxt](https://nuxt.com){target="_blank"} app written in Vue 3 and Typescript. Every page is prerendered to a static HTML page at build time. For styling I'm using [Tailwind CSS v4](https://tailwindcss.com/){target="_blank"} with [Shadcn-Vue](https://www.shadcn-vue.com/){target="_blank"} components over it and the animations are done using [motion.dev](https://motion.dev){target="_blank"}. All the content and pictures live as Markdown and YAML files in repository. A Git-based CMS called [Sveltia CMS](https://github.com/sveltia/sveltia-cms){target="_blank"} gives me a friendly editor for those files. Bun runs the build, and a small Docker container on my own server (managed with Dokploy) serves the result.
 
 None of that was the plan on day one. It took four years and more rebuilds than I'd like to admit.
 
@@ -51,7 +51,7 @@ which is rose. Four years and five versions later, the site is still rose.
 
 ### Late 2023: content and a blog
 
-In October 2023, I upgraded to Nuxt 3.8, added the Satoshi and Tanker typefaces, and set up [Nuxt Content](https://content.nuxt.com) so I could write posts in Markdown. I also connected Nuxt Studio which is a visual editor for Nuxt Content. The first post was called "First Blog", and it said: 
+In October 2023, I upgraded to Nuxt 3.8, added the Satoshi and Tanker typefaces, and set up [Nuxt Content](https://content.nuxt.com){target="_blank"} so I could write posts in Markdown. I also connected Nuxt Studio which is a visual editor for Nuxt Content. The first post was called "First Blog", and it said: 
 
 > This was edited using Nuxt Studio's editor. It's an awesome piece of tech. I don't fully understand it but I **love** it.
 
@@ -83,7 +83,7 @@ The animated cursor came out the same day.
 
 ### 2025: the content merry-go-round
 
-In February 2025, I refactored the whole site with a fresh look. I added Gabarito typeface, shadcn-style color tokens, rounded buttons, and my first real animations with [Motion](https://motion.dev). I also moved hosting from Vercel to Cloudflare Pages because I saw people on X/Twitter absolutely slandering my goat Vercel but they were lowkey right 😞.
+In February 2025, I refactored the whole site with a fresh look. I added Gabarito typeface, shadcn-style color tokens, rounded buttons, and my first real animations with [Motion](https://motion.dev){target="_blank"}. I also moved hosting from Vercel to Cloudflare Pages because I saw people on X/Twitter absolutely slandering my goat Vercel but they were lowkey right 😞.
 
 Anyways the bigger change was where content lived, and I changed my mind three times in two months:
 
