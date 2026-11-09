@@ -41,15 +41,21 @@
           <!-- The rail inks in rose as the reader moves through the post; the square marks where they are.
                It sits on the middle of the first line's letters (padding + half the line, less the
                part of the line Newsreader leaves empty above them), not the middle of the box. -->
-          <nav class="sticky top-24 flex flex-col" aria-label="On this page">
+          <!-- Long posts scroll inside the rail (shadcn-vue ScrollArea, so the scrollbar is a thin
+               ink line instead of the browser's). The heading stays put; the left padding keeps the
+               square from being cut off. -->
+          <nav ref="tocNav" class="sticky top-24" aria-label="On this page">
             <p class="slug mb-3 text-rose-ink">On this page</p>
+            <ScrollArea class="[&>[data-slot=scroll-area-viewport]]:max-h-[calc(100svh-10rem)]">
+            <div class="flex flex-col pr-4 pl-1.5">
             <a
               v-for="(link, index) in toc"
               :key="link.id"
               :href="`#${link.id}`"
               :aria-current="index === current ? 'location' : undefined"
               :class="[
-                'relative border-l-2 py-1.5 pl-4 font-serif text-lg leading-snug hover:text-rose-ink motion-safe:transition-colors motion-safe:duration-300',
+                'relative border-l-2 font-serif leading-snug hover:text-rose-ink motion-safe:transition-colors motion-safe:duration-300',
+                link.depth > 2 ? 'py-1 pl-8 text-base' : 'py-1.5 pl-4 text-lg',
                 index > current && 'border-border text-muted-foreground',
                 index < current && 'border-primary',
                 index === current && 'border-primary text-rose-ink',
@@ -59,11 +65,16 @@
                 v-if="index === current"
                 layout-id="toc-marker"
                 aria-hidden="true"
-                class="absolute top-[calc(0.375rem+0.5625em-5px)] -left-[6px] size-2.5 bg-primary"
+                :class="[
+                  'absolute -left-[6px] size-2.5 bg-primary',
+                  link.depth > 2 ? 'top-[calc(0.25rem+0.5625em-5px)]' : 'top-[calc(0.375rem+0.5625em-5px)]',
+                ]"
                 :transition="snappy"
               />
               {{ link.text }}
             </a>
+            </div>
+            </ScrollArea>
           </nav>
         </aside>
         <ContentRenderer
@@ -93,6 +104,7 @@
 <script setup lang="ts">
 import { motion, useScroll, useSpring } from "motion-v";
 import { gentle, snappy } from "@/lib/motion";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const NuxtLink = resolveComponent("NuxtLink");
 const route = useRoute();
@@ -121,7 +133,12 @@ const { data: surroundings } = await useAsyncData(
 );
 
 const minutes = readingMinutes(post.value.rawbody);
-const toc = computed(() => post.value?.body?.toc?.links ?? []);
+// Sections and their subsections (h2 and h3) in one flat list, in reading order.
+type TocLink = { id: string; text: string; depth: number; children?: TocLink[] };
+const toc = computed(() =>
+  ((post.value?.body?.toc?.links ?? []) as TocLink[]).flatMap((link) => [link, ...(link.children ?? [])]),
+);
+const tocNav = useTemplateRef<HTMLElement>("tocNav");
 
 const { scrollYProgress } = useScroll();
 const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
@@ -143,6 +160,17 @@ const findCurrent = () => {
 useEventListener("scroll", findCurrent, { passive: true });
 useEventListener("resize", findCurrent, { passive: true });
 onMounted(findCurrent);
+
+// Keep the current entry inside the rail when the list is taller than the screen.
+// Only the rail scrolls, never the page.
+watch(current, (index) => {
+  const view = tocNav.value?.querySelector<HTMLElement>("[data-slot=scroll-area-viewport]");
+  const item = tocNav.value?.querySelectorAll("a")[index];
+  if (!view || !item) return;
+  const top = item.getBoundingClientRect().top - view.getBoundingClientRect().top + view.scrollTop;
+  if (top < view.scrollTop + 40) view.scrollTop = top - 40;
+  else if (top + item.offsetHeight > view.scrollTop + view.clientHeight - 40) view.scrollTop = top + item.offsetHeight - view.clientHeight + 40;
+});
 
 const created = shortDate(post.value.created_at);
 const updated = post.value.updated_at && shortDate(post.value.updated_at) !== created ? shortDate(post.value.updated_at) : undefined;
