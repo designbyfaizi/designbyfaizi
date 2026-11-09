@@ -898,6 +898,7 @@ The pure version is on my list as a learning project.
 
 | Mistake | How it showed up |
 | --- | --- |
+| Ran nixos-anywhere without `--kexec` | Hung at `machine will boot into nixos in 6s…`, Ubuntu left with no disk and no network until a force reboot |
 | `nixosConfiguration` (no s) | Nothing, until a tool looked for `nixosConfigurations` |
 | `user.users` | `The option 'user' does not exist` (caught by `nix eval`) |
 | `{ pkgs, ... };` | Syntax error: modules need `:` |
